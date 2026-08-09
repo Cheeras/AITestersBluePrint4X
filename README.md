@@ -1,8 +1,28 @@
-# RICE-POT Framework for Prompt Engineering
+# AI Testers Blueprint 4X
 
-RICE-POT is a practical framework for writing clear, complete, and reusable AI prompts. It helps remove ambiguity by defining the AI's role, the task, the relevant background, and the expected response.
+AI Testers Blueprint 4X is a hands-on learning repository for software testers who want to use generative AI in testing workflows. It combines foundational notes, reusable prompt-engineering templates, and practical test-automation examples.
 
-## The Framework
+## Learning Roadmap
+
+The complete learning path is available in the [AI Tester Blueprint roadmap](RoadMap/AITesterBluePrintRoadMap.png).
+
+## Repository Contents
+
+### Chapter 1: LLM Basics
+
+- [Anti-hallucination rules](chapter_01_LLMBasics/ANTI-HALLUCINATION.rules.md) for producing more reliable, evidence-based AI responses.
+
+### Chapter 2: Prompt Engineering
+
+- [Salesforce login automation task](chapter_02_prompt_eng/00_Task1.md)
+- [RICE-POT prompt template](chapter_02_prompt_eng/01_RICE_POT_Template.md)
+- [RICE-POT example](chapter_02_prompt_eng/02_RICE_POT.example.md)
+- [Enterprise Selenium framework plan](chapter_02_prompt_eng/04_Plan_Framework.md)
+- [Salesforce Selenium automation framework](chapter_02_prompt_eng/RICE_POT_SeleniumAdvancedFramework/)
+
+## RICE-POT Prompting Framework
+
+RICE-POT is a reusable structure for writing clear and complete prompts.
 
 | Element | Meaning | Guiding question |
 | --- | --- | --- |
@@ -10,72 +30,72 @@ RICE-POT is a practical framework for writing clear, complete, and reusable AI p
 | **I** | Instructions | What should the AI do? |
 | **C** | Context | What background information does it need? |
 | **E** | Examples | What does a good result look like? |
-| **P** | Parameters | What rules, limits, or constraints apply? |
+| **P** | Parameters | What rules or constraints apply? |
 | **O** | Output | How should the response be structured? |
 | **T** | Tone | How should the response sound? |
 
-## Reusable Prompt Template
+Use only the elements that add useful clarity. A compact prompt can follow this structure:
 
 ```text
-Role:
-Act as a [role or subject-matter expert].
-
-Instructions:
-[Describe the task clearly using action verbs.]
-
-Context:
-[Provide the audience, objective, situation, and relevant background.]
-
-Examples:
-[Provide one or more examples of the desired result.]
-
-Parameters:
-- Include: [...]
-- Exclude: [...]
-- Length: [...]
-- Constraints: [...]
-
-Output:
-Return the answer as [a table, checklist, JSON document, report, code, etc.].
-
-Tone:
-Use a [professional, friendly, technical, persuasive, etc.] tone.
+Role: Act as a [role or subject-matter expert].
+Instructions: [Describe the task with clear action verbs.]
+Context: [Provide the objective, audience, and relevant background.]
+Examples: [Show one or more examples of the desired result.]
+Parameters: [List inclusions, exclusions, limits, and constraints.]
+Output: Return the answer as [table, checklist, JSON, report, code, etc.].
+Tone: Use a [professional, friendly, technical, concise, etc.] tone.
 ```
 
-## Example: Creating Software Test Cases
+## Salesforce Selenium Framework
+
+The Chapter 2 example applies the RICE-POT plan to an enterprise-style Salesforce login test suite built with:
+
+- Java 11 and Maven
+- Selenium WebDriver and WebDriverManager
+- TestNG with data-driven valid and invalid login scenarios
+- Page Object Model with PageFactory
+- Chrome, Firefox, and Edge execution
+- Extent Reports, Log4j2 logging, and failure screenshots
+- Thread-local WebDriver management for parallel execution
+
+### Project Structure
 
 ```text
-Role:
-Act as a senior QA engineer specializing in web applications.
-
-Instructions:
-Create test cases for a user-login feature.
-
-Context:
-Users sign in with an email address and password. After five failed
-attempts, the account is locked for 15 minutes.
-
-Examples:
-Include positive, negative, boundary, security, and usability scenarios.
-
-Parameters:
-- Do not invent requirements.
-- List unclear requirements separately.
-- Assign a priority to every test case.
-- Write no more than 15 test cases.
-
-Output:
-Return a table with these columns:
-Test ID | Scenario | Preconditions | Steps | Expected Result | Priority
-
-Tone:
-Be concise, precise, and professional.
+RICE_POT_SeleniumAdvancedFramework/
+|-- pom.xml
+|-- testng.xml
+`-- src/test/
+    |-- java/com/salesforce/qa/
+    |   |-- base/
+    |   |-- listeners/
+    |   |-- pages/
+    |   |-- testdata/
+    |   |-- tests/
+    |   `-- utils/
+    `-- resources/
+        |-- config.properties
+        `-- log4j2.xml
 ```
 
-## Quick Memory Aid
+### Prerequisites
 
-Think of RICE-POT as:
+- JDK 11 or later
+- Apache Maven 3.8 or later
+- Chrome, Firefox, or Edge installed for the selected test suite
+- Valid Salesforce test credentials for the positive login scenario
 
-> **Persona + Task + Background + Samples + Rules + Format + Voice**
+### Configure and Run
 
-Not every prompt needs all seven sections. Use the elements that improve clarity, and provide enough detail for the AI to produce a useful response without guessing.
+1. Open `src/test/resources/config.properties` inside the framework directory.
+2. Replace `${username}` and `${password}` with credentials for a dedicated Salesforce test account. Never commit real credentials.
+3. From the framework directory, run:
+
+```bash
+mvn clean test
+```
+
+The default `testng.xml` suite runs valid and invalid login tests in Chrome, Firefox, and Edge. Generated logs, Maven build output, and HTML test reports are excluded from version control.
+
+## Contributing
+
+Keep learning notes in their relevant chapter, include runnable examples where appropriate, and never commit credentials, generated reports, IDE settings, or build artifacts.
