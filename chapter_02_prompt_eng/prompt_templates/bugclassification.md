@@ -22,3 +22,6 @@ BUG DESCRIPTION:
 <<<
 [PASTE BUG DESCRIPTION]
 >>>
+
+
+Add ## Anti-Hallucination Rule for every prompt

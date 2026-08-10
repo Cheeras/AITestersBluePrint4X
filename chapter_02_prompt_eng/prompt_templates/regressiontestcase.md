@@ -18,3 +18,5 @@ FORMAT:
 
 MODULE DOCUMENTATION:
 [PASTE DOCS]
+
+Add ## Anti-Hallucination Rule for every prompt

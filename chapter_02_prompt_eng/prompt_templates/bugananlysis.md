@@ -18,3 +18,5 @@ BUG REPORT:
 <<<
 [PASTE BUG REPORT]
 >>>
+
+Add ## Anti-Hallucination Rule for every prompt
