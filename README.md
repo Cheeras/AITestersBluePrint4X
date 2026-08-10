@@ -20,6 +20,7 @@ The complete learning path is available in the [AI Tester Blueprint roadmap](Roa
 - [Enterprise Selenium framework plan](chapter_02_prompt_eng/04_Plan_Framework.md)
 - [Salesforce Selenium automation framework](chapter_02_prompt_eng/RICE_POT_SeleniumAdvancedFramework/)
 - [Enterprise VWO Login Test Plan](chapter_02_prompt_eng/prompt_templates/app_vwo_testplan.md) — Comprehensive enterprise-grade test plan for the VWO login dashboard, aligned with PRD requirements
+- [Test Cases — Login & Registration](chapter_02_prompt_eng/Task1_9thAug_TestCasesCreation_UsingLocalLLMOllama/testcase.md) — Markdown-formatted test cases for login and registration flows
 
 ## RICE-POT Prompting Framework
 
