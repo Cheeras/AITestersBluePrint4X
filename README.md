@@ -98,6 +98,73 @@ mvn clean test
 
 The default `testng.xml` suite runs valid and invalid login tests in Chrome, Firefox, and Edge. Generated logs, Maven build output, and HTML test reports are excluded from version control.
 
+## Chapter 3: Local TestCase Generator
+
+A Python-based Streamlit web application that generates structured test cases from JIRA issues or manual requirements using local (Ollama) or cloud (Groq) LLMs.
+
+### Features
+
+- **JIRA Integration** — Fetch requirements directly from JIRA issues using the REST API
+- **Manual Input** — Paste requirements directly for quick test case generation
+- **Dual LLM Support** — Choose between local Ollama (`gemma3:1b`) or cloud Groq (`llama-3.1-8b-instant`)
+- **Connection Testing** — Built-in buttons to verify JIRA, Ollama, and Groq connectivity
+- **Anti-Hallucination Rules** — Automatically appends verification rules from Chapter 1 to every prompt
+- **Markdown Output** — Generates formatted test case tables with download capability
+
+### Project Structure
+
+```text
+chapter_03_Local_TC_Generator/
+└── Task1_10Aug_Local_TestCaseGenerator/
+    ├── app.py                    # Streamlit entry point
+    ├── requirements.txt          # Python dependencies
+    ├── .env.example              # Environment variable template
+    ├── src/
+    │   ├── jira_client.py        # JIRA REST API wrapper
+    │   ├── llm_service.py        # Ollama + Groq abstraction layer
+    │   ├── prompt_builder.py     # Prompt construction from template + rules
+    │   ├── output_handler.py     # Format, validate, and save test cases
+    │   └── resources/
+    │       ├── plan.md           # Architecture plan
+    │       └── RoughDiagramofLocalTestcaseGenerator.png
+    ├── templates/
+    │   └── testcase_creator.md   # QA prompt template
+    └── output/                   # Generated test case files
+```
+
+### Prerequisites
+
+- Python 3.11+
+- Ollama (optional, for local LLM) — install from [ollama.com](https://ollama.com)
+- Groq API key (optional, for cloud LLM) — free at [console.groq.com](https://console.groq.com/keys)
+
+### Configure and Run
+
+1. Copy `.env.example` to `src/.env` and fill in your credentials.
+2. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Run the app:
+
+```bash
+streamlit run app.py
+```
+
+4. Open **http://localhost:8501** in your browser.
+
+### Architecture
+
+The application follows a modular service-layer pattern:
+
+- **Streamlit UI** (`app.py`) — 4 tabs: Settings, JIRA Fetch, Manual Input, Generated Output
+- **JIRA Client** (`jira_client.py`) — Connects to Atlassian Cloud via `atlassian-python-api`
+- **LLM Service** (`llm_service.py`) — Abstract provider pattern with Ollama (local) and Groq (cloud) implementations
+- **Prompt Builder** (`prompt_builder.py`) — Merges the QA template with requirements and anti-hallucination rules
+- **Output Handler** (`output_handler.py`) — Cleans LLM responses, validates table format, saves to file
+
 ## Contributing
 
 Keep learning notes in their relevant chapter, include runnable examples where appropriate, and never commit credentials, generated reports, IDE settings, or build artifacts.
