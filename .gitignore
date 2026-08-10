@@ -3,6 +3,15 @@ test-output/
 screenshots/
 .idea/
 *.iml
+
+# Python
+__pycache__/
+*.pyc
+.env
+.venv/
+
+# Generated outputs
+output/testcases_*.md
 *.class
 *.jar
 *.log
