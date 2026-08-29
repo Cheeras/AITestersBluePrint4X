@@ -1,0 +1,197 @@
+{
+  "name": "01_FetchJIRATicket_AIAgent",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "Trigger\n",
+        "height": 400
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -592,
+        -112
+      ],
+      "typeVersion": 1,
+      "id": "3c5220c5-c260-4441-b518-7e3394b9882e",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -304,
+        32
+      ],
+      "id": "ae0bd893-6c86-4259-a0d8-720e6e8230f4",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "content": "Action\n",
+        "height": 400,
+        "width": 256,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -320,
+        -112
+      ],
+      "typeVersion": 1,
+      "id": "71fb1b2e-d67b-4606-93ca-11be59d189b1",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "Result\n",
+        "height": 400,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -32,
+        -112
+      ],
+      "typeVersion": 1,
+      "id": "b5b7b475-ff8b-4538-a98a-5085b00a4a01",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "builtInTools": {
+          "codeInterpreter": true
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -336,
+        176
+      ],
+      "id": "85c23947-0d95-405e-af9f-2c4d8d98641f",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "2D7UhXHnEXUHZnde",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        -208,
+        176
+      ],
+      "id": "0de3cf9a-0d1b-4911-a251-24f54504ebaf",
+      "name": "Memory"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "issueKey": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Issue_Key', ``, 'string') }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.jiraTool",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        208
+      ],
+      "id": "c989f105-cd57-4461-96d8-175d9f6475f8",
+      "name": "Get an issue in Jira Software",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "VltYQMln32K0tKWS",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -528,
+        112
+      ],
+      "id": "47e72833-f73a-4264-8a9b-856deab90eba",
+      "name": "When chat message received",
+      "webhookId": "7ae475e7-14e5-4427-8ef9-fbce2e5f9ed0"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get an issue in Jira Software": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "3c17b27c-6c26-495f-a82e-499e0439c75a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8fe555d079a480ab4e5d1008bf725ea7a47fccb457bb0910e412574fe8894f6c"
+  },
+  "nodeGroups": [],
+  "id": "N6iE6y71hxKuABDN",
+  "tags": []
+}

@@ -207,6 +207,33 @@ Run the automated test suite with:
 python -m unittest discover -s tests -v
 ```
 
+## Chapter 8: n8n Jira AI Agents
+
+Chapter 8 contains importable n8n AI-agent workflows for conversational Jira operations. Each workflow combines an n8n Chat Trigger, an AI Agent, an OpenAI chat model, conversation memory, and a Jira Software tool.
+
+### Available Workflows
+
+| Workflow | Purpose | Jira access |
+|---|---|---|
+| [Fetch Jira Ticket AI Agent](chapter_08_n8n/Agents/01_FetchJIRATicket_AIAgent.json) | Retrieve an existing Jira issue through chat. | Read |
+| [Create Jira Ticket AI Agent](chapter_08_n8n/Agents/02_CreateJIRATicket_AIAgent.json) | Create a Jira issue from a conversational request. | Write |
+| [Update Existing Jira Ticket AI Agent](chapter_08_n8n/Agents/03_UpdateExistingJIRATicket_AIAgent.json) | Update an existing Jira issue through chat. | Write |
+
+### Import and Configure
+
+1. Open an n8n instance with the AI/LangChain and Jira Software nodes available.
+2. Import the required JSON workflow from `chapter_08_n8n/Agents/`.
+3. Open the **OpenAI Chat Model** node and select your own OpenAI credential.
+4. Open the Jira tool node and select your own Jira Software Cloud credential.
+5. Review the agent instruction, Jira project settings, field mappings, and tool permissions.
+6. Test the workflow manually before activating its chat trigger.
+
+The exported JSON files do not contain API tokens or passwords. Their saved n8n credential references are instance-specific and must be reconnected after import.
+
+### Safety
+
+The fetch workflow is read-only. The create and update workflows can modify Jira, so use a non-production project during evaluation, grant least-privilege Jira permissions, require explicit issue details, and verify the proposed operation before allowing the Jira tool to run.
+
 ## Contributing
 
 Keep learning notes in their relevant chapter, include runnable examples where appropriate, and never commit credentials, generated reports, IDE settings, or build artifacts.
