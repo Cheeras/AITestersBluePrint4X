@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jira Test Plan Creator</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#create" aria-label="Jira Test Plan Creator home">
+        <span class="brand-mark">J</span>
+        <span><strong>TestPilot</strong><small>Jira to QA plan</small></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <button class="nav-item active" data-view="create"><span>✦</span> Create plan</button>
+        <button class="nav-item" data-view="settings"><span>⚙</span> Settings</button>
+      </nav>
+      <div class="sidebar-note">
+        <span class="status-dot"></span>
+        <div><strong>Local & read-only</strong><small>Credentials stay on this machine.</small></div>
+      </div>
+    </aside>
+
+    <main>
+      <section class="view active" id="view-create">
+        <header class="page-header">
+          <div><p class="eyebrow">AI QA WORKSPACE</p><h1>Create a test plan</h1><p>Include one Jira issue key. We’ll create an English planning and governance document without test cases.</p></div>
+          <span class="model-pill">OpenRouter · DeepSeek V4 Flash</span>
+        </header>
+
+        <div class="workspace-grid">
+          <section class="panel composer-panel">
+            <div class="panel-heading"><div><span class="step">01</span><h2>Choose the Jira scope</h2></div><span class="hint">One Jira ID</span></div>
+            <form id="generate-form">
+              <label for="prompt">Request</label>
+              <textarea id="prompt" maxlength="4000" placeholder="Fetch Jira PROJ-123 and create a detailed test plan" required></textarea>
+              <div class="examples">
+                <span>Try:</span>
+                <button type="button" class="example">Fetch Jira PROJ-123 and create a test plan</button>
+                <button type="button" class="example">Create a governance-level test plan for APP-42</button>
+              </div>
+              <button class="primary" type="submit" id="generate-button"><span>Generate test plan</span><span>→</span></button>
+            </form>
+            <div class="workflow">
+              <div><span>1</span><p><strong>Validate</strong><small>Find one issue key</small></p></div>
+              <i></i><div><span>2</span><p><strong>Fetch</strong><small>Read Jira context</small></p></div>
+              <i></i><div><span>3</span><p><strong>Generate</strong><small>Structure with DeepSeek</small></p></div>
+            </div>
+          </section>
+
+          <section class="panel output-panel">
+            <div class="panel-heading"><div><span class="step">02</span><h2>Your test plan</h2></div><button id="download-button" class="ghost" disabled>Download .md</button></div>
+            <div id="empty-state" class="empty-state">
+              <div class="empty-icon">✓</div><h3>Ready when you are</h3><p>Your generated Markdown test plan will appear here.</p>
+            </div>
+            <div id="loading-state" class="loading-state hidden"><span class="spinner"></span><h3>Building your test plan</h3><p id="loading-copy">Connecting to Jira…</p></div>
+            <div id="result-state" class="result-state hidden"><div id="result-meta"></div><pre id="markdown-output"></pre></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-settings">
+        <header class="page-header"><div><p class="eyebrow">CONNECTIONS</p><h1>Settings</h1><p>Configure Jira Cloud and OpenRouter. Secret values are never returned after saving.</p></div></header>
+        <form id="settings-form" class="settings-grid">
+          <section class="panel settings-card">
+            <div class="service-heading"><span class="service-icon jira">J</span><div><h2>Jira Cloud</h2><p>Read issue details and comments</p></div><span id="jira-badge" class="badge neutral">Not tested</span></div>
+            <label for="jira-url">Jira URL</label><input id="jira-url" type="url" placeholder="https://your-company.atlassian.net" autocomplete="url">
+            <label for="jira-email">Jira email</label><input id="jira-email" type="email" placeholder="you@company.com" autocomplete="username">
+            <label for="jira-token">Jira API token</label><div class="secret-field"><input id="jira-token" type="password" placeholder="Enter token or leave blank to keep saved value" autocomplete="new-password"><button type="button" class="reveal" data-target="jira-token">Show</button></div>
+            <p class="field-note" id="jira-token-note">No token saved.</p>
+            <button type="button" class="secondary test-button" id="test-jira">Test Jira connection</button>
+          </section>
+          <section class="panel settings-card">
+            <div class="service-heading"><span class="service-icon openrouter">OR</span><div><h2>OpenRouter</h2><p>Generate with DeepSeek V4 Flash</p></div><span id="openrouter-badge" class="badge neutral">Not tested</span></div>
+            <label for="openrouter-key">OpenRouter API key</label><div class="secret-field"><input id="openrouter-key" type="password" placeholder="Enter key or leave blank to keep saved value" autocomplete="new-password"><button type="button" class="reveal" data-target="openrouter-key">Show</button></div>
+            <p class="field-note" id="openrouter-key-note">No key saved.</p>
+            <div class="model-box"><span>Model</span><strong>deepseek/deepseek-v4-flash</strong><small>OpenRouter · strict structured output</small></div>
+            <button type="button" class="secondary test-button" id="test-openrouter">Test OpenRouter connection</button>
+          </section>
+          <div class="settings-actions"><p>Settings are saved to an ignored local file under <code>.tmp/</code>.</p><button class="primary save" type="submit">Save settings</button></div>
+        </form>
+      </section>
+    </main>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

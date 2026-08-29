@@ -1,0 +1,1 @@
+"""Atomic external-service adapters."""
