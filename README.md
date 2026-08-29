@@ -165,6 +165,48 @@ The application follows a modular service-layer pattern:
 - **Prompt Builder** (`prompt_builder.py`) — Merges the QA template with requirements and anti-hallucination rules
 - **Output Handler** (`output_handler.py`) — Cleans LLM responses, validates table format, saves to file
 
+## Chapter 7: AI Agent Basics - Jira Test Plan Creator
+
+Chapter 7 includes a local BLAST/A.N.T. agent that accepts one Jira Cloud issue key, retrieves the issue context through read-only APIs, and generates an English, document-level Markdown QA test plan with OpenRouter and `deepseek/deepseek-v4-flash`.
+
+- [Jira Test Plan Creator project](chapter_07_AIAgentBasics/Test-Plan-Agent-BLAST-Framework/)
+- [Setup and usage guide](chapter_07_AIAgentBasics/Test-Plan-Agent-BLAST-Framework/README.md)
+- [BLAST project constitution](chapter_07_AIAgentBasics/Test-Plan-Agent-BLAST-Framework/LLM.md)
+- [Architecture SOP](chapter_07_AIAgentBasics/Test-Plan-Agent-BLAST-Framework/architecture/SOP.md)
+
+### Features
+
+- Read-only Jira Cloud issue, field-metadata, and comment retrieval
+- Local Create Plan and Settings interfaces
+- Independent Jira and OpenRouter connection tests
+- Provider-neutral LLM boundary with DeepSeek through OpenRouter
+- Strict structured-output and deterministic validation
+- English-only output with one bounded language-repair attempt
+- Explicit assumptions and clarification questions for missing Jira information
+- Local Markdown preview, download, and ignored `.tmp/output/` persistence
+- No generated test scenarios, test cases, test steps, or expected-result tables
+
+### Test Plan Output
+
+The generated plan contains Objective, Scope, Inclusion, Test Environment, Defect Reporting Procedure, Test Strategy, Test Schedule, Test Deliverables, Entry and Exit Criteria, Test Execution, Test Closure, Tools, Risks and Mitigations, and Approvals.
+
+### Run Locally
+
+The application requires Python 3.11 or newer and has no third-party Python dependencies.
+
+```powershell
+cd chapter_07_AIAgentBasics\Test-Plan-Agent-BLAST-Framework
+python app.py
+```
+
+Open **http://127.0.0.1:8765**, configure Jira and OpenRouter in **Settings**, test both connections, and submit a prompt containing exactly one Jira issue key.
+
+Run the automated test suite with:
+
+```powershell
+python -m unittest discover -s tests -v
+```
+
 ## Contributing
 
 Keep learning notes in their relevant chapter, include runnable examples where appropriate, and never commit credentials, generated reports, IDE settings, or build artifacts.
