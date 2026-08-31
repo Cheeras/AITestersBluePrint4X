@@ -1,0 +1,200 @@
+{
+  "name": "03_FetchJIRA_Ticket_TC_Agent_Local_LLM_Ollama",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -848,
+        -416
+      ],
+      "id": "78771498-d508-4145-a1be-fc92dbf63a76",
+      "name": "When chat message received",
+      "webhookId": "28c90d8c-f072-4dee-9edc-8a2e30274a9d"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You have to take the JIRA ID and fetch the JIRA Tool the issue with id and create the Test plan for it"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -560,
+        -448
+      ],
+      "id": "a2e2a633-fb64-4714-8483-2c6b72ffe7dd",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -816,
+        -176
+      ],
+      "id": "e11f5fdd-e8a4-490c-a20c-a7b127fe5860",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "xzFQM9mEfnge3dQK",
+          "name": "Groq account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": "llama3.2:3b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        -208
+      ],
+      "id": "992b695c-4907-4668-b990-246de0079d6d",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "3GivgVjTAIxwc7mz",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# 100% Local Setup \nYou can run this 365 Days 24X7\nDisadv:\nwhen system is on this is on\nbut when your system if off this is also off",
+        "height": 208,
+        "width": 272
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1440,
+        -560
+      ],
+      "typeVersion": 1,
+      "id": "6980032f-e5dd-4d3e-bf92-552f5f75e6b2",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "#JIRA Helpfull AI Agent "
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1104,
+        -560
+      ],
+      "typeVersion": 1,
+      "id": "c7a6635a-9c12-4724-9f42-36e49b72edac",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "issueKey": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Issue_Key', ``, 'string') }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.jiraTool",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -256
+      ],
+      "id": "ade08825-1e1f-40a2-9b9e-7cf78473a688",
+      "name": "Get an issue in Jira Software",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "CBNTjBkCtXArIFmy",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        -464,
+        -224
+      ],
+      "id": "fc8daa32-a7ba-4b2a-b3b0-811b5bb9a4bc",
+      "name": "Simple Memory"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get an issue in Jira Software": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "5b4dbbfe-1756-413f-adda-0909ad833c24",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2931695ca19cc9905118d7855c07eed6d54eff2e7c8837f27a31c0a6138368bd"
+  },
+  "nodeGroups": [],
+  "id": "JrWsLFBTAPyFYXuB",
+  "tags": []
+}

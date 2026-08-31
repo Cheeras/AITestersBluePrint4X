@@ -199,6 +199,32 @@ cd chapter_07_AIAgentBasics\Test-Plan-Agent-BLAST-Framework
 python app.py
 ```
 
+## Chapter 8: n8n AI Agents — Jira Automation Workflows
+
+Chapter 8 contains n8n-based AI agent workflows for Jira automation, along with refined bug-triage prompts. These workflows are designed to be imported directly into [n8n](https://n8n.io) and connected to your Jira Cloud instance.
+
+### Bug Triage Prompt Evolution
+
+The chapter tracks the iterative refinement of a bug-triage system prompt across three versions:
+
+- [Raw Bug Triage Prompt](chapter_08_n8n/01_RAW_BugTriageprompt.md) — The original 15+ year veteran QA engineer prompt with severity/priority scales and triage checklist
+- [Modified Bug Triage Prompt v1](chapter_08_n8n/02_Modified_BugTraigePromp.prompt.md) — Enhanced with mandatory execution order, Jira + Google Sheets tool integration, and per-issue processing rules
+- [Modified Bug Triage Prompt v2](chapter_08_n8n/03_Modified_BugTriagePrompt.prompt.md) — Further refined with structured role/objective sections, evidence-based triage, and JSON output contract
+
+### n8n Agent Workflows
+
+| File | Description |
+| --- | --- |
+| [`01_FetchJIRATicket_AIAgent.json`](chapter_08_n8n/Agents/01_FetchJIRATicket_AIAgent.json) | Fetch a single Jira ticket by key |
+| [`02_CreateJIRATicket_AIAgent.json`](chapter_08_n8n/Agents/02_CreateJIRATicket_AIAgent.json) | Create a new Jira ticket via AI agent |
+| [`03_UpdateExistingJIRATicket_AIAgent.json`](chapter_08_n8n/Agents/03_UpdateExistingJIRATicket_AIAgent.json) | Update an existing Jira ticket |
+| [`04_FetchJIRA_Ticket_TC_Agent_Local_LLM_Ollama.json`](chapter_08_n8n/Agents/04_FetchJIRA_Ticket_TC_Agent_Local_LLM_Ollama.json) | Fetch Jira ticket and generate test plan using local Ollama LLM |
+| [`05_BugTriageAIAgent.json`](chapter_08_n8n/Agents/05_BugTriageAIAgent.json) | Full bug-triage agent — retrieves Jira issues, triages each independently, and writes results to Google Sheets |
+
+### Overall Notes
+
+- [Bug Triage (AI Agent)](OverAll_Notes/BugTriage.md) — Comprehensive notes on the bug-triage objective, workflow, and AI agent design
+
 Open **http://127.0.0.1:8765**, configure Jira and OpenRouter in **Settings**, test both connections, and submit a prompt containing exactly one Jira issue key.
 
 Run the automated test suite with:
