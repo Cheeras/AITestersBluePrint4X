@@ -199,6 +199,19 @@ cd chapter_07_AIAgentBasics\Test-Plan-Agent-BLAST-Framework
 python app.py
 ```
 
+## Chapter 9: 30-Day Challenge — Mastering AI Testing for QA Engineers
+
+A structured 30-day learning challenge designed for QA engineers to master AI-assisted testing — from prompt engineering fundamentals to building AI-powered QA workflows and agents.
+
+| Day | Topic |
+| --- | --- |
+| [Day 1](RoadMap/chapter_09_30DayChallengeMastering_AITesting_For_QA_Engineers/Day1.md) | The Journey Begins — Why AI Testing Matters for QA Engineers |
+| [Day 2](RoadMap/chapter_09_30DayChallengeMastering_AITesting_For_QA_Engineers/Day2.md) | Prompt Engineering for QA Engineers — Why Better Prompts Produce Better Testing Results |
+| [Day 3](RoadMap/chapter_09_30DayChallengeMastering_AITesting_For_QA_Engineers/Day3.md) | RICE POT + Guardrails — Making AI Think Like a QA Engineer |
+| [Day 4](RoadMap/chapter_09_30DayChallengeMastering_AITesting_For_QA_Engineers/Day4.md) | Local LLM Test Case Generator — From Jira to Test Cases Using Open-Source Models |
+| [Day 5](RoadMap/chapter_09_30DayChallengeMastering_AITesting_For_QA_Engineers/Day5.md) | Prompt vs Skill vs AI Agent — Understanding the Difference |
+| [Day 6](RoadMap/chapter_09_30DayChallengeMastering_AITesting_For_QA_Engineers/Day6.md) | The BLAST Framework — Building AI Agents You Can Explain and Trust |
+
 ## Chapter 8: n8n AI Agents — Jira Automation Workflows
 
 Chapter 8 contains n8n-based AI agent workflows for Jira automation, along with refined bug-triage prompts. These workflows are designed to be imported directly into [n8n](https://n8n.io) and connected to your Jira Cloud instance.
