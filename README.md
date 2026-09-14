@@ -199,18 +199,31 @@ cd chapter_07_AIAgentBasics\Test-Plan-Agent-BLAST-Framework
 python app.py
 ```
 
-## Chapter 9: 30-Day Challenge — Mastering AI Testing for QA Engineers
+## Chapter 0: 30-Day Challenge — Mastering AI Testing for QA Engineers
 
 A structured 30-day learning challenge designed for QA engineers to master AI-assisted testing — from prompt engineering fundamentals to building AI-powered QA workflows and agents.
 
 | Day | Topic |
 | --- | --- |
-| [Day 1](chapter_09_30DayChallengeMastering_AITesting_For_QA_Engineers/Day1.md) | The Journey Begins — Why AI Testing Matters for QA Engineers |
-| [Day 2](chapter_09_30DayChallengeMastering_AITesting_For_QA_Engineers/Day2.md) | Prompt Engineering for QA Engineers — Why Better Prompts Produce Better Testing Results |
-| [Day 3](chapter_09_30DayChallengeMastering_AITesting_For_QA_Engineers/Day3.md) | RICE POT + Guardrails — Making AI Think Like a QA Engineer |
-| [Day 4](chapter_09_30DayChallengeMastering_AITesting_For_QA_Engineers/Day4.md) | Local LLM Test Case Generator — From Jira to Test Cases Using Open-Source Models |
-| [Day 5](chapter_09_30DayChallengeMastering_AITesting_For_QA_Engineers/Day5.md) | Prompt vs Skill vs AI Agent — Understanding the Difference |
-| [Day 6](chapter_09_30DayChallengeMastering_AITesting_For_QA_Engineers/Day6.md) | The BLAST Framework — Building AI Agents You Can Explain and Trust |
+| [Day 1](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day1.md) | The Journey Begins — Why AI Testing Matters for QA Engineers |
+| [Day 2](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day2.md) | Prompt Engineering for QA Engineers — Why Better Prompts Produce Better Testing Results |
+| [Day 3](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day3.md) | RICE POT + Guardrails — Making AI Think Like a QA Engineer |
+| [Day 4](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day4.md) | Local LLM Test Case Generator — From Jira to Test Cases Using Open-Source Models |
+| [Day 5](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day5.md) | Prompt vs Skill vs AI Agent — Understanding the Difference |
+| [Day 6](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day6.md) | The BLAST Framework — Building AI Agents You Can Explain and Trust |
+| [Day 7](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day7.md) | AI Agents in Action — Building Your First QA AI Agent |
+
+## Chapter 4: JobKit AI — Todo
+
+*Placeholder — content coming soon.*
+
+## Chapter 5: JobTracker AI — Todo
+
+*Placeholder — content coming soon.*
+
+## Chapter 6: Branding & LinkedIn Skills — Todo
+
+*Placeholder — content coming soon.*
 
 ## Chapter 8: n8n AI Agents — Jira Automation Workflows
 
@@ -234,44 +247,20 @@ The chapter tracks the iterative refinement of a bug-triage system prompt across
 | [`04_FetchJIRA_Ticket_TC_Agent_Local_LLM_Ollama.json`](chapter_08_n8n/Agents/04_FetchJIRA_Ticket_TC_Agent_Local_LLM_Ollama.json) | Fetch Jira ticket and generate test plan using local Ollama LLM |
 | [`05_BugTriageAIAgent.json`](chapter_08_n8n/Agents/05_BugTriageAIAgent.json) | Full bug-triage agent — retrieves Jira issues, triages each independently, and writes results to Google Sheets |
 
-### Overall Notes
+## Chapter 9: LangFlow AI Agents
+
+Chapter 9 contains LangFlow-based AI agent workflows for Jira automation and QA workflows. These workflows can be imported directly into [LangFlow](https://github.com/logspace-ai/langflow) and connected to your LLM and Jira instances.
+
+### Available Agents
+
+| Directory | Description |
+| --- | --- |
+| [`AIAgents/`](chapter_09_LangFlow/AIAgents/) | LangFlow AI agent definitions (coming soon) |
+
+## Overall Notes
 
 - [Bug Triage (AI Agent)](OverAll_Notes/BugTriage.md) — Comprehensive notes on the bug-triage objective, workflow, and AI agent design
-
-Open **http://127.0.0.1:8765**, configure Jira and OpenRouter in **Settings**, test both connections, and submit a prompt containing exactly one Jira issue key.
-
-Run the automated test suite with:
-
-```powershell
-python -m unittest discover -s tests -v
-```
-
-## Chapter 8: n8n Jira AI Agents
-
-Chapter 8 contains importable n8n AI-agent workflows for conversational Jira operations. Each workflow combines an n8n Chat Trigger, an AI Agent, an OpenAI chat model, conversation memory, and a Jira Software tool.
-
-### Available Workflows
-
-| Workflow | Purpose | Jira access |
-|---|---|---|
-| [Fetch Jira Ticket AI Agent](chapter_08_n8n/Agents/01_FetchJIRATicket_AIAgent.json) | Retrieve an existing Jira issue through chat. | Read |
-| [Create Jira Ticket AI Agent](chapter_08_n8n/Agents/02_CreateJIRATicket_AIAgent.json) | Create a Jira issue from a conversational request. | Write |
-| [Update Existing Jira Ticket AI Agent](chapter_08_n8n/Agents/03_UpdateExistingJIRATicket_AIAgent.json) | Update an existing Jira issue through chat. | Write |
-
-### Import and Configure
-
-1. Open an n8n instance with the AI/LangChain and Jira Software nodes available.
-2. Import the required JSON workflow from `chapter_08_n8n/Agents/`.
-3. Open the **OpenAI Chat Model** node and select your own OpenAI credential.
-4. Open the Jira tool node and select your own Jira Software Cloud credential.
-5. Review the agent instruction, Jira project settings, field mappings, and tool permissions.
-6. Test the workflow manually before activating its chat trigger.
-
-The exported JSON files do not contain API tokens or passwords. Their saved n8n credential references are instance-specific and must be reconnected after import.
-
-### Safety
-
-The fetch workflow is read-only. The create and update workflows can modify Jira, so use a non-production project during evaluation, grant least-privilege Jira permissions, require explicit issue details, and verify the proposed operation before allowing the Jira tool to run.
+- [Advanced AI Tester Notes](OverAll_Notes/4X_Advanced_AI_TesterNotes.docx) — In-depth reference document on advanced AI testing concepts
 
 ## Contributing
 
