@@ -8,6 +8,20 @@ The complete learning path is available in the [AI Tester Blueprint roadmap](Roa
 
 ## Repository Contents
 
+### Chapter 0: 30-Day Challenge — Mastering AI Testing for QA Engineers
+
+A 7-day foundational series covering the essentials of AI-assisted testing.
+
+| Day | Topic |
+|---|---|
+| [Day 1](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day1.md) | Introduction to AI in Testing |
+| [Day 2](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day2.md) | Prompt Engineering Basics |
+| [Day 3](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day3.md) | Test Case Generation with AI |
+| [Day 4](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day4.md) | Bug Analysis & Reporting |
+| [Day 5](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day5.md) | AI for Test Automation |
+| [Day 6](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day6.md) | AI Agents in Testing |
+| [Day 7](chapter_00_30DayChallengeMastering_AITesting_For_QA_Engineers/Day7.md) | RAG & Advanced Topics |
+
 ### Chapter 1: LLM Basics
 
 - [Anti-hallucination rules](chapter_01_LLMBasics/ANTI-HALLUCINATION.rules.md) for producing more reliable, evidence-based AI responses.
@@ -21,6 +35,22 @@ The complete learning path is available in the [AI Tester Blueprint roadmap](Roa
 - [Salesforce Selenium automation framework](chapter_02_prompt_eng/RICE_POT_SeleniumAdvancedFramework/)
 - [Enterprise VWO Login Test Plan](chapter_02_prompt_eng/prompt_templates/app_vwo_testplan.md) — Comprehensive enterprise-grade test plan for the VWO login dashboard, aligned with PRD requirements
 - [Test Cases — Login & Registration](chapter_02_prompt_eng/Task1_9thAug_TestCasesCreation_UsingLocalLLMOllama/testcase.md) — Markdown-formatted test cases for login and registration flows
+
+#### Prompt Templates
+
+Ready-to-use prompt templates for various QA workflows:
+
+| Template | Description |
+|---|---|
+| [API Test Case Generator](chapter_02_prompt_eng/prompt_templates/apitestcasegenerator.md) | Generate API test cases from endpoint specs |
+| [Bug Analysis](chapter_02_prompt_eng/prompt_templates/bugananlysis.md) | Analyze and triage bug reports |
+| [Bug Classification](chapter_02_prompt_eng/prompt_templates/bugclassification.md) | Classify bugs by severity, priority, and component |
+| [Bug Report from Issue](chapter_02_prompt_eng/prompt_templates/bugreportfromissue.md) | Convert raw issues into structured bug reports |
+| [Convert Notes to Bug Report](chapter_02_prompt_eng/prompt_templates/convertnotestoBugReport.md) | Transform informal notes into formal bug reports |
+| [Negative Test Case Generator](chapter_02_prompt_eng/prompt_templates/negativetestcase.md) | Generate negative/edge-case test scenarios |
+| [PRD to Test Case](chapter_02_prompt_eng/prompt_templates/prdtotestcase.md) | Convert product requirements into test cases |
+| [Regression Test Case](chapter_02_prompt_eng/prompt_templates/regressiontestcase.md) | Generate regression test suites |
+| [Test Case Creator](chapter_02_prompt_eng/prompt_templates/testcase_creator.md) | General-purpose test case generation |
 
 ## RICE-POT Prompting Framework
 
@@ -165,7 +195,22 @@ The application follows a modular service-layer pattern:
 - **Prompt Builder** (`prompt_builder.py`) — Merges the QA template with requirements and anti-hallucination rules
 - **Output Handler** (`output_handler.py`) — Cleans LLM responses, validates table format, saves to file
 
-## Chapter 7: AI Agent Basics - Jira Test Plan Creator
+## Chapter 4: JobKit AI (Todo)
+
+> 🚧 *Placeholder — coming soon.*  
+> This chapter will explore AI-assisted job application tools and workflows for QA professionals.
+
+## Chapter 5: JobTracker AI (Todo)
+
+> 🚧 *Placeholder — coming soon.*  
+> This chapter will cover AI-powered job tracking and application management.
+
+## Chapter 6: Branding & LinkedIn Skills (Todo)
+
+> 🚧 *Placeholder — coming soon.*  
+> This chapter will focus on AI-driven personal branding and LinkedIn profile optimization for QA engineers.
+
+## Chapter 7: AI Agent Basics — Jira Test Plan Creator
 
 Chapter 7 includes a local BLAST/A.N.T. agent that accepts one Jira Cloud issue key, retrieves the issue context through read-only APIs, and generates an English, document-level Markdown QA test plan with OpenRouter and `deepseek/deepseek-v4-flash`.
 
@@ -198,6 +243,55 @@ The application requires Python 3.11 or newer and has no third-party Python depe
 cd chapter_07_AIAgentBasics\Test-Plan-Agent-BLAST-Framework
 python app.py
 ```
+
+## Chapter 8: n8n — AI Agent Workflows
+
+[n8n](https://n8n.io) is an open-source workflow automation platform. This chapter contains exported n8n AI agent workflows for JIRA operations and bug triage automation.
+
+### Prompt Resources
+
+| File | Description |
+|---|---|
+| [Raw Bug Triage Prompt](chapter_08_n8n/01_RAW_BugTriageprompt.md) | Original bug triage prompt |
+| [Modified Bug Triage Prompt v1](chapter_08_n8n/02_Modified_BugTraigePromp.prompt.md) | First iteration of the triage prompt |
+| [Modified Bug Triage Prompt v2](chapter_08_n8n/03_Modified_BugTriagePrompt.prompt.md) | Refined bug triage prompt |
+
+### n8n AI Agent Workflows (JSON)
+
+| Workflow | Description |
+|---|---|
+| [Fetch JIRA Ticket](chapter_08_n8n/Agents/01_FetchJIRATicket_AIAgent.json) | Agent that retrieves JIRA ticket details |
+| [Create JIRA Ticket](chapter_08_n8n/Agents/02_CreateJIRATicket_AIAgent.json) | Agent that creates new JIRA tickets |
+| [Update JIRA Ticket](chapter_08_n8n/Agents/03_UpdateExistingJIRATicket_AIAgent.json) | Agent that updates existing JIRA tickets |
+| [Fetch JIRA + Local LLM (Ollama)](chapter_08_n8n/Agents/04_FetchJIRA_Ticket_TC_Agent_Local_LLM_Ollama.json) | Agent that fetches JIRA tickets and processes them with a local Ollama LLM |
+| [Bug Triage Agent](chapter_08_n8n/Agents/05_BugTriageAIAgent.json) | Agent that triages bugs using AI classification |
+
+### How to Use
+
+1. Import the JSON files into your n8n instance (n8n.io or self-hosted).
+2. Configure the JIRA credentials and LLM nodes as needed.
+3. Activate the workflows and trigger them via webhooks or schedules.
+
+## Chapter 9: LangFlow — AI Agent Workflows
+
+> 🚧 *Placeholder — coming soon.*  
+> This chapter will contain LangFlow-based AI agent workflows for QA automation.
+
+### Current Contents
+
+- [LangFlow AI Agents](chapter_09_LangFlow/AIAgents/) — Directory for future LangFlow workflow exports
+
+## Overall Notes
+
+Comprehensive reference notes covering key concepts across the repository.
+
+| File | Description |
+|---|---|
+| [Bug Triage Notes](OverAll_Notes/BugTriage.md) | Notes on bug triage processes and best practices |
+| [RAG Raw Notes](OverAll_Notes/RAGNotes_raw.md) | Raw notes on Retrieval-Augmented Generation |
+| [RAG Understanding Guide](OverAll_Notes/RAGNotes_understanding.md) | Detailed textual explanation of RAG concepts |
+| [RAG Complete Guide](OverAll_Notes/RAGCompleteGuide.md) | Comprehensive RAG guide with visual diagrams |
+| [4X Advanced AI Tester Notes](OverAll_Notes/4X_Advanced_AI_TesterNotes.docx) | Advanced AI tester reference document |
 
 ## Chapter 0: 30-Day Challenge — Mastering AI Testing for QA Engineers
 
