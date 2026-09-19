@@ -265,12 +265,15 @@ python app.py
 | [Update JIRA Ticket](chapter_08_n8n/Agents/03_UpdateExistingJIRATicket_AIAgent.json) | Agent that updates existing JIRA tickets |
 | [Fetch JIRA + Local LLM (Ollama)](chapter_08_n8n/Agents/04_FetchJIRA_Ticket_TC_Agent_Local_LLM_Ollama.json) | Agent that fetches JIRA tickets and processes them with a local Ollama LLM |
 | [Bug Triage Agent](chapter_08_n8n/Agents/05_BugTriageAIAgent.json) | Agent that triages bugs using AI classification |
+| [Screenshot to Bug Reporter (Groq + Jira)](chapter_08_n8n/Agents/09_Screenshot_to_Bug_Reporter_AIAgent_codex.json) | Form-driven workflow that analyzes an uploaded UI screenshot, creates a structured Jira Bug, and attaches the original screenshot |
 
 ### How to Use
 
 1. Import the JSON files into your n8n instance (n8n.io or self-hosted).
 2. Configure the JIRA credentials and LLM nodes as needed.
 3. Activate the workflows and trigger them via webhooks or schedules.
+
+The Screenshot to Bug Reporter workflow setup and acceptance checks are documented in [its plan](chapter_08_n8n/Agents/plan_codex.md). Configure the referenced Groq Header Auth and Jira Cloud credentials after import; no secrets are stored in the export.
 
 ## Chapter 9: LangFlow — AI Agent Workflows
 

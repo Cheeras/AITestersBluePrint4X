@@ -1,0 +1,144 @@
+{
+  "name": "09_Screenshot_to_Bug_Reporter_AIAgent_codex",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Screenshot Bug Reporter",
+        "formDescription": "Upload a UI screenshot and optionally add error logs. The workflow drafts a Jira bug and attaches the screenshot.",
+        "formFields": {
+          "values": [
+            { "fieldLabel": "Screenshot", "fieldType": "file", "requiredField": true, "multipleFiles": false, "acceptFileTypes": ".png,.jpg,.jpeg,.webp" },
+            { "fieldLabel": "Error logs", "fieldType": "textarea", "requiredField": false },
+            { "fieldLabel": "Jira project key", "fieldType": "text", "placeholder": "VWO", "requiredField": true }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2,
+      "position": [-1120, 280],
+      "id": "bf5e226a-4e26-4908-8e16-3529bfc90001",
+      "name": "On bug report submission",
+      "webhookId": "screenshot-bug-reporter-codex"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.item;\nconst binaryKeys = Object.keys(item.binary ?? {});\nif (binaryKeys.length !== 1) {\n  throw new Error('Submit exactly one screenshot file.');\n}\n\nconst screenshotProperty = binaryKeys[0];\nconst screenshot = item.binary[screenshotProperty];\nreturn [{\n  json: {\n    screenshotProperty,\n    originalFileName: screenshot.fileName || 'screenshot.png',\n    mimeType: screenshot.mimeType || 'image/png',\n    errorLogs: item.json['Error logs'] || '',\n    projectKey: String(item.json['Jira project key'] || '').trim().toUpperCase()\n  },\n  binary: item.binary\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-880, 280],
+      "id": "bf5e226a-4e26-4908-8e16-3529bfc90002",
+      "name": "Normalize Intake"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.item;\nconst screenshot = item.binary?.[item.json.screenshotProperty];\nif (!screenshot?.data) throw new Error('Screenshot binary data is unavailable.');\n\nreturn [{\n  json: {\n    ...item.json,\n    imageDataUrl: `data:${item.json.mimeType};base64,${screenshot.data}`\n  },\n  binary: item.binary\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-640, 280],
+      "id": "bf5e226a-4e26-4908-8e16-3529bfc90003",
+      "name": "Screenshot to Base64"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ { model: 'qwen/qwen3.6-27b', temperature: 0.1, response_format: { type: 'json_object' }, messages: [ { role: 'system', content: 'You are a QA engineer. Analyze only evidence visible in the screenshot and supplied logs. Return JSON with title, description, steps_to_reproduce (array), expected_behavior, actual_behavior, environment, severity (Blocker|Critical|Major|Minor|Trivial), and visual_clues (array). Clearly state when a detail is unknown; never invent interaction steps or technical causes.' }, { role: 'user', content: [ { type: 'text', text: `Analyze this UI screenshot. Error logs: ${$json.errorLogs || 'None provided'}` }, { type: 'image_url', image_url: { url: $json.imageDataUrl } } ] } ] } }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-400, 280],
+      "id": "bf5e226a-4e26-4908-8e16-3529bfc90004",
+      "name": "Groq Vision - Draft Bug Report",
+      "credentials": { "httpHeaderAuth": { "id": "", "name": "Groq API Header Auth" } }
+    },
+    {
+      "parameters": {
+        "jsCode": "const source = $('Screenshot to Base64').item.json;\nconst content = $input.item.json?.choices?.[0]?.message?.content;\nif (!content) throw new Error('Groq did not return a vision response.');\n\nconst match = String(content).match(/\\{[\\s\\S]*\\}/);\nif (!match) throw new Error('Groq response did not contain a JSON object.');\nconst report = JSON.parse(match[0]);\nconst steps = Array.isArray(report.steps_to_reproduce) ? report.steps_to_reproduce : [];\nconst clues = Array.isArray(report.visual_clues) ? report.visual_clues : [];\nconst description = [\n  `h2. Description\\n${report.description || 'Not provided.'}`,\n  `h2. Steps to Reproduce\\n${steps.length ? steps.map((step, index) => `${index + 1}. ${step}`).join('\\n') : 'Not provided from available evidence.'}`,\n  `h2. Expected Behavior\\n${report.expected_behavior || 'Not provided.'}`,\n  `h2. Actual Behavior\\n${report.actual_behavior || 'Not provided.'}`,\n  `h2. Environment\\n${report.environment || 'Unknown.'}`,\n  `h2. Severity\\n${report.severity || 'Minor'}`,\n  `h2. Visual Clues\\n${clues.length ? clues.map(clue => `* ${clue}`).join('\\n') : 'None identified.'}`,\n  `h2. Error Logs\\n${source.errorLogs || 'None provided.'}`,\n  '_Automated draft generated from screenshot analysis. Please review before triage._'\n].join('\\n\\n');\n\nreturn [{ json: { ...source, summary: `[Bug] ${report.title || 'UI issue detected'}`.slice(0, 255), description, severity: report.severity || 'Minor' } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-160, 280],
+      "id": "bf5e226a-4e26-4908-8e16-3529bfc90005",
+      "name": "Parse Bug Report"
+    },
+    {
+      "parameters": {
+        "resource": "issue",
+        "operation": "create",
+        "project": "={{ $json.projectKey }}",
+        "issueType": "Bug",
+        "summary": "={{ $json.summary }}",
+        "description": "={{ $json.description }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.jira",
+      "typeVersion": 1,
+      "position": [80, 280],
+      "id": "bf5e226a-4e26-4908-8e16-3529bfc90006",
+      "name": "Jira - Create Bug",
+      "credentials": { "jiraSoftwareCloudApi": { "id": "", "name": "Jira Software Cloud account" } }
+    },
+    {
+      "parameters": {
+        "jsCode": "const createdIssue = $input.item.json;\nconst source = $('Screenshot to Base64').item;\nconst binary = source.binary;\nconst screenshotProperty = source.json.screenshotProperty;\nif (!binary?.[screenshotProperty]) throw new Error('Cannot retrieve original screenshot for attachment.');\n\nreturn [{\n  json: { issueKey: createdIssue.key, issueUrl: createdIssue.self, fileName: source.json.originalFileName },\n  binary: { screenshot: binary[screenshotProperty] }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [320, 280],
+      "id": "bf5e226a-4e26-4908-8e16-3529bfc90007",
+      "name": "Prepare Attachment"
+    },
+    {
+      "parameters": {
+        "resource": "issueAttachment",
+        "operation": "add",
+        "issueKey": "={{ $json.issueKey }}",
+        "binaryPropertyName": "screenshot"
+      },
+      "type": "n8n-nodes-base.jira",
+      "typeVersion": 1,
+      "position": [560, 280],
+      "id": "bf5e226a-4e26-4908-8e16-3529bfc90008",
+      "name": "Jira - Attach Screenshot",
+      "credentials": { "jiraSoftwareCloudApi": { "id": "", "name": "Jira Software Cloud account" } }
+    },
+    {
+      "parameters": { "content": "## Trigger\nTester uploads one screenshot plus optional error logs.", "height": 380, "width": 360, "color": 7 },
+      "type": "n8n-nodes-base.stickyNote", "typeVersion": 1, "position": [-1180, 40], "id": "bf5e226a-4e26-4908-8e16-3529bfc90009", "name": "Trigger note"
+    },
+    {
+      "parameters": { "content": "## Actions\nGroq vision creates a structured draft. Credentials are references; no API keys are stored in this file.", "height": 380, "width": 1040, "color": 4 },
+      "type": "n8n-nodes-base.stickyNote", "typeVersion": 1, "position": [-900, 40], "id": "bf5e226a-4e26-4908-8e16-3529bfc90010", "name": "Actions note"
+    },
+    {
+      "parameters": { "content": "## Results\nA Jira Bug is created and the submitted screenshot is attached.", "height": 380, "width": 440, "color": 6 },
+      "type": "n8n-nodes-base.stickyNote", "typeVersion": 1, "position": [180, 40], "id": "bf5e226a-4e26-4908-8e16-3529bfc90011", "name": "Results note"
+    }
+  ],
+  "connections": {
+    "On bug report submission": { "main": [[{ "node": "Normalize Intake", "type": "main", "index": 0 }]] },
+    "Normalize Intake": { "main": [[{ "node": "Screenshot to Base64", "type": "main", "index": 0 }]] },
+    "Screenshot to Base64": { "main": [[{ "node": "Groq Vision - Draft Bug Report", "type": "main", "index": 0 }]] },
+    "Groq Vision - Draft Bug Report": { "main": [[{ "node": "Parse Bug Report", "type": "main", "index": 0 }]] },
+    "Parse Bug Report": { "main": [[{ "node": "Jira - Create Bug", "type": "main", "index": 0 }]] },
+    "Jira - Create Bug": { "main": [[{ "node": "Prepare Attachment", "type": "main", "index": 0 }]] },
+    "Prepare Attachment": { "main": [[{ "node": "Jira - Attach Screenshot", "type": "main", "index": 0 }]] }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": { "executionOrder": "v1", "binaryMode": "separate" },
+  "versionId": "09-screenshot-to-bug-codex-v1",
+  "meta": { "templateCredsSetupCompleted": false },
+  "nodeGroups": [],
+  "id": "09-screenshot-to-bug-reporter-codex",
+  "tags": []
+}
