@@ -1,12 +1,10 @@
 RAG - has 2 parts
 
-
-RAG Pipeline 
+RAG Pipeline
 
 1 . Ingestion -feeding the data
 
 2. RAG -
-
 
 Phase 1:
 
@@ -14,14 +12,13 @@ Ingestion:
 
 Document - can be JIRA ID,Git hub repo, pdf ,figma design,md file  are part of the documentaion
 
-is the image and video supported 
+is the image and video supported
 
-answer is yes we need paid subscription 
-
+answer is yes we need paid subscription
 
 Documents/Ingestion --> encodeing ( we will use embading model) they are divided into small chunks and put in vector database
 
-now the vector DB is 
+now the vector DB is
 
 now the real thing how to retrieve information
 
@@ -37,14 +34,21 @@ Vector DB - smart DB
 
 what Vector DB will do , it will find the all documents that are feeded trying to find the relavent information to LLM - this is called retrival
 
+Now LLM has 3
 
-Now LLM has 3 
-
-User Question 
+User Question
 
 Context came from Vector DB(top k results)
 
-LLM will agument all these content and produce the output that is called Genaration 
-
+LLM will agument all these content and produce the output that is called Genaration
 
 This is what is called RAG in simplar way
+
+
+Embedding 
+
+how many type of embending 
+
+how many type of vector DB are present
+
+chenking

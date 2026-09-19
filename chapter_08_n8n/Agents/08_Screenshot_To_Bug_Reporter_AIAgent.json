@@ -1,0 +1,218 @@
+{
+  "name": "08_Screenshot_To_Bug_Reporter_AIAgent",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## 📸 Screenshot to Bug Reporter\n\n**Flow:** Webhook → Download Image → Build Payload → OpenRouter Vision API → Parse Response → Create GitHub Issue\n\n**Model:** DeepSeek V4 Flash Vision Exp (batch) via OpenRouter\n**Repo:** Cheeras/AITestersBluePrint4X\n\n**Trigger:** POST `{ \"imageUrl\": \"https://...\" }` to webhook",
+        "height": 240,
+        "width": 400
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -960,
+        -640
+      ],
+      "typeVersion": 1,
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Workflow Info"
+    },
+    {
+      "parameters": {
+        "path": "screenshot-to-bug",
+        "options": {
+          "responseMode": "lastNode",
+          "responseData": "all"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        -400
+      ],
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "name": "Webhook",
+      "webhookId": "screenshot-to-bug-webhook"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.body.imageUrl }}",
+        "options": {
+          "response": {
+            "responseFormat": "file"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -560,
+        -400
+      ],
+      "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "name": "Download Image"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get binary image data from the HTTP Request node\nconst binaryFieldName = Object.keys($input.item.binary)[0];\nconst binaryData = $input.item.binary[binaryFieldName];\nconst base64Image = binaryData.data;\n\n// Build the OpenRouter API payload with vision\nconst payload = {\n  model: \"deepseek/deepseek-v4-flash-vision-exp:batch\",\n  messages: [\n    {\n      role: \"system\",\n      content: `You are a QA engineer analyzing a UI screenshot for bugs. Examine the image carefully and return a JSON object with the following fields:\n{\n  \"title\": \"Short, descriptive bug title (max 80 chars)\",\n  \"description\": \"Clear description of what the bug is\",\n  \"steps_to_reproduce\": [\"Step 1\", \"Step 2\", \"...\"],\n  \"expected_behavior\": \"What should happen\",\n  \"actual_behavior\": \"What actually happens (the bug)\",\n  \"environment\": \"Browser/OS/Device info if visible\",\n  \"severity\": \"Critical/Major/Minor/Trivial\",\n  \"visual_clues\": [\"List of visual anomalies seen in screenshot\"]\n}\nFocus on visual defects: layout breaks, alignment issues, missing elements, color contrast problems, text truncation, overlapping elements, etc.`\n    },\n    {\n      role: \"user\",\n      content: [\n        {\n          type: \"text\",\n          text: \"Analyze this UI screenshot for bugs. Return ONLY valid JSON matching the specified schema.\"\n        },\n        {\n          type: \"image_url\",\n          image_url: {\n            url: `data:image/png;base64,${base64Image}`\n          }\n        }\n      ]\n    }\n  ],\n  response_format: {\n    type: \"json_object\"\n  }\n};\n\nreturn [{ json: payload }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        -400
+      ],
+      "id": "d4e5f6a7-b8c9-0123-defa-234567890123",
+      "name": "Build OpenRouter Payload"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "HTTP-Referer",
+              "value": "https://n8n.local"
+            },
+            {
+              "name": "X-Title",
+              "value": "Screenshot-to-Bug-Reporter-n8n"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -80,
+        -400
+      ],
+      "id": "e5f6a7b8-c9d0-1234-efab-345678901234",
+      "name": "Call OpenRouter Vision API"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse the OpenRouter API response\nconst response = $input.item.json;\nconst llmContent = response.choices[0].message.content;\nlet bugReport;\n\ntry {\n  bugReport = JSON.parse(llmContent);\n} catch (e) {\n  // If JSON parsing fails, try to extract JSON from the text\n  const jsonMatch = llmContent.match(/\\{[\\s\\S]*\\}/);\n  if (jsonMatch) {\n    bugReport = JSON.parse(jsonMatch[0]);\n  } else {\n    throw new Error(\"Failed to parse LLM response as JSON\");\n  }\n}\n\n// Build steps to reproduce text\nconst stepsText = (bugReport.steps_to_reproduce || [])\n  .map((step, i) => `${i + 1}. ${step}`)\n  .join('\\n');\n\n// Build visual clues text\nconst visualCluesText = (bugReport.visual_clues || [])\n  .map(clue => `- ${clue}`)\n  .join('\\n');\n\n// Build the GitHub issue body in Markdown\nconst body = `## Description\\n${bugReport.description || 'No description provided.'}\\n\\n## Steps to Reproduce\\n${stepsText || 'Not specified.'}\\n\\n## Expected Behavior\\n${bugReport.expected_behavior || 'Not specified.'}\\n\\n## Actual Behavior\\n${bugReport.actual_behavior || 'Not specified.'}\\n\\n## Environment\\n${bugReport.environment || 'Not specified.'}\\n\\n## Severity\\n${bugReport.severity || 'Not specified.'}\\n\\n## Visual Clues\\n${visualCluesText || 'None identified.'}\\n\\n---\\n🤖 *Automated bug report generated from screenshot analysis*`;\n\nreturn [{\n  json: {\n    title: `[Bug] ${bugReport.title || 'UI Issue Detected'}`,\n    body: body,\n    labels: ['bug', `severity:${(bugReport.severity || 'unknown').toLowerCase()}`]\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        160,
+        -400
+      ],
+      "id": "f6a7b8c9-d0e1-2345-fabc-456789012345",
+      "name": "Parse Response & Format Bug Report"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "repositoryOwner": "Cheeras",
+        "repository": "AITestersBluePrint4X",
+        "title": "={{ $json.title }}",
+        "body": "={{ $json.body }}",
+        "labels": {
+          "labels": "={{ $json.labels }}"
+        }
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        400,
+        -400
+      ],
+      "id": "a7b8c9d0-e1f2-3456-abcd-567890123456",
+      "name": "Create GitHub Issue",
+      "credentials": {
+        "githubApi": {
+          "id": "",
+          "name": "GitHub account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Download Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Image": {
+      "main": [
+        [
+          {
+            "node": "Build OpenRouter Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build OpenRouter Payload": {
+      "main": [
+        [
+          {
+            "node": "Call OpenRouter Vision API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call OpenRouter Vision API": {
+      "main": [
+        [
+          {
+            "node": "Parse Response & Format Bug Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Response & Format Bug Report": {
+      "main": [
+        [
+          {
+            "node": "Create GitHub Issue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "08-screenshot-to-bug-v1",
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "screenshot-to-bug-reporter-agent"
+  },
+  "nodeGroups": [],
+  "id": "screenshot-bug-reporter-workflow",
+  "tags": []
+}
