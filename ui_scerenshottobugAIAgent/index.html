@@ -85,6 +85,26 @@
     .msg.error { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
     .msg .title { font-weight: 700; margin-bottom: 2px; }
 
+    .result-card {
+      margin-top: 16px; padding: 20px; border-radius: 12px;
+      background: #f0fdf4; border: 1px solid #bbf7d0; display: none;
+    }
+    .result-card.show { display: block; }
+    .result-card .check { font-size: 28px; margin-bottom: 8px; }
+    .result-card h3 { font-size: 16px; font-weight: 700; color: #16a34a; margin-bottom: 12px; }
+    .result-card .field-row { margin-bottom: 8px; }
+    .result-card .field-row .label { font-size: 12px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-card .field-row .value { font-size: 14px; color: #0f172a; margin-top: 2px; }
+    .result-card .field-row .value a { color: #2563eb; text-decoration: none; font-weight: 600; }
+    .result-card .field-row .value a:hover { text-decoration: underline; }
+    .result-card .divider { height: 1px; background: #bbf7d0; margin: 12px 0; }
+    .result-card .new-report-btn {
+      margin-top: 12px; padding: 10px 16px; background: #fff;
+      border: 1px solid #bbf7d0; border-radius: 8px; font-size: 13px; font-weight: 600;
+      color: #16a34a; cursor: pointer; transition: 0.2s; width: 100%;
+    }
+    .result-card .new-report-btn:hover { background: #f0fdf4; }
+
     .footer { text-align: center; font-size: 13px; color: #64748b; margin-top: 28px; }
     .footer a { color: #2563eb; text-decoration: none; }
   </style>
@@ -133,11 +153,30 @@
         </div>
 
         <button type="submit" class="submit" id="submitBtn">
-          🚀 Submit Bug Report
+          🚀 Draft and file the Bug
         </button>
       </form>
 
       <div class="msg" id="msg"></div>
+
+      <div class="result-card" id="resultCard">
+        <div class="check">✅</div>
+        <h3>Bug filed successfully!</h3>
+        <div class="field-row">
+          <div class="label">Title</div>
+          <div class="value" id="bugTitle"></div>
+        </div>
+        <div class="field-row">
+          <div class="label">Description</div>
+          <div class="value" id="bugDescription"></div>
+        </div>
+        <div class="field-row">
+          <div class="label">Jira Link</div>
+          <div class="value"><a id="bugLink" href="#" target="_blank">Open in Jira →</a></div>
+        </div>
+        <div class="divider"></div>
+        <button class="new-report-btn" id="newReportBtn">+ Report another bug</button>
+      </div>
     </div>
 
     <div class="footer">
@@ -158,6 +197,11 @@
     const projectKey = document.getElementById("projectKey");
     const submitBtn = document.getElementById("submitBtn");
     const msg = document.getElementById("msg");
+    const resultCard = document.getElementById("resultCard");
+    const bugTitle = document.getElementById("bugTitle");
+    const bugDescription = document.getElementById("bugDescription");
+    const bugLink = document.getElementById("bugLink");
+    const newReportBtn = document.getElementById("newReportBtn");
     let selectedFile = null;
 
     function showMsg(type, title, text) {
@@ -165,6 +209,16 @@
       msg.innerHTML = `<div class="title">${title}</div><div>${text}</div>`;
     }
     function hideMsg() { msg.className = "msg"; }
+    function hideResult() { resultCard.className = "result-card"; }
+
+    function resetForm() {
+      selectedFile = null; fileInput.value = "";
+      preview.style.display = "none"; dropZone.style.display = "block";
+      errorLogs.value = ""; projectKey.value = "";
+      hideMsg(); hideResult();
+    }
+
+    newReportBtn.addEventListener("click", resetForm);
 
     function handleFile(file) {
       if (!file) return;
@@ -205,7 +259,32 @@
         fd.append("Jira project key", projectKey.value.trim());
         const res = await fetch(N8N_URL, { method: "POST", body: fd });
         if (!res.ok) throw new Error("HTTP " + res.status);
-        showMsg("success","✅ Bug report submitted!","Check Jira for the new issue.");
+
+        // Try to parse response JSON for bug details
+        let bugData = { title: "Bug filed", description: "Check Jira for details", key: "", url: "" };
+        try {
+          const json = await res.json();
+          bugData.title = json.summary || json.title || bugData.title;
+          bugData.description = json.description || json.description_summary || bugData.description;
+          bugData.key = json.issueKey || json.key || bugData.key;
+          bugData.url = json.issueUrl || json.url || bugData.url;
+        } catch (e) {
+          // Response is not JSON — use defaults
+        }
+
+        // Build Jira URL if we have a key
+        const jiraUrl = bugData.url || (bugData.key ? `https://aitestersqa.atlassian.net/browse/${bugData.key}` : "#");
+
+        // Show result card
+        bugTitle.textContent = bugData.title;
+        bugDescription.textContent = bugData.description.length > 120
+          ? bugData.description.substring(0, 120) + "…"
+          : bugData.description;
+        bugLink.href = jiraUrl;
+        resultCard.className = "result-card show";
+        hideMsg();
+
+        // Reset file/inputs but keep form visible
         selectedFile = null; fileInput.value = "";
         preview.style.display = "none"; dropZone.style.display = "block";
         errorLogs.value = ""; projectKey.value = "";
@@ -213,7 +292,7 @@
         showMsg("error","Submission failed",err.message);
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = "🚀 Submit Bug Report";
+        submitBtn.innerHTML = "🚀 Draft and file the Bug";
       }
     });
   </script>
