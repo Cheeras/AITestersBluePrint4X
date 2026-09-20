@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AwasomeQA — Bug Reporter</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f7fb; color: #0f172a; line-height: 1.6;
+      min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+      padding: 32px 20px 48px;
+    }
+    .container { max-width: 560px; width: 100%; }
+
+    /* Header */
+    .header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .logo {
+      width: 44px; height: 44px; border-radius: 11px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: #fff; font-size: 20px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .header h1 { font-size: 22px; font-weight: 800; }
+    .header p { font-size: 13px; color: #64748b; }
+
+    /* Card */
+    .card {
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 14px;
+      padding: 28px; box-shadow: 0 1px 3px rgba(15,23,42,0.06);
+    }
+    .card h2 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .card .subtitle { font-size: 13px; color: #64748b; margin-bottom: 24px; }
+
+    /* Form */
+    .field { margin-bottom: 20px; }
+    .field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+
+    .upload-zone {
+      border: 2px dashed #e2e8f0; border-radius: 12px; padding: 32px 20px;
+      text-align: center; cursor: pointer; transition: 0.2s; background: #fafbfc;
+    }
+    .upload-zone:hover, .upload-zone.dragover { border-color: #2563eb; background: #eff6ff; }
+    .upload-zone .icon { font-size: 36px; margin-bottom: 6px; }
+    .upload-zone p { font-size: 14px; color: #64748b; }
+    .upload-zone p strong { color: #2563eb; }
+    .upload-zone input { display: none; }
+
+    .preview {
+      margin-top: 14px; display: flex; align-items: center; gap: 12px;
+      padding: 12px; border: 1px solid #e2e8f0; border-radius: 10px; background: #fafbfc;
+    }
+    .preview img { width: 52px; height: 52px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0; }
+    .preview .info { flex: 1; min-width: 0; }
+    .preview .info .name { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .preview .info .size { font-size: 12px; color: #64748b; }
+    .preview .remove { background: none; border: none; color: #dc2626; font-size: 13px; font-weight: 600; cursor: pointer; }
+
+    textarea, input[type="text"] {
+      width: 100%; padding: 11px 14px; border: 1px solid #e2e8f0; border-radius: 10px;
+      font-size: 14px; font-family: inherit; color: #0f172a; background: #fff;
+      transition: 0.2s; outline: none;
+    }
+    textarea:focus, input[type="text"]:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.12); }
+    textarea { min-height: 96px; resize: vertical; }
+
+    .submit {
+      width: 100%; padding: 14px; background: #2563eb; color: #fff;
+      border: none; border-radius: 10px; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .submit:hover { background: #1d4ed8; }
+    .submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .spinner {
+      width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .msg {
+      margin-top: 16px; padding: 12px 16px; border-radius: 10px;
+      font-size: 14px; display: none;
+    }
+    .msg.show { display: block; }
+    .msg.success { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+    .msg.error { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+    .msg .title { font-weight: 700; margin-bottom: 2px; }
+
+    .footer { text-align: center; font-size: 13px; color: #64748b; margin-top: 28px; }
+    .footer a { color: #2563eb; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">A</div>
+      <div>
+        <h1>AwasomeQA</h1>
+        <p>Quality first — Screenshot to Bug Reporter</p>
+      </div>
+    </div>
+
+    <!-- Card -->
+    <div class="card">
+      <h2>Report a UI Bug</h2>
+      <p class="subtitle">Upload a screenshot. AI drafts a Jira bug report.</p>
+
+      <form id="bugForm">
+        <div class="field">
+          <label>Screenshot *</label>
+          <div class="upload-zone" id="dropZone">
+            <div class="icon">📸</div>
+            <p><strong>Click to upload</strong> or drag &amp; drop</p>
+            <p>PNG, JPG, or WEBP</p>
+            <input type="file" id="fileInput" accept=".png,.jpg,.jpeg,.webp" />
+          </div>
+          <div class="preview" id="preview" style="display:none">
+            <img id="previewImg" />
+            <div class="info">
+              <div class="name" id="fileName"></div>
+              <div class="size" id="fileSize"></div>
+            </div>
+            <button type="button" class="remove" id="removeBtn">Remove</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Error logs</label>
+          <textarea id="errorLogs" placeholder="Paste console errors or stack traces (optional)"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Jira project key *</label>
+          <input type="text" id="projectKey" placeholder="e.g. VWO" />
+        </div>
+
+        <button type="submit" class="submit" id="submitBtn">
+          🚀 Submit Bug Report
+        </button>
+      </form>
+
+      <div class="msg" id="msg"></div>
+    </div>
+
+    <div class="footer">
+      Powered by <a href="https://n8n.io" target="_blank">n8n</a> · AwasomeQA
+    </div>
+  </div>
+
+  <script>
+    const N8N_URL = "https://aitestersqa.app.n8n.cloud/form/da47e150-8172-41d8-ba30-da2078f9e0b5";
+    const dropZone = document.getElementById("dropZone");
+    const fileInput = document.getElementById("fileInput");
+    const preview = document.getElementById("preview");
+    const previewImg = document.getElementById("previewImg");
+    const fileName = document.getElementById("fileName");
+    const fileSize = document.getElementById("fileSize");
+    const removeBtn = document.getElementById("removeBtn");
+    const errorLogs = document.getElementById("errorLogs");
+    const projectKey = document.getElementById("projectKey");
+    const submitBtn = document.getElementById("submitBtn");
+    const msg = document.getElementById("msg");
+    let selectedFile = null;
+
+    function showMsg(type, title, text) {
+      msg.className = `msg show ${type}`;
+      msg.innerHTML = `<div class="title">${title}</div><div>${text}</div>`;
+    }
+
+    function hideMsg() { msg.className = "msg"; }
+
+    function handleFile(file) {
+      if (!file) return;
+      const valid = /\.(png|jpe?g|webp)$/i.test(file.name);
+      if (!valid) { showMsg("error","Invalid file","Please upload PNG, JPG, or WEBP."); return; }
+      selectedFile = file;
+      previewImg.src = URL.createObjectURL(file);
+      fileName.textContent = file.name;
+      fileSize.textContent = (file.size / 1024).toFixed(1) + " KB";
+      preview.style.display = "flex";
+      dropZone.style.display = "none";
+      hideMsg();
+    }
+
+    dropZone.addEventListener("click", () => fileInput.click());
+    fileInput.addEventListener("change", () => handleFile(fileInput.files[0]));
+    dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("dragover"); });
+    dropZone.addEventListener("dragleave", () => dropZone.classList.remove("dragover"));
+    dropZone.addEventListener("drop", e => { e.preventDefault(); dropZone.classList.remove("dragover"); handleFile(e.dataTransfer.files[0]); });
+    removeBtn.addEventListener("click", () => {
+      selectedFile = null; fileInput.value = "";
+      preview.style.display = "none"; dropZone.style.display = "block";
+    });
+
+    document.getElementById("bugForm").addEventListener("submit", async e => {
+      e.preventDefault();
+      if (!selectedFile) { showMsg("error","Screenshot required","Please upload a screenshot."); return; }
+      if (!projectKey.value.trim()) { showMsg("error","Project key required","Please enter the Jira project key."); return; }
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner"></span> Analyzing…';
+      hideMsg();
+
+      try {
+        const fd = new FormData();
+        fd.append("Screenshot", selectedFile);
+        fd.append("Error logs", errorLogs.value);
+        fd.append("Jira project key", projectKey.value.trim());
+        const res = await fetch(N8N_URL, { method: "POST", body: fd });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        showMsg("success","✅ Bug report submitted!","Check Jira for the new issue.");
+        selectedFile = null; fileInput.value = "";
+        preview.style.display = "none"; dropZone.style.display = "block";
+        errorLogs.value = ""; projectKey.value = "";
+      } catch (err) {
+        showMsg("error","Submission failed",err.message);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = "🚀 Submit Bug Report";
+      }
+    });
+  </script>
+</body>
+</html>

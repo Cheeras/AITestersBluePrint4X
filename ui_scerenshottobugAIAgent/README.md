@@ -1,24 +1,21 @@
-# AwasomeQA — Screenshot to Bug Reporter UI (Streamlit)
+# AwasomeQA — Screenshot to Bug Reporter UI
 
-Lightweight Streamlit UI for the **Screenshot to Bug Reporter** n8n AI Agent. Testers upload a UI screenshot, optionally add error logs and a Jira project key, and the workflow drafts a complete Jira bug.
+Lightweight static HTML/JS UI for the **Screenshot to Bug Reporter** n8n AI Agent. Testers upload a UI screenshot, optionally add error logs and a Jira project key, and the workflow drafts a complete Jira bug.
+
+## Deploy to Vercel
+
+1. Push to GitHub.
+2. In [Vercel](https://vercel.com), click **Add New → Project**.
+3. Import the repo, set root directory to `ui_scerenshottobugAIAgent`.
+4. Deploy — zero config, no build step needed.
 
 ## Run locally
 
-```bash
-pip install -r requirements.txt
-streamlit run streamlit_app.py
-```
-
-## Deploy to Streamlit Community Cloud
-
-1. Push to GitHub.
-2. Go to [share.streamlit.io](https://share.streamlit.io) → New app.
-3. Select repo and branch, set main file to `streamlit_app.py`.
-4. Deploy — free, no config needed.
+Just open `index.html` in any browser. No server required.
 
 ## How it works
 
 ```
-Streamlit UI → POST multipart form → n8n Form Trigger
+Static UI → POST multipart form → n8n Form Trigger
   → Groq Vision → Jira Create Bug → Attach Screenshot
 ```
