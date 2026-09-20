@@ -267,6 +267,14 @@ python app.py
 | [Bug Triage Agent](chapter_08_n8n/Agents/05_BugTriageAIAgent.json) | Agent that triages bugs using AI classification |
 | [Screenshot to Bug Reporter (DeepSeek)](chapter_08_n8n/Agents/08_Screenshot_To_Bug_Reporter_AIAgent_Deepseek.json) | Webhook-driven workflow that analyzes a UI screenshot via DeepSeek Vision and creates a GitHub issue |
 | [Screenshot to Bug Reporter (Groq + Jira)](chapter_08_n8n/Agents/09_Screenshot_to_Bug_Reporter_AIAgent_UI.json) | Form-driven workflow that analyzes an uploaded UI screenshot, creates a structured Jira Bug, and attaches the original screenshot |
+| [Screenshot to Bug Reporter (Webhook)](chapter_08_n8n/Agents/10_Screenshot_to_Bug_Rep_AIAgent_WebHook.json) | Webhook-triggered version that accepts multipart file upload or JSON `imageUrl` payload |
+
+### Reference Notes
+
+| File | Description |
+|---|---|
+| [Webhook Understanding Guide](chapter_08_n8n/WebhookUnderstanding.md) | Comprehensive beginner-friendly guide on webhooks with layman and real-time examples |
+| [Short Notes](chapter_08_n8n/short_notes.md) | Quick reference on n8n workflow creation approaches |
 
 ### How to Use
 
@@ -278,16 +286,23 @@ The Screenshot to Bug Reporter workflow setup and acceptance checks are document
 
 ## Screenshot to Bug Reporter — Web UI
 
-A lightweight, Vercel-deployable web UI for the **Screenshot to Bug Reporter** agent. Testers upload a UI screenshot (plus optional error logs and a Jira project key) and the n8n workflow drafts a complete Jira bug with the screenshot attached.
+A lightweight, Vercel-deployed web UI for the **Screenshot to Bug Reporter** agent. Testers upload a UI screenshot (plus optional error logs and a Jira project key) and the n8n workflow drafts a complete Jira bug with the screenshot attached.
 
+- **Live URL:** [https://bug-reporter-tawny.vercel.app](https://bug-reporter-tawny.vercel.app)
 - [UI source code](ui_scerenshottobugAIAgent/) — single `index.html` with vanilla HTML/CSS/JS (no frameworks, no build step)
-- **Deploy:** import the repo in [Vercel](https://vercel.com), set root directory to `ui_scerenshottobugAIAgent`, and deploy
-- **Flow:** Static UI → POST multipart form → n8n Form Trigger → Groq Vision → Jira Create Bug → Attach Screenshot
+- **Flow:** Static UI → POST multipart form → n8n Webhook → Groq Vision → Jira Create Bug → Attach Screenshot
+- **Webhook endpoint:** `https://aitestersqa.app.n8n.cloud/webhook/screenshot-to-bug-webhook`
 
 ## Chapter 9: LangFlow — AI Agent Workflows
 
-> 🚧 *Placeholder — coming soon.*  
-> This chapter will contain LangFlow-based AI agent workflows for QA automation.
+[LangFlow](https://github.com/langflow/langflow) is an open-source visual framework for building AI agent workflows. It is installed locally and runs at `http://127.0.0.1:7860`.
+
+### Setup
+
+```bash
+pip install langflow
+python -m langflow run --host 127.0.0.1 --port 7860
+```
 
 ### Current Contents
 
