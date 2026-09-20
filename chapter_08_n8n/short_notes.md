@@ -32,11 +32,7 @@ Deepseek support image for the model
 
 `deepseek-v4-flash-vision-exp`
 
-
-
 ---
-
-
 
 Application can be build in N8N:
 
@@ -52,13 +48,10 @@ Rquirement to TestCase Creator
 
 Duplicate bug finder
 
-
 PR Review Agent:
 
 ==========
 
-
-
-what is embading - it is not new concept 
+what is embading - it is not new concept
 
 A Embading a

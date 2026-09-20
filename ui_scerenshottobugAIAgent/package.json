@@ -1,9 +1,5 @@
 {
   "name": "ui-screenshot-to-bug-ai-agent",
   "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "npx serve .",
-    "build": "echo 'static site, no build needed'"
-  }
+  "private": true
 }

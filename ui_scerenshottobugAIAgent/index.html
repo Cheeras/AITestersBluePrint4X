@@ -14,7 +14,6 @@
     }
     .container { max-width: 560px; width: 100%; }
 
-    /* Header */
     .header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
     .logo {
       width: 44px; height: 44px; border-radius: 11px;
@@ -25,7 +24,6 @@
     .header h1 { font-size: 22px; font-weight: 800; }
     .header p { font-size: 13px; color: #64748b; }
 
-    /* Card */
     .card {
       background: #fff; border: 1px solid #e2e8f0; border-radius: 14px;
       padding: 28px; box-shadow: 0 1px 3px rgba(15,23,42,0.06);
@@ -33,7 +31,6 @@
     .card h2 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
     .card .subtitle { font-size: 13px; color: #64748b; margin-bottom: 24px; }
 
-    /* Form */
     .field { margin-bottom: 20px; }
     .field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
 
@@ -94,7 +91,6 @@
 </head>
 <body>
   <div class="container">
-    <!-- Header -->
     <div class="header">
       <div class="logo">A</div>
       <div>
@@ -103,7 +99,6 @@
       </div>
     </div>
 
-    <!-- Card -->
     <div class="card">
       <h2>Report a UI Bug</h2>
       <p class="subtitle">Upload a screenshot. AI drafts a Jira bug report.</p>
@@ -169,7 +164,6 @@
       msg.className = `msg show ${type}`;
       msg.innerHTML = `<div class="title">${title}</div><div>${text}</div>`;
     }
-
     function hideMsg() { msg.className = "msg"; }
 
     function handleFile(file) {
