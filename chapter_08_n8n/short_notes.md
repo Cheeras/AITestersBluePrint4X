@@ -28,7 +28,37 @@ LangFlow
 
 File Input (image) → Multimodal LLM (GPT-4V) → Prompt Template (bug format) → Output Parser → Text Output
 
-
 Deepseek support image for the model
 
 `deepseek-v4-flash-vision-exp`
+
+
+
+---
+
+
+
+Application can be build in N8N:
+
+=====================
+
+DownTime Tracker
+
+Screeshot to BugReporter
+
+Requirement to Testplan
+
+Rquirement to TestCase Creator
+
+Duplicate bug finder
+
+
+PR Review Agent:
+
+==========
+
+
+
+what is embading - it is not new concept 
+
+A Embading a

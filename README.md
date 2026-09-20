@@ -265,7 +265,8 @@ python app.py
 | [Update JIRA Ticket](chapter_08_n8n/Agents/03_UpdateExistingJIRATicket_AIAgent.json) | Agent that updates existing JIRA tickets |
 | [Fetch JIRA + Local LLM (Ollama)](chapter_08_n8n/Agents/04_FetchJIRA_Ticket_TC_Agent_Local_LLM_Ollama.json) | Agent that fetches JIRA tickets and processes them with a local Ollama LLM |
 | [Bug Triage Agent](chapter_08_n8n/Agents/05_BugTriageAIAgent.json) | Agent that triages bugs using AI classification |
-| [Screenshot to Bug Reporter (Groq + Jira)](chapter_08_n8n/Agents/09_Screenshot_to_Bug_Reporter_AIAgent_codex.json) | Form-driven workflow that analyzes an uploaded UI screenshot, creates a structured Jira Bug, and attaches the original screenshot |
+| [Screenshot to Bug Reporter (DeepSeek)](chapter_08_n8n/Agents/08_Screenshot_To_Bug_Reporter_AIAgent_Deepseek.json) | Webhook-driven workflow that analyzes a UI screenshot via DeepSeek Vision and creates a GitHub issue |
+| [Screenshot to Bug Reporter (Groq + Jira)](chapter_08_n8n/Agents/09_Screenshot_to_Bug_Reporter_AIAgent_UI.json) | Form-driven workflow that analyzes an uploaded UI screenshot, creates a structured Jira Bug, and attaches the original screenshot |
 
 ### How to Use
 
@@ -274,6 +275,14 @@ python app.py
 3. Activate the workflows and trigger them via webhooks or schedules.
 
 The Screenshot to Bug Reporter workflow setup and acceptance checks are documented in [its plan](chapter_08_n8n/Agents/plan_codex.md). Configure the referenced Groq Header Auth and Jira Cloud credentials after import; no secrets are stored in the export.
+
+## Screenshot to Bug Reporter — Web UI
+
+A lightweight, Vercel-deployable web UI for the **Screenshot to Bug Reporter** agent. Testers upload a UI screenshot (plus optional error logs and a Jira project key) and the n8n workflow drafts a complete Jira bug with the screenshot attached.
+
+- [UI source code](ui_scerenshottobugAIAgent/) — single `index.html` with vanilla HTML/CSS/JS (no frameworks, no build step)
+- **Deploy:** import the repo in [Vercel](https://vercel.com), set root directory to `ui_scerenshottobugAIAgent`, and deploy
+- **Flow:** Static UI → POST multipart form → n8n Form Trigger → Groq Vision → Jira Create Bug → Attach Screenshot
 
 ## Chapter 9: LangFlow — AI Agent Workflows
 
