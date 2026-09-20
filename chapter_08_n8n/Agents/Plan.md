@@ -86,14 +86,14 @@ User POSTs image URL
 
 ## 📋 Workflow Nodes (6 nodes)
 
-| # | Node Type | Purpose |
-|---|---|---|
-| 1 | **Webhook** | Receive POST with `imageUrl` |
-| 2 | **HTTP Request** | Download image from URL (GET, binary) |
-| 3 | **Code (JavaScript)** | Convert binary to base64, build OpenRouter payload |
-| 4 | **HTTP Request** | Call OpenRouter `/chat/completions` with vision model |
-| 5 | **Code (JavaScript)** | Parse LLM JSON response → structured bug fields |
-| 6 | **GitHub** | Create issue in repo with bug report |
+| # | Node Type | n8n TypeVersion | Purpose |
+|---|---|---|---|
+| 1 | **Webhook** | v1 | Receive POST with `imageUrl` |
+| 2 | **HTTP Request** | v4.2 | Download image from URL (GET, binary) |
+| 3 | **Code (JavaScript)** | v2 | Convert binary to base64, build OpenRouter payload |
+| 4 | **HTTP Request** | v4.2 | Call OpenRouter `/chat/completions` with vision model |
+| 5 | **Code (JavaScript)** | v2 | Parse LLM JSON response → structured bug fields |
+| 6 | **GitHub** | **v2** | Create issue in repo with bug report |
 
 ---
 
@@ -125,12 +125,24 @@ color contrast problems, text truncation, overlapping elements, etc.
 1. Create the n8n workflow JSON with all 6 nodes and connections
 2. Save as `08_Screenshot_To_Bug_Reporter_AIAgent.json` in `Agents/` folder
 3. Import into n8n instance
-4. Configure:
-   - Webhook URL (auto-generated after activation)
-   - OpenRouter API credentials
-   - GitHub credentials (repo: `Cheeras/AITestersBluePrint4X`)
+4. Configure credentials:
+   - **OpenRouter API** — Create a credential of type `Header Auth` or use the native `$credentials.openRouterApi.apiKey` reference in the Authorization header
+   - **GitHub** — Create a GitHub OAuth2 or Personal Access Token credential (repo: `Cheeras/AITestersBluePrint4X`)
 5. Activate workflow
 6. Test: POST `{ "imageUrl": "<screenshot-url>" }` to webhook
+
+---
+
+## 📦 Final JSON — Key Details
+
+| Property | Value |
+|---|---|
+| **Workflow name** | `08_Screenshot_To_Bug_Reporter_AIAgent` |
+| **GitHub node version** | `typeVersion: 2` (latest n8n) |
+| **OpenRouter auth** | `Bearer {{ $credentials.openRouterApi.apiKey }}` |
+| **Model** | `deepseek/deepseek-v4-flash-vision-exp:batch` |
+| **Webhook path** | `screenshot-to-bug` |
+| **Response format** | `json_object` (structured output) |
 
 ---
 
