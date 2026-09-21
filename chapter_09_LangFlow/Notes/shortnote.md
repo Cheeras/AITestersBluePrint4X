@@ -21,7 +21,7 @@ LangFlow actually belong to Lang family, it has lot of Open source tools that ar
 1. LangFlow - which is replica of n8n which drag and drop version creation of AI Agents
 2. LangChain - Perfectly 100% Code to create AI Agents
 3. LangSmith - observability and debugging of AI Agents
-4. LangGraph - when you share the things from one agent to another agent - stage machine - means share some information from agent to another agent- Multiple agents talking to each other
+4. LangGraph - when you share the things from one agent to another agent - State machine - means share some information from agent to another agent- Multiple agents talking to each other
 5. LangFuse
 6. LangServe
 7. Lang*
@@ -30,7 +30,7 @@ But as QA we will learning only  LangFlow and LangChain which is more than enoug
 
 **LangFlow:**
 
-LangFlow is a  visual drag and drop builder for creating LLM-powered applications and AI Agent workflows, no Python required, but fully extensible when you need it
+LangFlow is a  visual drag and drop builder for creating LLM-powered applications and AI Agent workflows, **no Python required**, but fully extensible when you need it
 
 Advantage of LangFlow is if you create traditional AI agent you have to write a code , install packages, need to debug
 

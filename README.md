@@ -297,16 +297,55 @@ A lightweight, Vercel-deployed web UI for the **Screenshot to Bug Reporter** age
 
 [LangFlow](https://github.com/langflow/langflow) is an open-source visual framework for building AI agent workflows. It is installed locally and runs at `http://127.0.0.1:7860`.
 
+### Installation Guide
+
+A complete step-by-step installation guide is available at:
+- [LangFlow Installation Guide](chapter_09_LangFlow/Notes/LangFlowInstallationGuide.md)
+
 ### Setup
 
-```bash
+```powershell
+# 1. Install LangFlow
 pip install langflow
+
+# 2. Install provider bundles (Groq, OpenAI, Anthropic, etc.)
+pip install lfx-bundles
+
+# 3. Install Groq runtime dependency
+pip install langchain-groq
+
+# 4. Start LangFlow
 python -m langflow run --host 127.0.0.1 --port 7860
 ```
 
+Open **http://localhost:7860** in your browser.
+
 ### Current Contents
 
-- [LangFlow AI Agents](chapter_09_LangFlow/AIAgents/) — Directory for future LangFlow workflow exports
+| File | Description |
+|---|---|
+| [LangFlow AI Agents](chapter_09_LangFlow/AIAgents/) | Directory for future LangFlow workflow exports |
+| [LangFlow Tasks](chapter_09_LangFlow/Task_Agents/) | Directory for task-specific agent workflows |
+| [Installation Guide](chapter_09_LangFlow/Notes/LangFlowInstallationGuide.md) | Complete step-by-step local setup guide |
+| [Short Notes](chapter_09_LangFlow/Notes/shortnote.md) | Quick reference on LangFlow concepts and comparison with other tools |
+
+### Key Features
+
+- **Visual drag-and-drop builder** — No Python required to build AI agent workflows
+- **Multiple LLM providers** — Groq, OpenAI, Anthropic, Ollama, Google, DeepSeek, and more via Bundles
+- **Pre-built components** — Chat Input/Output, Prompt Templates, RAG, Agents, MCP Tools
+- **Playground** — Test your flows directly in the browser
+- **Export as JSON** — Save and share flows for reusability
+
+### First Flow: Chat with Groq
+
+1. Open **http://localhost:7860**
+2. Create a new flow
+3. From **Bundles** tab, add **Groq** to canvas
+4. From **Components → Input & Output**, add **Chat Input** and **Chat Output**
+5. Connect: Chat Input → Groq → Chat Output
+6. Configure Groq with your API key and select a model
+7. Click **Playground** and start chatting
 
 ## Overall Notes
 
