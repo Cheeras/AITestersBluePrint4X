@@ -10,7 +10,7 @@ The complete learning path is available in the [AI Tester Blueprint roadmap](Roa
 
 ### Chapter 0: 30-Day Challenge — Mastering AI Testing for QA Engineers
 
-A 7-day foundational series covering the essentials of AI-assisted testing.
+A 9-day foundational series covering the essentials of AI-assisted testing.
 
 | Day | Topic |
 |---|---|
@@ -361,5 +361,7 @@ Comprehensive reference notes covering key concepts across the repository.
 | [RAG Complete Guide](OverAll_Notes/RAGCompleteGuide.md) | Comprehensive RAG guide with visual diagrams |
 | [4X Advanced AI Tester Notes](OverAll_Notes/4X_Advanced_AI_TesterNotes.docx) | Advanced AI tester reference document |
 
+
+## Contributing
 
 Keep learning notes in their relevant chapter, include runnable examples where appropriate, and never commit credentials, generated reports, IDE settings, or build artifacts.
