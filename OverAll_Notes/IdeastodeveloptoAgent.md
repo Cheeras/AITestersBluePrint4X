@@ -1,4 +1,3 @@
-
 Application can be build in N8N:
 
 =====================
@@ -48,8 +47,17 @@ Take 3 projects
 
 Vaibhav Vaidya - Defect Insights Agent from the app.thetestingacademy.com
 
-
-Clustering the defects and also ability to chat the agent which anyone can go and get data along with JQL so that people can verify and which is live 
-
+Clustering the defects and also ability to chat the agent which anyone can go and get data along with JQL so that people can verify and which is live
 
 This needs to be implemented [app.thetestingacademy.com/student/playground/agent/defect-reporting-insights](https://app.thetestingacademy.com/student/playground/agent/defect-reporting-insights)
+
+**
+<u><wbr>3 Favarate agents need to build</u>
+
+**
+
+**An RCA bot.** Input: one failed test with its error, stack trace, and logs. Output: a root cause category, with evidence quoted verbatim from the logs, and a suggested owner.
+
+**A bug triage bot.** Input: one new bug report. Output: severity, priority, component, duplicate candidate, and a list of missing fields.
+
+**A flaky test detector**. Input: CI run history as CSV. Output: a ranked flaky list computed with arithmetic, plus a model-written explanation per test.

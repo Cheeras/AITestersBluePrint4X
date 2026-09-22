@@ -316,7 +316,10 @@ pip install lfx-bundles
 # 3. Install Groq runtime dependency
 pip install langchain-groq
 
-# 4. Start LangFlow
+# 4. Install Composio for Jira integration
+pip install composio-langchain
+
+# 5. Start LangFlow
 python -m langflow run --host 127.0.0.1 --port 7860
 ```
 
@@ -326,10 +329,21 @@ Open **http://localhost:7860** in your browser.
 
 | File | Description |
 |---|---|
-| [LangFlow AI Agents](chapter_09_LangFlow/AIAgents/) | Directory for future LangFlow workflow exports |
+| [LangFlow AI Agents](chapter_09_LangFlow/AIAgents/) | Directory for LangFlow workflow exports |
 | [LangFlow Tasks](chapter_09_LangFlow/Task_Agents/) | Directory for task-specific agent workflows |
 | [Installation Guide](chapter_09_LangFlow/Notes/LangFlowInstallationGuide.md) | Complete step-by-step local setup guide |
+| [Quick Install Guide](chapter_09_LangFlow/Notes/LangFlowInstall.md) | Quick pip-based installation steps |
 | [Short Notes](chapter_09_LangFlow/Notes/shortnote.md) | Quick reference on LangFlow concepts and comparison with other tools |
+
+### LangFlow AI Agent Workflows
+
+| Workflow | Description |
+|---|---|
+| [Hello World (Groq)](chapter_09_LangFlow/AIAgents/01__GROQ_LangFlow_Simple_HelloWorld.json) | Simple Groq-based chat flow — Chat Input → Groq → Chat Output |
+| [Bug Triaging Agent v2](chapter_09_LangFlow/AIAgents/AI4X_002_Bug_Triaging_Agent.json) | Bug triaging agent using API Request → Parser → Prompt → DeepSeek |
+| [Bug Triaging Agent v3](chapter_09_LangFlow/AIAgents/AI4X_003_Bug_Triage_AI_Agent.json) | Refined bug triaging agent with Jira API integration and structured output |
+| [Jira Composio Connector](chapter_09_LangFlow/AIAgents/JIRAComposia.json) | Jira integration via Composio bundle — fetch issue details using Composio API Key |
+| [Agent Notes](chapter_09_LangFlow/AIAgents/notes.md) | Quick notes on system messages and agent behavior |
 
 ### Key Features
 

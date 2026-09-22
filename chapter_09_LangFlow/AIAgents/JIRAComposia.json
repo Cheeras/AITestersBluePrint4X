@@ -1,0 +1,1297 @@
+{
+  "data": {
+    "edges": [],
+    "nodes": [
+      {
+        "data": {
+          "id": "ext:composio:ComposioJiraAPIComponent@official-dLM6s",
+          "node": {
+            "base_classes": [
+              "Table"
+            ],
+            "beta": false,
+            "bundle": "composio",
+            "conditional_paths": [],
+            "custom_fields": {},
+            "display_name": "Jira",
+            "documentation": "https://docs.composio.dev",
+            "edited": false,
+            "extension": "lfx-bundles",
+            "extension_version": "1.1.27",
+            "field_order": [
+              "entity_id",
+              "api_key",
+              "auth_mode",
+              "auth_link",
+              "client_id",
+              "client_secret",
+              "verification_token",
+              "redirect_uri",
+              "authorization_url",
+              "token_url",
+              "api_key_field",
+              "generic_api_key",
+              "token",
+              "access_token",
+              "refresh_token",
+              "username",
+              "password",
+              "domain",
+              "base_url",
+              "bearer_token",
+              "authorization_code",
+              "scopes",
+              "subdomain",
+              "instance_url",
+              "tenant_id",
+              "action_button"
+            ],
+            "frozen": false,
+            "icon": "Jira",
+            "last_updated": "2026-09-22T14:01:59.674Z",
+            "legacy": false,
+            "metadata": {
+              "code_hash": "3e62396f3868",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "lfx",
+                    "version": "1.13.0.dev19"
+                  }
+                ],
+                "total_dependencies": 1
+              },
+              "module": "_lfx_ext.official.composio.jira_composio"
+            },
+            "minimized": false,
+            "name": "ComposioJiraAPIComponent",
+            "namespaced_id": "ext:composio:ComposioJiraAPIComponent@official",
+            "output_types": [],
+            "outputs": [
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Table",
+                "group_outputs": false,
+                "loop_types": null,
+                "method": "as_dataframe",
+                "name": "dataFrame",
+                "options": null,
+                "required_inputs": null,
+                "selected": "Table",
+                "tool_mode": true,
+                "types": [
+                  "Table"
+                ],
+                "value": "__UNDEFINED__"
+              }
+            ],
+            "pinned": false,
+            "template": {
+              "_frontend_node_flow_id": {
+                "input_types": [],
+                "value": "f317682e-3a83-4ecb-8f24-affdcafc8cf2"
+              },
+              "_frontend_node_folder_id": {
+                "input_types": [],
+                "value": ""
+              },
+              "_type": "Component",
+              "access_token": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Access Token",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "load_from_db": false,
+                "name": "access_token",
+                "override_skip": false,
+                "password": true,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "action_button": {
+                "_input_type": "SortableListInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Action",
+                "dynamic": false,
+                "helper_text": "",
+                "helper_text_metadata": {},
+                "info": "",
+                "input_types": [],
+                "limit": 1,
+                "name": "action_button",
+                "options": [
+                  {
+                    "metadata": "JIRA_ADD_ATTACHMENT",
+                    "name": "Add Attachment"
+                  },
+                  {
+                    "metadata": "JIRA_ADD_COMMENT",
+                    "name": "Add Comment"
+                  },
+                  {
+                    "metadata": "JIRA_ADD_USERS_TO_PROJECT_ROLE",
+                    "name": "Add Users to Project Role"
+                  },
+                  {
+                    "metadata": "JIRA_ADD_USER_TO_GROUP",
+                    "name": "Add User to Group"
+                  },
+                  {
+                    "metadata": "JIRA_ADD_WATCHER_TO_ISSUE",
+                    "name": "Add Watcher to Issue"
+                  },
+                  {
+                    "metadata": "JIRA_ADD_WORKLOG",
+                    "name": "Add Worklog"
+                  },
+                  {
+                    "metadata": "JIRA_ANALYSE_EXPRESSION",
+                    "name": "Analyse Jira Expression"
+                  },
+                  {
+                    "metadata": "JIRA_ASSIGN_ISSUE",
+                    "name": "Assign Issue"
+                  },
+                  {
+                    "metadata": "JIRA_BULK_CREATE_ISSUE",
+                    "name": "Bulk Create Issues"
+                  },
+                  {
+                    "metadata": "JIRA_CHECK_PERMISSIONS",
+                    "name": "Check User Permissions"
+                  },
+                  {
+                    "metadata": "JIRA_CREATE_BOARD",
+                    "name": "Create Board"
+                  },
+                  {
+                    "metadata": "JIRA_CREATE_GROUP",
+                    "name": "Create Group"
+                  },
+                  {
+                    "metadata": "JIRA_CREATE_ISSUE",
+                    "name": "Create Issue"
+                  },
+                  {
+                    "metadata": "JIRA_CREATE_ISSUE_LINK",
+                    "name": "Link Issues"
+                  },
+                  {
+                    "metadata": "JIRA_CREATE_JQL_AUTOCOMPLETEDATA",
+                    "name": "Get JQL Autocomplete Data"
+                  },
+                  {
+                    "metadata": "JIRA_CREATE_PROJECT",
+                    "name": "Create Project"
+                  },
+                  {
+                    "metadata": "JIRA_CREATE_SPRINT",
+                    "name": "Create Sprint"
+                  },
+                  {
+                    "metadata": "JIRA_CREATE_VERSION",
+                    "name": "Create Version"
+                  },
+                  {
+                    "metadata": "JIRA_DELETE_ATTACHMENT",
+                    "name": "Delete Attachment"
+                  },
+                  {
+                    "metadata": "JIRA_DELETE_COMMENT",
+                    "name": "Delete Comment"
+                  },
+                  {
+                    "metadata": "JIRA_DELETE_ISSUE",
+                    "name": "Delete Issue"
+                  },
+                  {
+                    "metadata": "JIRA_DELETE_VERSION",
+                    "name": "Delete Version"
+                  },
+                  {
+                    "metadata": "JIRA_DELETE_WORKLOG",
+                    "name": "Delete Worklog"
+                  },
+                  {
+                    "metadata": "JIRA_EDIT_ISSUE",
+                    "name": "Edit Issue"
+                  },
+                  {
+                    "metadata": "JIRA_EVALUATE_JIRA_EXPRESSION",
+                    "name": "Evaluate Jira Expression"
+                  },
+                  {
+                    "metadata": "JIRA_FETCH_BULK_ISSUES",
+                    "name": "Bulk Fetch Issues"
+                  },
+                  {
+                    "metadata": "JIRA_FIND_USERS",
+                    "name": "Find Users (Deprecated)"
+                  },
+                  {
+                    "metadata": "JIRA_FIND_USERS2",
+                    "name": "Find Users 2"
+                  },
+                  {
+                    "metadata": "JIRA_FIND_USERS_FOR_PICKER",
+                    "name": "Find Users For Picker"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ALL_GROUPS",
+                    "name": "Get All Groups"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ALL_ISSUE_TYPE_SCHEMES",
+                    "name": "Get All Issue Type Schemes"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ALL_PROJECTS",
+                    "name": "Get all projects"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ALL_STATUSES",
+                    "name": "Get Issue Statuses"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ALL_USERS",
+                    "name": "Get All Users"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ATTACHMENT",
+                    "name": "Get Attachment"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ATTACHMENT_META",
+                    "name": "Get Attachment Meta"
+                  },
+                  {
+                    "metadata": "JIRA_GET_COMMENT",
+                    "name": "Get Comment"
+                  },
+                  {
+                    "metadata": "JIRA_GET_COMPONENTS",
+                    "name": "Get Component"
+                  },
+                  {
+                    "metadata": "JIRA_GET_CREATE_METADATA_ISSUE_TYPE_FIELDS",
+                    "name": "Get Create Field Metadata for Issue Type"
+                  },
+                  {
+                    "metadata": "JIRA_GET_CURRENT_USER",
+                    "name": "Get Current User"
+                  },
+                  {
+                    "metadata": "JIRA_GET_DASHBOARDS",
+                    "name": "Get Dashboards"
+                  },
+                  {
+                    "metadata": "JIRA_GET_FAVORITE_FILTERS",
+                    "name": "Get Favorite Filters"
+                  },
+                  {
+                    "metadata": "JIRA_GET_FIELDS",
+                    "name": "Get fields"
+                  },
+                  {
+                    "metadata": "JIRA_GET_FIELDS_PAGINATED",
+                    "name": "Get custom fields paginated"
+                  },
+                  {
+                    "metadata": "JIRA_GET_FILTER",
+                    "name": "Get Filter"
+                  },
+                  {
+                    "metadata": "JIRA_GET_GROUP",
+                    "name": "Get Group"
+                  },
+                  {
+                    "metadata": "JIRA_GET_INFO",
+                    "name": "Get Service Management Info"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ISSUE",
+                    "name": "Get Issue"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ISSUE_CREATE_METADATA",
+                    "name": "Get Create Issue Metadata (Deprecated)"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ISSUE_EDIT_METADATA",
+                    "name": "Get Issue Edit Meta"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ISSUE_LINK_TYPES",
+                    "name": "Get Issue Link Types"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ISSUE_PICKER_SUGGESTIONS",
+                    "name": "Get issue picker"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ISSUE_PROPERTY",
+                    "name": "Get Issue Property"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ISSUE_RESOLUTIONS",
+                    "name": "Get Issue Resolutions"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ISSUE_TYPES",
+                    "name": "Get issue types"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ISSUE_WATCHERS",
+                    "name": "Get Issue Watchers"
+                  },
+                  {
+                    "metadata": "JIRA_GET_ISSUE_WORKLOGS",
+                    "name": "Get Issue Worklogs (Deprecated)"
+                  },
+                  {
+                    "metadata": "JIRA_GET_JQL_AUTOCOMPLETEDATA",
+                    "name": "Get JQL autocomplete reference data"
+                  },
+                  {
+                    "metadata": "JIRA_GET_JQL_AUTOCOMPLETEDATA_SUGGESTIONS",
+                    "name": "Get JQL autocomplete suggestions"
+                  },
+                  {
+                    "metadata": "JIRA_GET_MY_PERMISSIONS",
+                    "name": "Get My Permissions"
+                  },
+                  {
+                    "metadata": "JIRA_GET_MYPREFERENCES_LOCALE",
+                    "name": "Get User Locale Preference"
+                  },
+                  {
+                    "metadata": "JIRA_GET_PERMISSIONS",
+                    "name": "Get Permissions"
+                  },
+                  {
+                    "metadata": "JIRA_GET_PERMITTED_PROJECTS",
+                    "name": "Get Permitted Projects"
+                  },
+                  {
+                    "metadata": "JIRA_GET_PROJECT",
+                    "name": "Get Project"
+                  },
+                  {
+                    "metadata": "JIRA_GET_PROJECT_ROLES",
+                    "name": "Get Project Roles"
+                  },
+                  {
+                    "metadata": "JIRA_GET_PROJECT_TEMPLATES",
+                    "name": "Get Project Templates"
+                  },
+                  {
+                    "metadata": "JIRA_GET_PROJECT_TYPE",
+                    "name": "Get Project Type"
+                  },
+                  {
+                    "metadata": "JIRA_GET_PROJECT_VERSIONS",
+                    "name": "Get Project Versions"
+                  },
+                  {
+                    "metadata": "JIRA_GET_RECENT_PROJECTS",
+                    "name": "Get Recent Projects"
+                  },
+                  {
+                    "metadata": "JIRA_GET_REMOTE_ISSUE_LINKS",
+                    "name": "Get Issue Remote Links"
+                  },
+                  {
+                    "metadata": "JIRA_GET_SERVER_INFO",
+                    "name": "Get Server Info"
+                  },
+                  {
+                    "metadata": "JIRA_GET_SERVICE_DESK_REQUEST_TYPE_FIELDS",
+                    "name": "Get Service Desk Request Type Fields"
+                  },
+                  {
+                    "metadata": "JIRA_GET_SPRINT",
+                    "name": "Get Sprint"
+                  },
+                  {
+                    "metadata": "JIRA_GET_SYSTEM_AVATARS",
+                    "name": "Get System Avatars"
+                  },
+                  {
+                    "metadata": "JIRA_GET_TRANSITIONS",
+                    "name": "Get Transitions"
+                  },
+                  {
+                    "metadata": "JIRA_GET_UNIVERSAL_AVATAR_TYPE_OWNER",
+                    "name": "Get Universal Avatar Type Owner"
+                  },
+                  {
+                    "metadata": "JIRA_GET_UNIVERSAL_AVATAR_VIEW_TYPE",
+                    "name": "Get Universal Avatar View Type"
+                  },
+                  {
+                    "metadata": "JIRA_GET_USER_GROUPS",
+                    "name": "Get User Groups"
+                  },
+                  {
+                    "metadata": "JIRA_GET_VIEW_TYPE_AVATAR",
+                    "name": "Get Avatar Image"
+                  },
+                  {
+                    "metadata": "JIRA_GET_VOTES",
+                    "name": "Get Issue Votes"
+                  },
+                  {
+                    "metadata": "JIRA_GET_WORKLOG",
+                    "name": "Get Worklogs"
+                  },
+                  {
+                    "metadata": "JIRA_LIST_ALL_PROJECTS",
+                    "name": "List All Projects (Deprecated)"
+                  },
+                  {
+                    "metadata": "JIRA_LIST_BOARDS",
+                    "name": "List Boards"
+                  },
+                  {
+                    "metadata": "JIRA_LIST_COMMENTS",
+                    "name": "List Comments by IDs"
+                  },
+                  {
+                    "metadata": "JIRA_LIST_FILTERS",
+                    "name": "List Jira Filters"
+                  },
+                  {
+                    "metadata": "JIRA_LIST_GROUPS_PICKER",
+                    "name": "List Groups (Picker)"
+                  },
+                  {
+                    "metadata": "JIRA_LIST_ISSUE_COMMENTS",
+                    "name": "List Issue Comments"
+                  },
+                  {
+                    "metadata": "JIRA_LIST_PROJECT_TYPES",
+                    "name": "List Project Types"
+                  },
+                  {
+                    "metadata": "JIRA_LIST_SPRINTS",
+                    "name": "List Sprints"
+                  },
+                  {
+                    "metadata": "JIRA_MOVE_ISSUE_TO_SPRINT",
+                    "name": "Move Issues to Sprint"
+                  },
+                  {
+                    "metadata": "JIRA_PARSE_JQL_QUERIES",
+                    "name": "Parse JQL Queries"
+                  },
+                  {
+                    "metadata": "JIRA_REMOVE_USER_FROM_GROUP",
+                    "name": "Remove User from Group"
+                  },
+                  {
+                    "metadata": "JIRA_REMOVE_USER_FROM_PROJECT_ROLE",
+                    "name": "Remove User from Project Role"
+                  },
+                  {
+                    "metadata": "JIRA_REMOVE_WATCHER_FROM_ISSUE",
+                    "name": "Remove Watcher from Issue"
+                  },
+                  {
+                    "metadata": "JIRA_SEARCH_APPROXIMATE_COUNT",
+                    "name": "Search Approximate Count"
+                  },
+                  {
+                    "metadata": "JIRA_SEARCH_DASHBOARDS",
+                    "name": "Search Dashboards"
+                  },
+                  {
+                    "metadata": "JIRA_SEARCH_FOR_ISSUES_USING_JQL_GET",
+                    "name": "Search Issues Using JQL (GET)"
+                  },
+                  {
+                    "metadata": "JIRA_SEARCH_FOR_ISSUES_USING_JQL_POST",
+                    "name": "Search Issues Using JQL Enhanced (POST)"
+                  },
+                  {
+                    "metadata": "JIRA_SEARCH_ISSUES",
+                    "name": "Search issues"
+                  },
+                  {
+                    "metadata": "JIRA_SEND_NOTIFICATION_FOR_ISSUE",
+                    "name": "Send Notification for Issue"
+                  },
+                  {
+                    "metadata": "JIRA_TRANSITION_ISSUE",
+                    "name": "Transition Issue"
+                  },
+                  {
+                    "metadata": "JIRA_UPDATE_COMMENT",
+                    "name": "Update Comment"
+                  },
+                  {
+                    "metadata": "JIRA_WHO_AM_I",
+                    "name": "Who Am I"
+                  }
+                ],
+                "override_skip": false,
+                "placeholder": "Select action",
+                "real_time_refresh": true,
+                "required": false,
+                "search_category": [],
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "sortableList",
+                "value": [
+                  {
+                    "chosen": true,
+                    "name": "Get Issue",
+                    "selected": true
+                  }
+                ]
+              },
+              "api_key": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Composio API Key",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "load_from_db": false,
+                "name": "api_key",
+                "override_skip": false,
+                "password": true,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": "ak_GFhZKQTRge_JyPUyH0X-"
+              },
+              "api_key_field": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "API Key",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "load_from_db": false,
+                "name": "api_key_field",
+                "override_skip": false,
+                "password": true,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "auth_link": {
+                "_input_type": "AuthInput",
+                "advanced": false,
+                "api_editable": false,
+                "auth_scheme": "API_KEY",
+                "auth_tooltip": "Disconnect",
+                "connection_id": "ca_LbVTktF93zBi",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "name": "auth_link",
+                "override_skip": false,
+                "placeholder": "",
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "auth",
+                "value": "validated"
+              },
+              "auth_mode": {
+                "_input_type": "TabInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Auth Mode",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "name": "auth_mode",
+                "options": [
+                  "API_KEY"
+                ],
+                "override_skip": false,
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": true,
+                "type": "tab",
+                "value": "API_KEY"
+              },
+              "authorization_code": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Authorization Code",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "load_from_db": false,
+                "name": "authorization_code",
+                "override_skip": false,
+                "password": true,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "authorization_url": {
+                "_input_type": "StrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Authorization URL",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "authorization_url",
+                "override_skip": false,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "base_url": {
+                "_input_type": "StrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Base URL",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "base_url",
+                "override_skip": false,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "bearer_token": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Bearer Token",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "load_from_db": false,
+                "name": "bearer_token",
+                "override_skip": false,
+                "password": true,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "client_id": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Client ID",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "load_from_db": false,
+                "name": "client_id",
+                "override_skip": false,
+                "password": true,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "client_secret": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Client Secret",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "load_from_db": false,
+                "name": "client_secret",
+                "override_skip": false,
+                "password": true,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "code": {
+                "advanced": true,
+                "api_editable": false,
+                "dynamic": true,
+                "fileTypes": [],
+                "file_path": "",
+                "info": "",
+                "input_types": [],
+                "list": false,
+                "load_from_db": false,
+                "multiline": true,
+                "name": "code",
+                "password": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "code",
+                "value": "from lfx.base.composio.composio_base import ComposioBaseComponent\n\n\nclass ComposioJiraAPIComponent(ComposioBaseComponent):\n    display_name: str = \"Jira\"\n    icon = \"Jira\"\n    documentation: str = \"https://docs.composio.dev\"\n    app_name = \"jira\"\n\n    def set_default_tools(self):\n        \"\"\"Set the default tools for Jira component.\"\"\"\n"
+              },
+              "create_auth_config": {
+                "input_types": [],
+                "show": false
+              },
+              "domain": {
+                "_input_type": "StrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Domain",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "domain",
+                "override_skip": false,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "entity_id": {
+                "_input_type": "MessageTextInput",
+                "advanced": true,
+                "api_editable": false,
+                "display_name": "Entity ID",
+                "dynamic": false,
+                "info": "",
+                "input_types": [
+                  "Message"
+                ],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "entity_id",
+                "override_skip": false,
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": true,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": "default"
+              },
+              "expand": {
+                "_input_type": "MessageTextInput",
+                "advanced": true,
+                "api_editable": false,
+                "display_name": "Expand",
+                "dynamic": false,
+                "info": "A comma-separated list of entities to include with the issue. To retrieve update history, include 'changelog' in this list (e.g., 'changelog'). Other common expansions include 'renderedFields' (HTML content), 'transitions' (available workflows), and 'operations' (available actions).",
+                "input_types": [
+                  "Message"
+                ],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "expand",
+                "override_skip": false,
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "fields": {
+                "_input_type": "MessageTextInput",
+                "advanced": true,
+                "api_editable": false,
+                "display_name": "Fields",
+                "dynamic": false,
+                "info": "A list of field names or IDs to return for the issue. If omitted or empty, a default set of fields (often all fields or all navigable fields) is returned. For specific fields, provide a list like `[\"summary\", \"status\"]`.",
+                "input_types": [
+                  "Message"
+                ],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "fields",
+                "override_skip": false,
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "fields_by_keys": {
+                "_input_type": "BoolInput",
+                "advanced": true,
+                "api_editable": false,
+                "display_name": "Fields By Keys",
+                "dynamic": false,
+                "info": "If true, the strings in the `fields` parameter are interpreted as field keys (e.g., 'summary') instead of field IDs (e.g., 'customfield_10000'). Default is false (uses field IDs).",
+                "input_types": [
+                  "Message"
+                ],
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "fields_by_keys",
+                "override_skip": false,
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": true,
+                "type": "bool",
+                "value": false
+              },
+              "generic_api_key": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "API Key",
+                "dynamic": false,
+                "info": "Enter API key on Composio page",
+                "input_types": [],
+                "load_from_db": false,
+                "name": "generic_api_key",
+                "override_skip": false,
+                "password": true,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "instance_url": {
+                "_input_type": "StrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Instance URL",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "instance_url",
+                "override_skip": false,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "is_refresh": false,
+              "issue_key": {
+                "_input_type": "MessageTextInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Issue Key",
+                "dynamic": false,
+                "info": "The ID (e.g., '10000') or key (e.g., 'PROJ-123') of the Jira issue to retrieve.",
+                "input_types": [
+                  "Message"
+                ],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "issue_key",
+                "override_skip": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": "KAN-110"
+              },
+              "password": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Password",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "load_from_db": false,
+                "name": "password",
+                "override_skip": false,
+                "password": true,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "properties": {
+                "_input_type": "MessageTextInput",
+                "advanced": true,
+                "api_editable": false,
+                "display_name": "Properties",
+                "dynamic": false,
+                "info": "A list of issue property keys to include in the response. Issue properties are extra key-value data attached to an issue, often by apps. Example: `[\"jira.meta.data\", \"com.example.custom.info\"]`.",
+                "input_types": [
+                  "Message"
+                ],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "properties",
+                "override_skip": false,
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "redirect_uri": {
+                "_input_type": "StrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Redirect URI",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "redirect_uri",
+                "override_skip": false,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "refresh_token": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Refresh Token",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "load_from_db": false,
+                "name": "refresh_token",
+                "override_skip": false,
+                "password": true,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "scopes": {
+                "_input_type": "StrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Scopes",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "scopes",
+                "override_skip": false,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "subdomain": {
+                "_input_type": "StrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Subdomain",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "subdomain",
+                "override_skip": false,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "tenant_id": {
+                "_input_type": "StrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Tenant ID",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "tenant_id",
+                "override_skip": false,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "token": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Token",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "load_from_db": false,
+                "name": "token",
+                "override_skip": false,
+                "password": true,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "token_url": {
+                "_input_type": "StrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Token URL",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "token_url",
+                "override_skip": false,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "update_history": {
+                "_input_type": "BoolInput",
+                "advanced": true,
+                "api_editable": false,
+                "display_name": "Update History",
+                "dynamic": false,
+                "info": "Controls whether viewing the issue adds it to the user's 'Recently viewed' list. This does not control inclusion of update history in the response. To include update history, use the 'expand' parameter with 'changelog'.",
+                "input_types": [
+                  "Message"
+                ],
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "update_history",
+                "override_skip": false,
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": true,
+                "type": "bool",
+                "value": false
+              },
+              "verification_token": {
+                "_input_type": "StrInput",
+                "advanced": false,
+                "api_editable": false,
+                "display_name": "Verification Token",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "verification_token",
+                "override_skip": false,
+                "placeholder": "",
+                "real_time_refresh": true,
+                "required": false,
+                "show": false,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              }
+            },
+            "tool_mode": false
+          },
+          "showNode": true,
+          "type": "ext:composio:ComposioJiraAPIComponent@official"
+        },
+        "dragging": false,
+        "id": "ext:composio:ComposioJiraAPIComponent@official-dLM6s",
+        "measured": {
+          "height": 409,
+          "width": 320
+        },
+        "position": {
+          "x": -3.343089572936208,
+          "y": -248.3100317870231
+        },
+        "selected": true,
+        "type": "genericNode"
+      }
+    ],
+    "viewport": {
+      "x": 388.39481485564716,
+      "y": 213.5084134109739,
+      "zoom": 0.6054064073373718
+    }
+  },
+  "description": "Driving Innovation in Business Communication.",
+  "endpoint_name": null,
+  "id": "f317682e-3a83-4ecb-8f24-affdcafc8cf2",
+  "is_component": false,
+  "last_tested_version": "1.12.2",
+  "locked": false,
+  "name": "JIRAComposia",
+  "tags": []
+}
