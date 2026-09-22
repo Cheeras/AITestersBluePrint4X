@@ -562,7 +562,7 @@
           "x": -263.3213847143656,
           "y": -129.0517903022629
         },
-        "selected": true,
+        "selected": false,
         "type": "genericNode"
       },
       {
@@ -1701,12 +1701,124 @@
         },
         "selected": false,
         "type": "genericNode"
+      },
+      {
+        "data": {
+          "id": "note-zCt01",
+          "node": {
+            "description": "Trigger",
+            "display_name": "",
+            "documentation": "",
+            "template": {
+              "backgroundColor": "lime"
+            }
+          },
+          "type": "note"
+        },
+        "dragging": false,
+        "height": 140,
+        "id": "note-zCt01",
+        "measured": {
+          "height": 140,
+          "width": 280
+        },
+        "position": {
+          "x": -198.4814690057604,
+          "y": -244.32423846510227
+        },
+        "selected": false,
+        "type": "noteNode",
+        "width": 280
+      },
+      {
+        "data": {
+          "id": "note-WsxEB",
+          "node": {
+            "description": "Action",
+            "display_name": "",
+            "documentation": "",
+            "template": {
+              "backgroundColor": "rose"
+            }
+          },
+          "type": "note"
+        },
+        "dragging": false,
+        "height": 140,
+        "id": "note-WsxEB",
+        "measured": {
+          "height": 140,
+          "width": 280
+        },
+        "position": {
+          "x": 211.5590966020542,
+          "y": -241.030739946164
+        },
+        "selected": false,
+        "type": "noteNode",
+        "width": 280
+      },
+      {
+        "data": {
+          "id": "note-3833K",
+          "node": {
+            "description": "Result",
+            "display_name": "",
+            "documentation": "",
+            "template": {
+              "backgroundColor": "#2f3c9d",
+              "customColor": "#2f3c9d"
+            }
+          },
+          "type": "note"
+        },
+        "dragging": false,
+        "height": 140,
+        "id": "note-3833K",
+        "measured": {
+          "height": 140,
+          "width": 280
+        },
+        "position": {
+          "x": 659.4748951776589,
+          "y": -243.70670749280134
+        },
+        "selected": false,
+        "type": "noteNode",
+        "width": 280
+      },
+      {
+        "data": {
+          "id": "note-j2NOb",
+          "node": {
+            "description": "## Objective: \nAs a Senior QA you need to help user to bug triaging, you analyse the bug report and based on bug report help them to give structured output with the severity ,priority and the comments from your end",
+            "display_name": "",
+            "documentation": "",
+            "template": {}
+          },
+          "type": "note"
+        },
+        "dragging": false,
+        "height": 239,
+        "id": "note-j2NOb",
+        "measured": {
+          "height": 239,
+          "width": 397
+        },
+        "position": {
+          "x": 256.2669865343123,
+          "y": -519.4360130942985
+        },
+        "resizing": false,
+        "selected": true,
+        "type": "noteNode",
+        "width": 397
       }
     ],
     "viewport": {
-      "x": 273.5292596091679,
-      "y": 159.3676018435651,
-      "zoom": 0.6072569908562592
+      "x": 183.10923867629867,
+      "y": 335.18318090609563,
+      "zoom": 0.6072569908562593
     }
   },
   "description": "Language Chainlink Master.",
