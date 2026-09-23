@@ -310,16 +310,10 @@ A complete step-by-step installation guide is available at:
 # 1. Install LangFlow
 pip install langflow
 
-# 2. Install provider bundles (Groq, OpenAI, Anthropic, etc.)
-pip install lfx-bundles
+# 2. Install the Groq and Composio/Jira provider bundles
+pip install "lfx-bundles[groq,composio]"
 
-# 3. Install Groq runtime dependency
-pip install langchain-groq
-
-# 4. Install Composio for Jira integration
-pip install composio-langchain
-
-# 5. Start LangFlow
+# 3. Start LangFlow
 python -m langflow run --host 127.0.0.1 --port 7860
 ```
 
@@ -343,6 +337,7 @@ Open **http://localhost:7860** in your browser.
 | [Bug Triaging Agent v2](chapter_09_LangFlow/AIAgents/AI4X_002_Bug_Triaging_Agent.json) | Bug triaging agent using API Request → Parser → Prompt → DeepSeek |
 | [Bug Triaging Agent v3](chapter_09_LangFlow/AIAgents/AI4X_003_Bug_Triage_AI_Agent.json) | Refined bug triaging agent with Jira API integration and structured output |
 | [Jira Composio Connector](chapter_09_LangFlow/AIAgents/JIRAComposia.json) | Jira integration via Composio bundle — fetch issue details using Composio API Key |
+| [Bug Triaging Agent (Composio)](chapter_09_LangFlow/AIAgents/005_Bug_Triaging_AIAgent_Composio.json) | Retrieves a Jira issue with Composio, parses its details, and uses DeepSeek to generate a bug-triage response |
 | [Agent Notes](chapter_09_LangFlow/AIAgents/notes.md) | Quick notes on system messages and agent behavior |
 
 ### Key Features
