@@ -378,6 +378,7 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 | [Variables](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/005_Variables.py) | Assigning values to variables |
 | [Identifiers](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/006_Identifier.py) | Naming variables |
 | [Variable types and complex numbers](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/007_Variable_P2.py) | Built-in types and complex-number attributes |
+| [Dynamic typing](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/008_Dynamic_Type.py) | Reassigning variables to values of different types |
 
 ## Overall Notes
 
