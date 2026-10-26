@@ -36,5 +36,6 @@ Large Language Model(LLMs) like GPT 5.5 , Claude Opus 4.8, Gemini 3.1 and Llama 
 
 **No Access to Private Data:** LLMs Can not access your comapny's internal documents, databases,JIRA tickets, test reports, or properirtary knowledge bases.
 
+H
 
 ![1790655715357](image/RAGUnderstandingRaw/1790655715357.png)

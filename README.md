@@ -358,6 +358,27 @@ Open **http://localhost:7860** in your browser.
 6. Configure Groq with your API key and select a model
 7. Click **Playground** and start chatting
 
+## Chapter 15: Python and PyTest
+
+Beginner-friendly Python examples introduce programming fundamentals that are useful when learning test automation with PyTest.
+
+### Python Basics
+
+| Example | Topic |
+|---|---|
+| [Hello World](chapter_15_Python_PyTest/ex_01_Python_Basics/001_Helloworld.py) | Running a first Python statement |
+| [Comments](chapter_15_Python_PyTest/ex_01_Python_Basics/002_Comments.py) | Single-line and multi-line comments |
+| [Print Command](chapter_15_Python_PyTest/ex_01_Python_Basics/04_PrintCommand.py) | Printing values and using `sep` and `end` |
+
+### Keywords, Variables, and Identifiers
+
+| Example | Topic |
+|---|---|
+| [Keywords](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/004_Keywords.py) | Python reserved words |
+| [Variables](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/005_Variables.py) | Assigning values to variables |
+| [Identifiers](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/006_Identifier.py) | Naming variables |
+| [Variable types and complex numbers](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/007_Variable_P2.py) | Built-in types and complex-number attributes |
+
 ## Overall Notes
 
 Comprehensive reference notes covering key concepts across the repository.

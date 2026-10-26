@@ -17,3 +17,4 @@ output/testcases_*.md
 *.log
 .DS_Store
 .vscode/
+.langflow-local/
