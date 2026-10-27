@@ -394,6 +394,22 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 |---|---|
 | [Literals](chapter_15_Python_PyTest/ex_03_literals/16_Literal.py) | Assigning values of different types |
 | [Multi-line comments](chapter_15_Python_PyTest/ex_03_literals/17_Multi_Line_comment.py) | Single-line and multi-line comments |
+| [Multi-line comments (alt)](chapter_15_Python_PyTest/ex_03_literals/18_MC.py) | Alternative multi-line comment syntax |
+
+### Literals, Data Types, and User Input
+
+| Example | Topic |
+|---|---|
+| [Built-in functions](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/19.py) | Using `type()`, `max()`, and `min()` |
+| [Built-in functions (pow, abs)](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/20_BuiltIn.py) | Using `pow()` and `abs()` |
+| [User input](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/21_UI.py) | Reading input with `input()` |
+| [User input with int conversion](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/22_UI_IQ.py) | Converting input to integer and adding |
+| [String basics](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/23_String.py) | String type, length, and methods (`upper()`, `lower()`) |
+| [String type conversion](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/24_String_Concat.py) | Converting string to int with `int()` |
+| [String concatenation](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/25_IQ.py) | Joining strings with `+` |
+| [Literal types](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/26_Literals.py) | Decimal, binary, octal, hex, float, string, bool, complex |
+| [Escape sequences](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/27_Literal_Escape.py) | `\n`, `\t`, `\b` escape characters |
+| [String basics (alt)](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/28_String.py) | Single vs double quotes and `type()` |
 
 ## Overall Notes
 
