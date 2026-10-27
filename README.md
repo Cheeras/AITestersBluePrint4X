@@ -379,6 +379,21 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 | [Identifiers](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/006_Identifier.py) | Naming variables |
 | [Variable types and complex numbers](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/007_Variable_P2.py) | Built-in types and complex-number attributes |
 | [Dynamic typing](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/008_Dynamic_Type.py) | Reassigning variables to values of different types |
+| [Identifier rules](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/00_RULE.md) | Complete reference for Python identifier rules |
+| [Long identifiers](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/009_Ind.py) | Using descriptive long variable names |
+| [Basic math](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/010_IQ_Math.py) | Arithmetic operations |
+| [Operator precedence](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/011_IQ.py) | BODMAS rule in Python |
+| [Multiple variables](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/012_Multi_Var.py) | Assigning multiple variables in one line |
+| [String + number](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/013_MathIQ.py) | Concatenating strings with numbers |
+| [Built-in functions](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/014_Math.py) | Using `max()` and `min()` |
+| [Type conversion](chapter_15_Python_PyTest/ex_02_Keywords_Identifier/015_IQ.py) | Converting int to str with `str()` |
+
+### Literals
+
+| Example | Topic |
+|---|---|
+| [Literals](chapter_15_Python_PyTest/ex_03_literals/16_Literal.py) | Assigning values of different types |
+| [Multi-line comments](chapter_15_Python_PyTest/ex_03_literals/17_Multi_Line_comment.py) | Single-line and multi-line comments |
 
 ## Overall Notes
 
