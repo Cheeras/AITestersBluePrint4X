@@ -18,3 +18,4 @@ output/testcases_*.md
 .DS_Store
 .vscode/
 .langflow-local/
+.commandcode/

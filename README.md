@@ -410,6 +410,35 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 | [Literal types](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/26_Literals.py) | Decimal, binary, octal, hex, float, string, bool, complex |
 | [Escape sequences](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/27_Literal_Escape.py) | `\n`, `\t`, `\b` escape characters |
 | [String basics (alt)](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/28_String.py) | Single vs double quotes and `type()` |
+| [Task — 3-number calculator](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/29_Task1.py) | Sum, subtraction, multiplication, division of 3 user inputs |
+| [Task — quotient & remainder](chapter_15_Python_PyTest/ex_04_Literal_DT_UI_BF/30_Task2.py) | Compute quotient (`/`) and remainder (`%`) from user input |
+
+### Operators
+
+| Example | Topic |
+|---|---|
+| [Arithmetic operators](chapter_15_Python_PyTest/ex_05_Operators/31_Arth_Op.py) | `+`, `-`, `*`, `/`, `//`, `%`, `**` with unary signs |
+| [Comparison operators](chapter_15_Python_PyTest/ex_05_Operators/32_Comp_Op.py) | `==`, `!=`, `>`, `<` comparisons |
+| [Equality operator](chapter_15_Python_PyTest/ex_05_Operators/33_Logic_Op.py) | Comparing values with `==` |
+| [Logical operators](chapter_15_Python_PyTest/ex_05_Operators/38.py) | `not`, `and`, comparing variables with comparison operators |
+| [Logical or/and](chapter_15_Python_PyTest/ex_05_Operators/39.py) | Boolean logic with `or` and `and` |
+| [Not-equal check](chapter_15_Python_PyTest/ex_05_Operators/40.py) | Using `!=` to compare values |
+| [Ternary operator](chapter_15_Python_PyTest/ex_05_Operators/42_Ternary_Op.py) | One-line if-else conditional expression |
+| [Membership operators](chapter_15_Python_PyTest/ex_05_Operators/43_Membership.py) | `in` / `not in` plus `math` module functions |
+
+### Conditions
+
+| Example | Topic |
+|---|---|
+| [If-else voting check](chapter_15_Python_PyTest/ex_06_Conditions/44_IfElse.py) | Age-based access control with `if`/`else` |
+| [Nested if — even/odd](chapter_15_Python_PyTest/ex_06_Conditions/45_IfElseIfElse.py) | Nested conditions to check even/odd numbers |
+| [Find max of 3 numbers](chapter_15_Python_PyTest/ex_06_Conditions/46_FindMax3Numbers.py) | `if`/`elif`/`else` to find the largest input |
+
+### Match (Pattern Matching)
+
+| Example | Topic |
+|---|---|
+| [Match statement](chapter_15_Python_PyTest/ex_07_Match/47_match.py) | Python 3.10+ `match` — switch-case equivalent |
 
 ## Overall Notes
 
