@@ -438,7 +438,40 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 
 | Example | Topic |
 |---|---|
-| [Match statement](chapter_15_Python_PyTest/ex_07_Match/47_match.py) | Python 3.10+ `match` — switch-case equivalent |
+| [Match statement](chapter_15_Python_PyTest/ex_07_Match/47_match.py) | Python 3.10+ `match` — switch-case equivalent with days-of-week |
+| [Match with HTTP status](chapter_15_Python_PyTest/ex_07_Match/48.py) | Matching multiple values (`200 \| 201`) and `_` default |
+| [Match with tuples](chapter_15_Python_PyTest/ex_07_Match/49_multiple.py) | Destructuring tuples: origin, X-axis, Y-axis, point |
+
+### For Loops
+
+| Example | Topic |
+|---|---|
+| [For loop basics](chapter_15_Python_PyTest/ex_08_Loops/50_Loop.py) | `range(start, stop, step)` with a custom step |
+| [For loop variants](chapter_15_Python_PyTest/ex_08_Loops/51_For_Variants.py) | Iterating with `range(3, 5)` |
+| [For loop with step](chapter_15_Python_PyTest/ex_08_Loops/52_Loop2.py) | `range(0, 10, 1)` — 0 through 9 |
+| [For loop default range](chapter_15_Python_PyTest/ex_08_Loops/53_For_Negative.py) | `range(10)` — single-argument form, 0 through 9 |
+| [For loop test IDs](chapter_15_Python_PyTest/ex_08_Loops/54_Test.py) | Simulating QA test execution with `range(1, 6)` |
+| [For with if inside](chapter_15_Python_PyTest/ex_09_While_Loop/57_IQ.py) | `if` inside a loop — printing "Five" at `i == 5` |
+| [break statement](chapter_15_Python_PyTest/ex_09_While_Loop/58_IQ1.py) | Stop the loop early with `break` |
+| [continue statement](chapter_15_Python_PyTest/ex_09_While_Loop/59_IQ1.py) | Skip an iteration with `continue` |
+| [Nested for loops](chapter_15_Python_PyTest/ex_09_While_Loop/60_Loop.py) | Loop inside a loop — printing `(i, j)` pairs |
+| [Loop with break/else](chapter_15_Python_PyTest/ex_09_While_Loop/61_Misc.py) | `break` and `else` behavior in loops |
+| [pass statement](chapter_15_Python_PyTest/ex_09_While_Loop/62_Pass.py) | `pass` — do-nothing placeholder in a loop |
+| [Even numbers](chapter_15_Python_PyTest/ex_09_While_Loop/63_Even.py) | Printing even numbers using `%` |
+| [Odd numbers](chapter_15_Python_PyTest/ex_09_While_Loop/64_Odd.py) | Printing odd numbers with `continue` |
+
+### While Loops
+
+| Example | Topic |
+|---|---|
+| [While loop](chapter_15_Python_PyTest/ex_09_While_Loop/55_While.py) | `while` with a counter and `+=` increment |
+| [While loop test IDs](chapter_15_Python_PyTest/ex_09_While_Loop/56_While1.py) | Running test cases with a `while` counter |
+
+### Functions
+
+| Example | Topic |
+|---|---|
+| [Define and call](chapter_15_Python_PyTest/ex_10_Functions/64_Fn.py) | Creating a function with `def` and calling it |
 
 ## Overall Notes
 
