@@ -472,6 +472,11 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 | Example | Topic |
 |---|---|
 | [Define and call](chapter_15_Python_PyTest/ex_10_Functions/64_Fn.py) | Creating a function with `def` and calling it |
+| [Function introduction](chapter_15_Python_PyTest/ex_10_Functions/65_Fn.py) | Reusable code, built-in functions, user-defined functions, and user input |
+| [No parameters and no return](chapter_15_Python_PyTest/ex_10_Functions/66_Mul.fn.py) | Defining and calling a `greet()` function that only prints output |
+| [Parameters and arguments](chapter_15_Python_PyTest/ex_10_Functions/67_Arg_Para.Fn.py) | Passing string and numeric values to a function parameter |
+| [No return type example](chapter_15_Python_PyTest/ex_10_Functions/68_Type1.py) | Function classification with no return value and no arguments |
+| [Returning a value](chapter_15_Python_PyTest/ex_10_Functions/69_Type2.py) | Returning text from a function and storing it in a variable |
 
 ## Overall Notes
 
