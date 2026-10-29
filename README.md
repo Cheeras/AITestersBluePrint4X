@@ -477,6 +477,24 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 | [Parameters and arguments](chapter_15_Python_PyTest/ex_10_Functions/67_Arg_Para.Fn.py) | Passing string and numeric values to a function parameter |
 | [No return type example](chapter_15_Python_PyTest/ex_10_Functions/68_Type1.py) | Function classification with no return value and no arguments |
 | [Returning a value](chapter_15_Python_PyTest/ex_10_Functions/69_Type2.py) | Returning text from a function and storing it in a variable |
+| [Argument without return](chapter_15_Python_PyTest/ex_10_Functions/70_Type3.py) | Adding two arguments without returning the result |
+| [Argument with return](chapter_15_Python_PyTest/ex_10_Functions/71_Type4.py) | Returning the sum of three arguments |
+| [Default parameter](chapter_15_Python_PyTest/ex_10_Functions/72_Default.Fn.py) | Using a default value when an argument is omitted |
+| [Multiple return values](chapter_15_Python_PyTest/ex_10_Functions/73_Fn_Mul_Return.py) | Returning and unpacking sum, difference, and multiplication results |
+| [Keyword arguments](chapter_15_Python_PyTest/ex_10_Functions/74_Fn_Keyword_arg.py) | Passing arguments by parameter name regardless of argument order |
+| [Input through a function](chapter_15_Python_PyTest/ex_10_Functions/75_UI.Fn.py) | Passing user-entered text to a function |
+| [Function combinations](chapter_15_Python_PyTest/ex_10_Functions/76_AllFn.py) | Built-in functions, default arguments, multiple parameters, and return values |
+| [Default function values](chapter_15_Python_PyTest/ex_10_Functions/77_IQ.py) | Calling a function with no arguments, positional arguments, and keyword arguments |
+| [Variable-length arguments](chapter_15_Python_PyTest/ex_10_Functions/78_Infinite_Arg.py) | Accepting and iterating over multiple arguments with `*args` |
+| [Pizza toppings with `*args`](chapter_15_Python_PyTest/ex_10_Functions/79_Ex.py) | Creating a reusable function that accepts variable pizza toppings |
+
+### Global and Nested Functions
+
+| Example | Topic |
+|---|---|
+| [Local and global scope](chapter_15_Python_PyTest/ex_11_Functions_Global/80_Fn.py) | Accessing a global variable and a function-local variable |
+| [Public and private scope](chapter_15_Python_PyTest/ex_11_Functions_Global/81_ScopeFn.py) | Function and module scope, demonstrated with public and private terminology |
+| [Nested functions](chapter_15_Python_PyTest/ex_11_Functions_Global/82_Nested_Fn.py) | Defining inner functions, variable shadowing, and closure-style scope |
 
 ## Overall Notes
 
