@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELI5: Lambda Expressions in Python 🐍</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f6f8fa;
+    --card: #ffffff;
+    --text: #1f2328;
+    --muted: #656d76;
+    --accent: #3572A5;   /* python blue */
+    --accent2: #FFD43B;  /* python yellow */
+    --border: #d0d7de;
+    --code-bg: #0d1117;
+    --code-text: #e6edf3;
+    --good: #1a7f37;
+    --bad: #cf222e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1117;
+      --bg-soft: #161b22;
+      --card: #161b22;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --border: #30363d;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 2rem 1rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  header.hero {
+    text-align: center;
+    padding: 2.5rem 1rem 2rem;
+    background: linear-gradient(135deg, var(--accent) 0%, #2f6f9e 55%, var(--accent2) 130%);
+    border-radius: 16px;
+    color: #fff;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,.15);
+  }
+  header.hero h1 { font-size: 2.2rem; letter-spacing: -.5px; }
+  header.hero p { opacity: .95; margin-top: .5rem; font-size: 1.05rem; }
+  .badge {
+    display: inline-block; background: rgba(255,255,255,.2);
+    border: 1px solid rgba(255,255,255,.4);
+    padding: .2rem .8rem; border-radius: 999px; font-size: .8rem;
+    margin-top: .8rem;
+  }
+  h2 {
+    margin: 2.2rem 0 1rem;
+    font-size: 1.45rem;
+    padding-bottom: .4rem;
+    border-bottom: 3px solid var(--accent2);
+    display: inline-block;
+  }
+  h3 { margin: 1.4rem 0 .6rem; font-size: 1.1rem; }
+  p { margin-bottom: .9rem; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .story {
+    border-left: 5px solid var(--accent2);
+  }
+  .analogy {
+    border-left: 5px solid var(--accent);
+    background: var(--bg-soft);
+  }
+  .tip {
+    border-left: 5px solid var(--good);
+    background: rgba(26,127,55,.07);
+  }
+  .warn {
+    border-left: 5px solid var(--bad);
+    background: rgba(207,34,46,.06);
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    overflow-x: auto;
+    font-size: .92rem;
+    font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+    position: relative;
+    margin: .8rem 0;
+  }
+  pre .kw { color: #ff7b72; }
+  pre .fn { color: #d2a8ff; }
+  pre .st { color: #a5d6ff; }
+  pre .cm { color: #8b949e; font-style: italic; }
+  pre .nm { color: #79c0ff; }
+  pre .op { color: #ffa657; }
+  pre .out { color: #3fb950; }
+  .copy-btn {
+    position: absolute; top: .5rem; right: .5rem;
+    background: rgba(255,255,255,.08); color: var(--code-text);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 6px; padding: .2rem .6rem; font-size: .75rem;
+    cursor: pointer; opacity: 0; transition: opacity .2s;
+  }
+  pre:hover .copy-btn { opacity: 1; }
+  .copy-btn:hover { background: rgba(255,255,255,.2); }
+  table {
+    width: 100%; border-collapse: collapse; margin: 1rem 0;
+    font-size: .95rem;
+  }
+  th, td { border: 1px solid var(--border); padding: .65rem .9rem; text-align: left; }
+  th { background: var(--bg-soft); }
+  .tag { font-weight: 600; }
+  .tag.yes { color: var(--good); }
+  .tag.no { color: var(--bad); }
+  ul, ol { padding-left: 1.4rem; margin-bottom: .9rem; }
+  li { margin-bottom: .35rem; }
+  .footer {
+    text-align: center; margin-top: 3rem;
+    color: var(--muted); font-size: .85rem;
+  }
+  details {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .8rem 1rem;
+    margin: .8rem 0;
+    background: var(--bg-soft);
+  }
+  details summary { cursor: pointer; font-weight: 600; }
+  @media print {
+    .copy-btn { display: none; }
+    body { padding: 0; }
+    pre { white-space: pre-wrap; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>🐍 ELI5: Lambda Expressions in Python</h1>
+  <p>Explain Like I'm 5 — the "sticky note" guide to one-line functions</p>
+  <span class="badge">Beginner friendly · No jargon · With examples</span>
+</header>
+
+<!-- ================= STORY ================= -->
+<h2>📖 The Story</h2>
+<div class="card story">
+  <p>Imagine you have a big <strong>cookbook</strong> with full recipes. Every recipe has a name, ingredients, and step-by-step instructions. That's a normal Python function — you write it once, give it a name, and reuse it forever.</p>
+  <p>Now imagine you're baking and just need a quick note: <em>"double the sugar"</em>. You don't write a whole recipe page — you scribble <code>x → x × 2</code> on a <strong>sticky note</strong> and throw it away when done.</p>
+  <p><strong>A lambda is that sticky note.</strong> 🗒️ A tiny, nameless, one-line function you use right there — and then forget about.</p>
+</div>
+
+<!-- ================= BASICS ================= -->
+<h2>🔤 The Basics</h2>
+<div class="card">
+  <p>A <code>lambda</code> is a compact, <strong>anonymous, single-expression function</strong>. It's sugar for when you need a throwaway function to pass to another function.</p>
+  <pre><code><span class="cm"># 👶 Step 1: A normal function (the "cookbook recipe")</span>
+<span class="kw">def</span> <span class="fn">double</span>(x):
+    <span class="kw">return</span> x * <span class="nm">2</span>
+
+<span class="fn">print</span>(<span class="fn">double</span>(<span class="nm">4</span>))   <span class="cm"># ➡️ 8</span></code><button class="copy-btn">Copy</button></pre>
+  <pre><code><span class="cm"># 👦 Step 2: Same thing as a lambda (the "sticky note")</span>
+double = <span class="kw">lambda</span> x: x * <span class="nm">2</span>
+
+<span class="fn">print</span>(double(<span class="nm">4</span>))   <span class="cm"># ➡️ 8</span></code><button class="copy-btn">Copy</button></pre>
+  <p>Structure: <code>lambda</code> → arguments (<code>x</code>) → colon → <strong>one expression</strong> (<code>x * 2</code>). The expression is <em>implicitly returned</em> — no <code>return</code> keyword needed.</p>
+</div>
+
+<!-- ================= REAL USE ================= -->
+<h2>⚡ Where Lambdas REALLY Shine</h2>
+<div class="card">
+  <p>You rarely assign a lambda to a name (if you do, just use <code>def</code>!). They earn their keep when passed <strong>inline</strong> to higher-order functions:</p>
+  <pre><code>people = [
+    {<span class="st">"name"</span>: <span class="st">"Ali"</span>, <span class="st">"age"</span>: <span class="nm">25</span>},
+    {<span class="st">"name"</span>: <span class="st">"Bob"</span>, <span class="st">"age"</span>: <span class="nm">19</span>},
+    {<span class="st">"name"</span>: <span class="st">"Cat"</span>, <span class="st">"age"</span>: <span class="nm">30</span>},
+]
+
+<span class="cm"># The long way — write a helper function</span>
+<span class="kw">def</span> <span class="fn">get_age</span>(person):
+    <span class="kw">return</span> person[<span class="st">"age"</span>]
+
+people.sort(key=get_age)
+
+<span class="cm"># The sticky-note way — one line, no helper needed</span>
+people.sort(key=<span class="kw">lambda</span> p: p[<span class="st">"age"</span>])
+
+<span class="out"># Result: sorted by age
+# [{'name': 'Bob', 'age': 19}, {'name': 'Ali', 'age': 25}, {'name': 'Cat', 'age': 30}]</span></code><button class="copy-btn">Copy</button></pre>
+</div>
+
+<div class="card analogy">
+  <h3>🎯 More one-liner examples</h3>
+  <pre><code><span class="cm"># Transform every item: map</span>
+ages = <span class="fn">list</span>(<span class="fn">map</span>(<span class="kw">lambda</span> u: u[<span class="st">"age"</span>], people))
+<span class="cm"># ➡️ [25, 19, 30]</span>
+
+<span class="cm"># Keep only adults: filter</span>
+adults = <span class="fn">list</span>(<span class="fn">filter</span>(<span class="kw">lambda</span> u: u[<span class="st">"age"</span>] &gt;= <span class="nm">18</span>, people))
+<span class="cm"># ➡️ all three are 18+</span>
+
+<span class="cm"># Find the max with a custom rule</span>
+oldest = <span class="fn">max</span>(people, key=<span class="kw">lambda</span> u: u[<span class="st">"age"</span>])
+<span class="cm"># ➡️ {'name': 'Cat', 'age': 30}</span>
+
+<span class="cm"># Sort strings ignoring case</span>
+words = [<span class="st">"Banana"</span>, <span class="st">"apple"</span>, <span class="st">"Cherry"</span>]
+words.sort(key=<span class="kw">lambda</span> w: w.lower())
+<span class="cm"># ➡️ ['apple', 'Banana', 'Cherry']</span></code><button class="copy-btn">Copy</button></pre>
+</div>
+
+<!-- ================= COMPARISON ================= -->
+<h2>⚖️ Lambda vs <code>def</code></h2>
+<table>
+  <tr><th></th><th><code>def</code> function</th><th><code>lambda</code></th></tr>
+  <tr><td>Name</td><td class="tag yes">✅ Has one</td><td class="tag no">❌ Anonymous</td></tr>
+  <tr><td>Lines</td><td>Many (docstring, statements)</td><td class="tag">Exactly 1 expression</td></tr>
+  <tr><td><code>return</code></td><td>Explicit</td><td>Implicit</td></tr>
+  <tr><td>Reuse</td><td>Anywhere, anytime</td><td>Best as a one-shot argument</td></tr>
+  <tr><td>Debugging</td><td>Shows name in tracebacks</td><td>Shows <code>&lt;lambda&gt;</code></td></tr>
+</table>
+
+<!-- ================= RULES ================= -->
+<h2>✅ When to Use a Lambda</h2>
+<div class="card tip">
+  <ul>
+    <li>✔️ Logic fits on <strong>ONE line</strong></li>
+    <li>✔️ Used <strong>only ONCE</strong></li>
+  </ul>
+</div>
+<h2>❌ When NOT to</h2>
+<div class="card warn">
+  <ul>
+    <li>✖️ Complex logic → use a proper <code>def</code></li>
+    <li>✖️ Reused everywhere → use a proper <code>def</code></li>
+    <li>✖️ You can't read it in 2 seconds → it's too clever</li>
+  </ul>
+  <p><strong>Golden rule:</strong> <em>Clarity beats cleverness.</em></p>
+</div>
+
+<!-- ================= WATCH OUTS ================= -->
+<h2>⚠️ Watch-outs</h2>
+<details open>
+  <summary>1. One expression only — no blocks</summary>
+  <p>No <code>if/else</code> blocks, loops, or multiple statements. But a <strong>ternary</strong> is OK:</p>
+  <pre><code>abs_val = <span class="kw">lambda</span> x: x <span class="kw">if</span> x &gt; <span class="nm">0</span> <span class="kw">else</span> -x   <span class="cm"># ✅</span></code><button class="copy-btn">Copy</button></pre>
+</details>
+<details>
+  <summary>2. Don't overuse it</summary>
+  <p>A lambda packed with a week's worth of logic is an anti-pattern. Name it properly with <code>def</code>.</p>
+</details>
+<details>
+  <summary>3. Hard to test in isolation</summary>
+  <p>Anonymous means no name to call in your test suite. For testable logic, prefer <code>def</code>.</p>
+</details>
+
+<!-- ================= TESTER ANGLE ================= -->
+<h2>🧪 Why This Matters for QA / Automation Testers</h2>
+<div class="card">
+  <p>Lambdas show up everywhere in testing:</p>
+  <ul>
+    <li>💡 Sorting/filtering API response payloads: <code>max(data, key=lambda x: x["price"])</code></li>
+    <li>💡 Quick transforms inside pytest parametrize data</li>
+    <li>💡 Reading any framework or open-source code (they're everywhere!)</li>
+  </ul>
+</div>
+
+<!-- ================= SUMMARY ================= -->
+<h2>🎓 TL;DR</h2>
+<div class="card">
+  <p>A <strong>lambda</strong> = a nameless, one-line, throwaway function.</p>
+  <p>Use it when the logic fits on one line and is used once. Otherwise, write a proper <code>def</code>.</p>
+  <p style="margin-top: .8rem;">🗒️ <em>"Sticky note, not cookbook."</em></p>
+</div>
+
+<div class="footer">
+  Made with 🐍 for QA engineers learning Python · ELI5 skill guide · Save / print this page to keep it 📥
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const code = btn.parentElement.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => (btn.textContent = 'Copy'), 1500);
+      });
+    });
+  });
+</script>
+</body>
+</html>

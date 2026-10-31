@@ -358,6 +358,31 @@ Open **http://localhost:7860** in your browser.
 6. Configure Groq with your API key and select a model
 7. Click **Playground** and start chatting
 
+## Chapter 10: RAG (Retrieval-Augmented Generation)
+
+Foundational notes on Retrieval-Augmented Generation — the technique that grounds LLM responses in external knowledge to reduce hallucination and enable private-data queries.
+
+| File | Description |
+|---|---|
+| [RAG Notes](chapter_10_RAG/RAGNotes.md) | Core RAG concepts and architecture overview |
+| [RAG Understanding (Raw)](chapter_10_RAG/RAGUnderstandingRaw.md) | Raw notes covering the problem RAG solves — knowledge cut-off, hallucination, and private-data access |
+| [RAG Understanding Diagram](chapter_10_RAG/RAGUnderstaning.png) | Visual diagram of the RAG workflow |
+
+### What RAG Solves
+
+Large Language Models (GPT, Claude, Gemini, Llama, DeepSeek, etc.) have three critical limitations that RAG addresses:
+
+- **Knowledge Cut-Off** — LLMs only know data up to their training date
+- **Hallucination** — LLMs may confidently generate plausible but incorrect information
+- **No Access to Private Data** — LLMs cannot reach internal documents, databases, JIRA tickets, or proprietary knowledge bases
+
+RAG bridges these gaps by retrieving relevant documents from a knowledge base and injecting them into the LLM prompt at inference time.
+
+## Chapter 12: RAG QA Buddy AI (Todo)
+
+> 🚧 *Placeholder — coming soon.*  
+> This chapter will explore building a RAG-powered QA assistant that answers testing questions using a curated knowledge base of notes, prompts, and project documentation.
+
 ## Chapter 15: Python and PyTest
 
 Beginner-friendly Python examples introduce programming fundamentals that are useful when learning test automation with PyTest.
@@ -495,6 +520,21 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 | [Local and global scope](chapter_15_Python_PyTest/ex_11_Functions_Global/80_Fn.py) | Accessing a global variable and a function-local variable |
 | [Public and private scope](chapter_15_Python_PyTest/ex_11_Functions_Global/81_ScopeFn.py) | Function and module scope, demonstrated with public and private terminology |
 | [Nested functions](chapter_15_Python_PyTest/ex_11_Functions_Global/82_Nested_Fn.py) | Defining inner functions, variable shadowing, and closure-style scope |
+
+### Decorators
+
+| Example | Topic |
+|---|---|
+| [Basic decorator](chapter_15_Python_PyTest/ex_12_Decorator/83_Deco.py) | Defining a decorator function and applying it with `@` syntax |
+| [Timing decorator](chapter_15_Python_PyTest/ex_12_Decorator/87_Time_log.py) | Decorator that measures and logs function execution time using `time.sleep()` |
+
+### Lambda Expressions — ELI5 Guide
+
+A beginner-friendly, dark-mode-ready HTML guide that explains lambda (anonymous) functions in Python using plain-English analogies, code snippets, and interactive examples.
+
+| File | Description |
+|---|---|
+| [Lambda ELI5 Guide](chapter_15_Python_PyTest/Lambda_ELI5_Guide.html) | Standalone HTML page — open in any browser for a visual, story-driven introduction to lambdas |
 
 ## Overall Notes
 
