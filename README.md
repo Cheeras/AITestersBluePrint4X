@@ -358,15 +358,15 @@ Open **http://localhost:7860** in your browser.
 6. Configure Groq with your API key and select a model
 7. Click **Playground** and start chatting
 
-## Chapter 10: RAG (Retrieval-Augmented Generation)
+## Chapter 10: RAG Basics (Retrieval-Augmented Generation)
 
 Foundational notes on Retrieval-Augmented Generation — the technique that grounds LLM responses in external knowledge to reduce hallucination and enable private-data queries.
 
 | File | Description |
 |---|---|
-| [RAG Notes](chapter_10_RAG/RAGNotes.md) | Core RAG concepts and architecture overview |
-| [RAG Understanding (Raw)](chapter_10_RAG/RAGUnderstandingRaw.md) | Raw notes covering the problem RAG solves — knowledge cut-off, hallucination, and private-data access |
-| [RAG Understanding Diagram](chapter_10_RAG/RAGUnderstaning.png) | Visual diagram of the RAG workflow |
+| [RAG Notes](chapter_10_RAG_Basics/RAGNotes.md) | Core RAG concepts and architecture overview |
+| [RAG Understanding (Raw)](chapter_10_RAG_Basics/RAGUnderstandingRaw.md) | Raw notes covering the problem RAG solves — knowledge cut-off, hallucination, and private-data access |
+| [RAG Understanding Diagram](chapter_10_RAG_Basics/RAGUnderstaning.png) | Visual diagram of the RAG workflow |
 
 ### What RAG Solves
 
@@ -378,10 +378,25 @@ Large Language Models (GPT, Claude, Gemini, Llama, DeepSeek, etc.) have three cr
 
 RAG bridges these gaps by retrieving relevant documents from a knowledge base and injecting them into the LLM prompt at inference time.
 
+## Chapter 11: RAG Implementation (Todo)
+
+> 🚧 *Placeholder — coming soon.*  
+> This chapter will implement a complete RAG pipeline — chunking documents, generating embeddings, storing them in a vector database, and retrieving relevant context for LLM queries.
+
 ## Chapter 12: RAG QA Buddy AI (Todo)
 
 > 🚧 *Placeholder — coming soon.*  
 > This chapter will explore building a RAG-powered QA assistant that answers testing questions using a curated knowledge base of notes, prompts, and project documentation.
+
+## Chapter 13: MCP Basics (Todo)
+
+> 🚧 *Placeholder — coming soon.*  
+> This chapter will cover the Model Context Protocol (MCP) — an open standard for connecting LLMs to external tools, data sources, and services.
+
+## Chapter 14: MCP — Create VIDE (Todo)
+
+> 🚧 *Placeholder — coming soon.*  
+> This chapter will walk through creating a custom MCP server (VIDE) and integrating it with AI agents for testing workflows.
 
 ## Chapter 15: Python and PyTest
 
@@ -525,8 +540,8 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 
 | Example | Topic |
 |---|---|
-| [Basic decorator](chapter_15_Python_PyTest/ex_12_Decorator/83_Deco.py) | Defining a decorator function and applying it with `@` syntax |
-| [Timing decorator](chapter_15_Python_PyTest/ex_12_Decorator/87_Time_log.py) | Decorator that measures and logs function execution time using `time.sleep()` |
+| [Basic decorator](chapter_15_Python_PyTest/ex_12_Decorator_TypeConversion/83_Deco.py) | Defining a decorator function and applying it with `@` syntax |
+| [Decorator implementation](chapter_15_Python_PyTest/ex_12_Decorator_TypeConversion/84_Deco_Impl.py) | Full decorator pattern — wrapper function, `@` syntax, and before/after execution flow |
 
 ### Lambda Expressions — ELI5 Guide
 
@@ -535,6 +550,36 @@ A beginner-friendly, dark-mode-ready HTML guide that explains lambda (anonymous)
 | File | Description |
 |---|---|
 | [Lambda ELI5 Guide](chapter_15_Python_PyTest/Lambda_ELI5_Guide.html) | Standalone HTML page — open in any browser for a visual, story-driven introduction to lambdas |
+
+### List and Tuple
+
+| Example | Topic |
+|---|---|
+| [.gitkeep](chapter_15_Python_PyTest/ex_14_List_Tuple/.gitkeep) | Placeholder — examples coming soon |
+
+### Set
+
+| Example | Topic |
+|---|---|
+| [.gitkeep](chapter_15_Python_PyTest/ex_15_SET/.gitkeep) | Placeholder — examples coming soon |
+
+### Map and Filter
+
+| Example | Topic |
+|---|---|
+| [.gitkeep](chapter_15_Python_PyTest/ex_16_MapAndFilter/.gitkeep) | Placeholder — examples coming soon |
+
+### Dictionary
+
+| Example | Topic |
+|---|---|
+| [.gitkeep](chapter_15_Python_PyTest/ex_17_Dictionary/.gitkeep) | Placeholder — examples coming soon |
+
+### Object-Oriented Programming (OOPs)
+
+| Example | Topic |
+|---|---|
+| [Basic class](chapter_15_Python_PyTest/ex_18_OOPS_Python/01_Class_Python/121_OOps.py) | Defining a simple Python class and creating objects |
 
 ## Overall Notes
 
