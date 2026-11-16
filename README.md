@@ -542,26 +542,47 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 |---|---|
 | [Basic decorator](chapter_15_Python_PyTest/ex_12_Decorator_TypeConversion/83_Deco.py) | Defining a decorator function and applying it with `@` syntax |
 | [Decorator implementation](chapter_15_Python_PyTest/ex_12_Decorator_TypeConversion/84_Deco_Impl.py) | Full decorator pattern — wrapper function, `@` syntax, and before/after execution flow |
+| [Decorator fix](chapter_15_Python_PyTest/ex_12_Decorator_TypeConversion/85_Dec_New.py) | Fixed decorator — `return wrapper` at correct indentation level |
+| [Without decorator](chapter_15_Python_PyTest/ex_12_Decorator_TypeConversion/86_No_Decp.py) | Manual before/after function calls without decorator syntax |
+| [Timing decorator](chapter_15_Python_PyTest/ex_12_Decorator_TypeConversion/87_Time_log.py) | Decorator that measures and logs function execution time using `time.time()` |
+| [Multiple decorators](chapter_15_Python_PyTest/ex_12_Decorator_TypeConversion/88_Multip_Decor.py) | Stacking multiple `@decorator1` / `@decorator2` on one function |
+| [Type conversion](chapter_15_Python_PyTest/ex_12_Decorator_TypeConversion/89_TypeConversion.py) | Using `int()`, `str()`, `float()`, `bool()`, `list()`, `tuple()`, `set()`, `dict()` |
 
-### Lambda Expressions — ELI5 Guide
-
-A beginner-friendly, dark-mode-ready HTML guide that explains lambda (anonymous) functions in Python using plain-English analogies, code snippets, and interactive examples.
+### Lambda Expressions
 
 | File | Description |
 |---|---|
-| [Lambda ELI5 Guide](chapter_15_Python_PyTest/Lambda_ELI5_Guide.html) | Standalone HTML page — open in any browser for a visual, story-driven introduction to lambdas |
+| [Lambda Guide](chapter_15_Python_PyTest/ex_13_Lambda_Exp/LambdaGuide.md) | Complete beginner-to-advanced guide — syntax, vs normal functions, map/filter/sorted, ternary, best practices, and common pitfalls |
+| [Lambda Automation Use Cases](chapter_15_Python_PyTest/ex_13_Lambda_Exp/Lambda_Automation_UseCases.md) | Real-world lambda patterns in Playwright, Selenium, and API testing — sorting, filtering, transforming test data, dynamic assertions, and best practices |
+| [Lambda ELI5 Guide](chapter_15_Python_PyTest/Lambda_ELI5_Guide.html) | Standalone dark-mode HTML page — visual, story-driven introduction to lambdas |
+| [Lambda basics](chapter_15_Python_PyTest/ex_13_Lambda_Exp/90_Lambda.py) | Basic lambda — triple and double number examples |
+| [Lambda with multiple args](chapter_15_Python_PyTest/ex_13_Lambda_Exp/91_Ex.py) | Lambda with 2 and 3 arguments — multiply and sum |
+| [Lambda with user input](chapter_15_Python_PyTest/ex_13_Lambda_Exp/92_UI_Lambda.py) | Lambda with `input()` — check even/odd using ternary |
 
 ### List and Tuple
 
 | Example | Topic |
 |---|---|
-| [.gitkeep](chapter_15_Python_PyTest/ex_14_List_Tuple/.gitkeep) | Placeholder — examples coming soon |
+| [List vs Tuple Guide](chapter_15_Python_PyTest/ex_14_List_Tuple/ListvsTuple.md) | Detailed comparison — mutability, performance, layman analogy, and real-world use cases |
+| [List basics](chapter_15_Python_PyTest/ex_14_List_Tuple/93_List.py) | Creating lists, indexing, `type()`, `len()` |
+| [List modification](chapter_15_Python_PyTest/ex_14_List_Tuple/94_List_IQ.py) | Modifying list elements by index, iterating with `for` and `range()` |
+| [List append](chapter_15_Python_PyTest/ex_14_List_Tuple/95_LIst_All_Fn.py) | Indexing and `append()` to grow a list |
+| [List pop & clear](chapter_15_Python_PyTest/ex_14_List_Tuple/96_List_Ex.py) | `pop()` — remove by index, `clear()` — empty the list |
+| [List methods & nested](chapter_15_Python_PyTest/ex_14_List_Tuple/97_IQ.py) | `index()`, `count()`, nested lists (matrix), `max()`/`min()`/`sum()` |
+| [Tuple basics](chapter_15_Python_PyTest/ex_14_List_Tuple/98_Tuple.py) | Creating tuples, immutability (error on assignment) |
+| [Tuple with mixed types](chapter_15_Python_PyTest/ex_14_List_Tuple/99_Mix_Tuple.py) | Tuple with int, str, bool, float; single-element tuple syntax |
+| [List & Tuple examples](chapter_15_Python_PyTest/ex_14_List_Tuple/100_LIST_TUTPLE.py) | API URLs as tuple, converting tuple to list |
+| [Tuple conversion](chapter_15_Python_PyTest/ex_14_List_Tuple/101_Tuple.py) | Shopping list tuple, converting tuple to list for modification |
+| [Tuple iteration](chapter_15_Python_PyTest/ex_14_List_Tuple/102_Example.py) | `len()`, `in` operator, tuple from list, iterating with `for` |
 
 ### Set
 
 | Example | Topic |
 |---|---|
-| [.gitkeep](chapter_15_Python_PyTest/ex_15_SET/.gitkeep) | Placeholder — examples coming soon |
+| [Set basics](chapter_15_Python_PyTest/ex_15_SET/103_SET.py) | Creating sets, duplicate elimination |
+| [Set from list](chapter_15_Python_PyTest/ex_15_SET/104_SET.py) | Converting a list to a set to remove duplicates |
+| [Set with mixed types](chapter_15_Python_PyTest/ex_15_SET/105_IQ.py) | Set with int, string, bool, float — `True` vs `1` deduplication |
+| [Set union & interactions](chapter_15_Python_PyTest/ex_15_SET/106_SET_UNION_Interactions.py.py) | Set operations — union, intersection, difference |
 
 ### Map and Filter
 
