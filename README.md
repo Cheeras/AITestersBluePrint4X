@@ -582,25 +582,39 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 | [Set basics](chapter_15_Python_PyTest/ex_15_SET/103_SET.py) | Creating sets, duplicate elimination |
 | [Set from list](chapter_15_Python_PyTest/ex_15_SET/104_SET.py) | Converting a list to a set to remove duplicates |
 | [Set with mixed types](chapter_15_Python_PyTest/ex_15_SET/105_IQ.py) | Set with int, string, bool, float — `True` vs `1` deduplication |
-| [Set union & interactions](chapter_15_Python_PyTest/ex_15_SET/106_SET_UNION_Interactions.py.py) | Set operations — union, intersection, difference |
+| [Set union & interactions](chapter_15_Python_PyTest/ex_15_SET/106_SET_UNION_Interactions.py) | Set operations — union, intersection, difference |
+| [Set iteration](chapter_15_Python_PyTest/ex_15_SET/107_IQ.py) | Creating a set from a list, iterating with `for` |
+| [Set comprehension](chapter_15_Python_PyTest/ex_15_SET/108_IQ.py) | Set comprehension — `{x ** 2 for x in range(5)}` |
+| [Frozen set](chapter_15_Python_PyTest/ex_15_SET/109_FrozenSET.py) | `frozenset` — immutable set, why `add()` fails |
+| [Union Guide](chapter_15_Python_PyTest/ex_15_SET/UnionGuide.md) | Complete reference — operators vs methods, in-place operations, real-world test automation examples |
 
 ### Map and Filter
 
 | Example | Topic |
 |---|---|
-| [.gitkeep](chapter_15_Python_PyTest/ex_16_MapAndFilter/.gitkeep) | Placeholder — examples coming soon |
+| [Map basics](chapter_15_Python_PyTest/ex_16_MapAndFilter/110_Map.py) | `map()` with a named function — square each number |
+| [Map with uppercase](chapter_15_Python_PyTest/ex_16_MapAndFilter/111_IQ.py) | `map()` to transform list of names to uppercase |
+| [Map with lambda](chapter_15_Python_PyTest/ex_16_MapAndFilter/112_IQ.py) | `map()` with lambda — convert ms to seconds |
+| [Filter basics](chapter_15_Python_PyTest/ex_16_MapAndFilter/113_Filter.py) | `filter()` with a named function — keep even numbers |
+| [Filter with lambda](chapter_15_Python_PyTest/ex_16_MapAndFilter/114_REAL.py) | `filter()` with lambda — find FAIL test results |
+| [Filter empty strings](chapter_15_Python_PyTest/ex_16_MapAndFilter/115_REAL_IQ.py) | `filter()` to remove empty strings from a list |
 
 ### Dictionary
 
 | Example | Topic |
 |---|---|
-| [.gitkeep](chapter_15_Python_PyTest/ex_17_Dictionary/.gitkeep) | Placeholder — examples coming soon |
+| [Dict basics](chapter_15_Python_PyTest/ex_17_Dictionary/116_Dict.py) | Creating dict, accessing/modifying values, `del`, iterating with `.items()`, `in` check |
+| [Dict student info](chapter_15_Python_PyTest/ex_17_Dictionary/117.py) | Simple dict — name, age, address; modifying values |
+| [Dict with nested data](chapter_15_Python_PyTest/ex_17_Dictionary/118_Dict_Multiple.py) | List of dicts with nested address dict — accessing nested values |
+| [Dict list of students](chapter_15_Python_PyTest/ex_17_Dictionary/119_Dict.py) | Three student dicts in a list — accessing nested office addresses |
+| [Dict from zip](chapter_15_Python_PyTest/ex_17_Dictionary/120_Dict.py) | Creating a dict from two lists using `dict(zip(keys, values))`, dict equality |
 
 ### Object-Oriented Programming (OOPs)
 
 | Example | Topic |
 |---|---|
-| [Basic class](chapter_15_Python_PyTest/ex_18_OOPS_Python/01_Class_Python/121_OOps.py) | Defining a simple Python class and creating objects |
+| [Basic class](chapter_15_Python_PyTest/ex_18_OOPS_Python/01_Class_Python/121_OOps.py) | Class with attributes and methods — `talk()`, `sleep()`, `walk()`, instance creation |
+| [Empty class](chapter_15_Python_PyTest/ex_18_OOPS_Python/01_Class_Python/122.py) | Minimal class structure — placeholder for future OOPs examples |
 
 ## Overall Notes
 
