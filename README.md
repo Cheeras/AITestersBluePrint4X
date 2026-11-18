@@ -611,10 +611,45 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 
 ### Object-Oriented Programming (OOPs)
 
+#### Class Basics & `self`
+
 | Example | Topic |
 |---|---|
 | [Basic class](chapter_15_Python_PyTest/ex_18_OOPS_Python/01_Class_Python/121_OOps.py) | Class with attributes and methods — `talk()`, `sleep()`, `walk()`, instance creation |
 | [Empty class](chapter_15_Python_PyTest/ex_18_OOPS_Python/01_Class_Python/122.py) | Minimal class structure — placeholder for future OOPs examples |
+| [Self Guide](chapter_15_Python_PyTest/ex_18_OOPS_Python/01_Class_Python/ClassSelfGuide.md) | Complete beginner's guide to understanding `self` in Python classes |
+
+#### Constructors
+
+| Example | Topic |
+|---|---|
+| [Constructor Guide](chapter_15_Python_PyTest/ex_18_OOPS_Python/02_Constructor/ConstructorGuide.md) | Complete beginner's guide to constructors — default, parameterized, and `__init__` |
+| [Default constructor](chapter_15_Python_PyTest/ex_18_OOPS_Python/02_Constructor/124_Cons.py) | Default constructor that prints a message on object creation |
+| [Create class](chapter_15_Python_PyTest/ex_18_OOPS_Python/02_Constructor/123_Create_class.py) | Basic class with method and manual attribute assignment |
+| [Car with constructor](chapter_15_Python_PyTest/ex_18_OOPS_Python/02_Constructor/125_Car.py) | Parameterized constructor — brand, color, year, model |
+| [Laptop (parameterized)](chapter_15_Python_PyTest/ex_18_OOPS_Python/02_Constructor/125_Laptop_withParameterisedconstructor.py) | Parameterized constructor with default `brand="Unknown"` |
+| [Laptop (default)](chapter_15_Python_PyTest/ex_18_OOPS_Python/02_Constructor/126_Laptop_withdefcon.py) | True default constructor — all values set to defaults, modified after creation |
+| [Book](chapter_15_Python_PyTest/ex_18_OOPS_Python/02_Constructor/127_Book.py) | Constructor that prints "Book is added!" on every object creation |
+| [Dog default](chapter_15_Python_PyTest/ex_18_OOPS_Python/02_Constructor/128_Default_Const.py) | Default constructor with class-level attributes |
+| [Dog parameterized](chapter_15_Python_PyTest/ex_18_OOPS_Python/02_Constructor/129_IQ.py) | Parameterized constructor — passing name at object creation |
+| [Person with user input](chapter_15_Python_PyTest/ex_18_OOPS_Python/02_Constructor/130_IQ.user_input.py) | Constructor that takes user input for name, age, phone, occupation |
+| [Baby](chapter_15_Python_PyTest/ex_18_OOPS_Python/02_Constructor/130_REAL.py) | Parameterized constructor — name passed and printed via method |
+| [Calculator](chapter_15_Python_PyTest/ex_18_OOPS_Python/02_Constructor/131_REAL_Example.py) | Calculator class with default constructor and methods for add, sub, mul, div |
+
+#### Instance, Local & Global Variables
+
+| Example | Topic |
+|---|---|
+| [Variables Guide](chapter_15_Python_PyTest/ex_18_OOPS_Python/03_Instance_Variables/Variables_Assignments.md) | Practice assignments on instance, local, and global variables with real-world scenarios |
+| [Instance variables](chapter_15_Python_PyTest/ex_18_OOPS_Python/03_Instance_Variables/132_IV.py) | Demonstrates global, class, instance, and local variable scope |
+| [Employee salary](chapter_15_Python_PyTest/ex_18_OOPS_Python/03_Instance_Variables/133_IV_Assignement1.py) | Global `companyName`, instance `salary`, local `bonus` — HR scenario |
+| [Shopping cart](chapter_15_Python_PyTest/ex_18_OOPS_Python/03_Instance_Variables/134_IV_Assignement2.py) | Global `tax_rate`, instance `items`, local `subtotal` — E-commerce scenario |
+
+#### Encapsulation
+
+| Example | Topic |
+|---|---|
+| [Normal class](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/135_Normal_Class.py) | Placeholder for encapsulation examples |
 
 ## Overall Notes
 
