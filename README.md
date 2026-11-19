@@ -649,7 +649,13 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 
 | Example | Topic |
 |---|---|
-| [Normal class](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/135_Normal_Class.py) | Placeholder for encapsulation examples |
+| [Normal class](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/135_Normal_Class.py) | Basic class with public attributes — Car example |
+| [Basic encapsulation](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/136_WEcap.py) | VWO login with hardcoded credentials — no access control |
+| [Secure with env vars](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/137_WEcap_Secure.py) | VWO login using `.env` for credentials — `os.getenv()`, `os.name` |
+| [Access modifiers intro](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/138_Ecap_Better.py) | Public, protected (`_`), and private (`__`) variable declaration |
+| [Access modifiers detailed](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/139_AccessModifiers_Detailed.py) | Full walkthrough of public, protected, private with inheritance demo |
+| [Bank account](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/140_Ecap.py) | Real-world bank class — public `balance`, private `account_number` with auth-gated access |
+| [Home family](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/141_REAL.py) | Family-themed encapsulation — public `father`, protected `brother`, private `baby` |
 
 ## Overall Notes
 
