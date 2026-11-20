@@ -497,3 +497,216 @@ Hybrid              class C(A, B): class A(P):      Complex framework needs
 3. **`issubclass(Child, Parent)`** — Check inheritance relationship
 4. **`ClassName.__mro__`** — See the Method Resolution Order (which class's method runs first)
 5. **Python follows MRO (C3 linearization)** — Left-to-right, depth-first, then parent
+
+---
+
+## 🏆 10 Practice Assignments (Easy → Medium → Hard)
+
+> **How to use:** Try each one yourself first. The difficulty increases as you go. Each assignment is a real enterprise-level scenario you'd actually face at work.
+
+### 🟢 EASY (Level 1–3)
+
+---
+
+#### Assignment 1: Employee Base Class (Single Inheritance)
+
+**Scenario:** An HR system needs to manage different types of employees. All employees share common info (name, ID, salary), but different roles have different duties.
+
+**Task:**
+1. Create a parent class `Employee` with `__init__(self, name, emp_id, salary)` and a method `work()` that prints `"{name} is working"`
+2. Create a child class `Developer(Employee)` with a method `code()` that prints `"{name} is writing code"`
+3. Create a child class `Manager(Employee)` with a method `review()` that prints `"{name} is reviewing the team"`
+4. Create one object of each and call both the inherited `work()` and their own method
+
+**Expected output:**
+```text
+Alice is working
+Alice is writing code
+Bob is working
+Bob is reviewing the team
+```
+
+---
+
+#### Assignment 2: Vehicle Showroom (Single Inheritance)
+
+**Scenario:** A car showroom sells different vehicle types. Every vehicle has a brand, model, and year. Cars can honk, bikes can wheelie.
+
+**Task:**
+1. Parent class `Vehicle` with `__init__(self, brand, model, year)` and `start()` printing `"{brand} {model} engine started"`
+2. Child `Car(Vehicle)` with `honk()` printing `"Beep beep!"`
+3. Child `Bike(Vehicle)` with `wheelie()` printing `"Doing a wheelie!"`
+4. Create a `Car("Toyota", "Camry", 2024)` and a `Bike("Yamaha", "R15", 2023)`, call all methods
+
+---
+
+#### Assignment 3: Zoo Animals (Single Inheritance)
+
+**Scenario:** A zoo management app tracks animals. All animals eat and sleep. Specific animals make specific sounds.
+
+**Task:**
+1. Parent `Animal` with `__init__(self, name)` and methods `eat()` → `"{name} is eating"`, `sleep()` → `"{name} is sleeping"`
+2. Child `Lion(Animal)` with `roar()` → `"{name} roars loudly!"`
+3. Child `Monkey(Animal)` with `climb()` → `"{name} climbs the tree!"`
+4. Create `Lion("Simba")` and `Monkey("George")`, call all methods
+
+---
+
+### 🟡 MEDIUM (Level 4–6)
+
+---
+
+#### Assignment 4: Test Automation Framework (Hierarchical Inheritance)
+
+**Scenario:** You're building a Selenium-style test framework. Every test needs to `setup()` (launch browser) and `teardown()` (close browser). Different test types run different tests.
+
+**Task:**
+1. Parent `BaseTest` with `__init__(self, browser)` storing browser, `setup()` printing `"Launching {browser} browser"`, `teardown()` printing `"Closing {browser} browser"`
+2. Child `LoginTest(BaseTest)` with `run_test()` that calls `setup()`, prints `"Running login test"`, then calls `teardown()`
+3. Child `SignupTest(BaseTest)` with `run_test()` that calls `setup()`, prints `"Running signup test"`, then calls `teardown()`
+4. Run both tests with different browsers (`"Chrome"`, `"Firefox"`)
+
+**Expected output:**
+```text
+Launching Chrome browser
+Running login test
+Closing Chrome browser
+Launching Firefox browser
+Running signup test
+Closing Firefox browser
+```
+
+---
+
+#### Assignment 5: Payment Gateway (Multiple Inheritance)
+
+**Scenario:** An e-commerce payment system. A payment needs both **fraud checking** (from one parent) and **tax calculation** (from another parent). A `CardPayment` needs both.
+
+**Task:**
+1. Parent `FraudCheck` with `check_fraud(self, amount)` printing `"Fraud check passed for ₹{amount}"`
+2. Parent `TaxCalculator` with `calculate_tax(self, amount)` printing `"Tax ₹{amount * 0.18}"`
+3. Child `CardPayment(FraudCheck, TaxCalculator)` with `pay(self, amount)` that calls both parent methods and prints `"Payment of ₹{amount} completed"`
+4. Create a `CardPayment` object, call `pay(5000)`
+
+**Expected output:**
+```text
+Fraud check passed for ₹5000
+Tax ₹900.0
+Payment of ₹5000 completed
+```
+
+---
+
+#### Assignment 6: Company Hierarchy (Multilevel Inheritance)
+
+**Scenario:** A company has a hierarchy: **CEO** → **Manager** → **Developer**. Each level inherits from the one above and adds its own responsibility.
+
+**Task:**
+1. `CEO` class with `__init__(self, name)` and `make_decisions()` → `"{name} (CEO) makes company decisions"`
+2. `Manager(CEO)` with `manage_team()` → `"{name} (Manager) manages the team"`
+3. `Developer(Manager)` with `write_code()` → `"{name} (Developer) writes code"`
+4. Create a `Developer("Rahul")` and call ALL THREE methods (inherited through the chain)
+
+**Expected output:**
+```text
+Rahul (CEO) makes company decisions
+Rahul (Manager) manages the team
+Rahul (Developer) writes code
+```
+
+---
+
+### 🔴 HARD (Level 7–10)
+
+---
+
+#### Assignment 7: E-Commerce Product Catalog (Hybrid Inheritance)
+
+**Scenario:** An online store has products. Some products are **physical** (need shipping), some are **digital** (need download link). A **subscription** product is BOTH physical (ships a welcome kit) AND digital (gives download access).
+
+**Task:**
+1. `Product` base with `__init__(self, name, price)` and `show_info()` → `"{name} - ₹{price}"`
+2. `PhysicalProduct(Product)` with `ship()` → `"Shipping {name} to your address"`
+3. `DigitalProduct(Product)` with `download()` → `"Download link sent for {name}"`
+4. `SubscriptionProduct(PhysicalProduct, DigitalProduct)` with `activate()` → `"Subscription activated for {name}"`
+5. Create a `SubscriptionProduct("Netflix Premium", 499)`, call `show_info()`, `ship()`, `download()`, `activate()` — all should work!
+
+**Hint:** This is hybrid because `SubscriptionProduct` inherits from two branches that both come from `Product`.
+
+---
+
+#### Assignment 8: Banking System with Access Control (Encapsulation + Inheritance)
+
+**Scenario:** A bank needs different account types. All accounts have a **private** account number that only authorized staff can see. Savings accounts add interest; Current accounts allow overdraft.
+
+**Task:**
+1. `BankAccount` with `__init__(self, account_number, balance)` — store `__account_number` as **private**, `balance` as **public**
+2. Method `show_balance()` → `"Balance: ₹{balance}"`
+3. Method `show_account_number(self, is_authorized)` — only prints the number if `is_authorized == True`, else prints `"Access denied"`
+4. `SavingsAccount(BankAccount)` with `add_interest()` → adds 4% to balance
+5. `CurrentAccount(BankAccount)` with `overdraft()` → prints `"Overdraft allowed up to ₹50000"`
+6. Test: create a savings account, deposit, add interest, show balance. Try accessing `__account_number` directly (should fail!) then via the authorized method
+
+**Challenge:** Prove that `__account_number` is truly private — show the `AttributeError` when accessed directly.
+
+---
+
+#### Assignment 9: Multi-Environment Test Runner (MRO Mastery)
+
+**Scenario:** A QA team runs tests on multiple environments. Different environments provide different capabilities. A `FullTestRunner` needs capabilities from BOTH `APITest` and `UITest`, but both define a `run()` method. You must control which one wins.
+
+**Task:**
+1. `APITest` with `run()` → `"Running API tests"` and `api_auth()` → `"API authenticated"`
+2. `UITest` with `run()` → `"Running UI tests"` and `ui_setup()` → `"UI browser launched"`
+3. `FullTestRunner(APITest, UITest)` — call `run()` and observe which parent wins (MRO!)
+4. Then create `FullTestRunner2(UITest, APITest)` — call `run()` again and see the order change
+5. Print `FullTestRunner.__mro__` and explain why the order matters
+
+**Expected learning:** The **leftmost parent** in the class definition wins when methods conflict. This is critical in real frameworks where you must control method resolution.
+
+---
+
+#### Assignment 10: Complete Test Automation Framework (Capstone — All Concepts)
+
+**Scenario:** Build a mini enterprise test framework combining EVERYTHING you learned: inheritance, encapsulation, MRO, and real-world structure.
+
+**Requirements:**
+1. `BaseTest` with:
+   - `__init__(self, browser, environment)` — browser and env stored
+   - `_log(self, message)` — **protected** method printing `"[LOG] {message}"`
+   - `setup()` → logs `"Launching {browser} on {environment}"`
+   - `teardown()` → logs `"Closing {browser}"`
+2. `APITest(BaseTest)` with `run()` → logs `"Running API tests"` (calls `setup()` first)
+3. `UITest(BaseTest)` with `run()` → logs `"Running UI tests"` (calls `setup()` first)
+4. `FullSuite(APITest, UITest)` — hybrid: inherits both, adds `execute()` that calls `setup()`, both `run()`s via `super()`, then `teardown()`
+5. Create `FullSuite("Chrome", "staging")` and run `execute()`
+6. Print the MRO of `FullSuite` and explain the resolution order
+
+**Bonus (hard):** Add a `__password` private attribute to `BaseTest` and a `login()` method that uses it. Prove it can't be accessed from `FullSuite`.
+
+**Expected output (roughly):**
+```text
+[LOG] Launching Chrome on staging
+[LOG] Running API tests
+[LOG] Running UI tests
+[LOG] Closing Chrome
+```
+
+---
+
+## ✅ Assignment Checklist
+
+| # | Difficulty | Concept | Status |
+|---|-----------|---------|--------|
+| 1 | 🟢 Easy | Single Inheritance — HR | ☐ |
+| 2 | 🟢 Easy | Single Inheritance — Vehicles | ☐ |
+| 3 | 🟢 Easy | Single Inheritance — Zoo | ☐ |
+| 4 | 🟡 Medium | Hierarchical — Test Framework | ☐ |
+| 5 | 🟡 Medium | Multiple — Payment Gateway | ☐ |
+| 6 | 🟡 Medium | Multilevel — Company Hierarchy | ☐ |
+| 7 | 🔴 Hard | Hybrid — E-Commerce | ☐ |
+| 8 | 🔴 Hard | Encapsulation + Inheritance — Banking | ☐ |
+| 9 | 🔴 Hard | MRO Mastery — Test Runner | ☐ |
+| 10 | 🔴 Hard | Capstone — Full Framework | ☐ |
+
+> 💡 **Pro tip:** After solving each one, run your code and verify the output matches the expected output shown. If it does — you've mastered that concept!
