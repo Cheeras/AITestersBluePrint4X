@@ -649,6 +649,7 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 
 | Example | Topic |
 |---|---|
+| [Complete Guide](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/Encapsulation_Complete_Guide.md) | Comprehensive guide — ELI5, access levels, getters/setters, `@property`, where encapsulation is implemented in this repo |
 | [Normal class](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/135_Normal_Class.py) | Basic class with public attributes — Car example |
 | [Basic encapsulation](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/136_WEcap.py) | VWO login with hardcoded credentials — no access control |
 | [Secure with env vars](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/137_WEcap_Secure.py) | VWO login using `.env` for credentials — `os.getenv()`, `os.name` |
