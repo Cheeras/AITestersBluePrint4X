@@ -13,4 +13,4 @@ class Home:
 
 object_ref = Home()
 #object_ref.__wife()
-object_ref.__private_var
+print(object_ref.__private_var)

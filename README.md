@@ -657,6 +657,19 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 | [Bank account](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/140_Ecap.py) | Real-world bank class — public `balance`, private `account_number` with auth-gated access |
 | [Home family](chapter_15_Python_PyTest/ex_18_OOPS_Python/04_Encapsulation/141_REAL.py) | Family-themed encapsulation — public `father`, protected `brother`, private `baby` |
 
+#### Inheritance
+
+| Example | Type | Description |
+|---|---|---|
+| [Complete Guide](chapter_15_Python_PyTest/ex_18_OOPS_Python/05_Inheritance/Inheritance_Complete_Guide.md) | All types | Comprehensive guide with diagrams, code, and real-world test automation examples |
+| [Single Inheritance](chapter_15_Python_PyTest/ex_18_OOPS_Python/05_Inheritance/143_SI.py) | Single | `BaseTest` → `LoginTest` — one child inherits from one parent |
+| [Multiple Inheritance](chapter_15_Python_PyTest/ex_18_OOPS_Python/05_Inheritance/144_MI.py) | Multiple | `TestHybrid(APIBase, DBBase)` — combining API auth + DB connection |
+| [Multiple + MRO](chapter_15_Python_PyTest/ex_18_OOPS_Python/05_Inheritance/145_MI_002.py) | Multiple | Method Resolution Order — which parent's method wins when names conflict |
+| [Multilevel](chapter_15_Python_PyTest/ex_18_OOPS_Python/05_Inheritance/146_ML.py) | Multilevel | `TestSuite` → `BaseTest` → `UITest` — grandparent → parent → child chain |
+| [Hierarchical](chapter_15_Python_PyTest/ex_18_OOPS_Python/05_Inheritance/147_HI.py) | Hierarchical | `BaseTest` → `LoginTest` + `SignupTest` — one parent, multiple children |
+| [Hybrid](chapter_15_Python_PyTest/ex_18_OOPS_Python/05_Inheritance/148_Hybrid.py) | Hybrid | Mix of multiple + multilevel — `C(A, B)` where `A(Base)` and `B(Base)` |
+| [Real-world framework](chapter_15_Python_PyTest/ex_18_OOPS_Python/05_Inheritance/149_REAL.py) | Single + Hierarchical | `BaseTest(browser)` → `LoginTest` + `SignupTest` — test automation framework |
+
 ## Overall Notes
 
 Comprehensive reference notes covering key concepts across the repository.
