@@ -671,6 +671,27 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 | [Hybrid](chapter_15_Python_PyTest/ex_18_OOPS_Python/05_Inheritance/148_Hybrid.py) | Hybrid | Mix of multiple + multilevel — `C(A, B)` where `A(Base)` and `B(Base)` |
 | [Real-world framework](chapter_15_Python_PyTest/ex_18_OOPS_Python/05_Inheritance/149_REAL.py) | Single + Hierarchical | `BaseTest(browser)` → `LoginTest` + `SignupTest` — test automation framework |
 
+#### Polymorphism
+
+##### Method Overloading
+
+| Example | Topic |
+|---|---|
+| [Complete Guide](chapter_15_Python_PyTest/ex_18_OOPS_Python/06_Polymorphism/Method_OverLoading/Method_Overloading_Complete_Guide.md) | Comprehensive guide — what it is, Python vs Java, 4 simulation techniques (defaults, `*args`, `isinstance`, `None`), real-world examples |
+| [Overloading attempt](chapter_15_Python_PyTest/ex_18_OOPS_Python/06_Polymorphism/Method_OverLoading/150_MLoading.py) | Broken attempt — duplicate `add()` — last definition wins, first is erased |
+| [Default param overloading](chapter_15_Python_PyTest/ex_18_OOPS_Python/06_Polymorphism/Method_OverLoading/151_MLoading_Default_Param.py) | Python-style overloading via default parameter `lastname="Cheerala"` |
+| [Real overloading](chapter_15_Python_PyTest/ex_18_OOPS_Python/06_Polymorphism/Method_OverLoading/152_REAL_MLoading.py) | `add(a, b, c=10)` — handles 2 or 3 arguments with one method |
+| [HTTP request with auth](chapter_15_Python_PyTest/ex_18_OOPS_Python/06_Polymorphism/Method_OverLoading/153_IQ.py) | `make_http_request(url, auth=None)` — optional auth parameter |
+| [TypeError demo](chapter_15_Python_PyTest/ex_18_OOPS_Python/06_Polymorphism/Method_OverLoading/154_Test.py) | Shows `TypeError` when calling erased method — proves no true overloading |
+
+##### Method Overriding
+
+| Example | Topic |
+|---|---|
+| [Complete Guide](chapter_15_Python_PyTest/ex_18_OOPS_Python/06_Polymorphism/Method_Overriding/Method_Overriding_Complete_Guide.md) | Comprehensive guide — overriding vs overloading, `super()`, `__init__` override, real-world examples |
+| [Basic override](chapter_15_Python_PyTest/ex_18_OOPS_Python/06_Polymorphism/Method_Overriding/155_MOverride.py) | `LoginTest.run()` overrides `BaseTest.run()` — child replaces parent behavior |
+| [Hierarchical override](chapter_15_Python_PyTest/ex_18_OOPS_Python/06_Polymorphism/Method_Overriding/156_MOverride2.py) | Same `run()` overridden in `LoginTest` + `APITest` — polymorphism in action |
+
 ## Overall Notes
 
 Comprehensive reference notes covering key concepts across the repository.
