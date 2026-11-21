@@ -692,6 +692,17 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 | [Basic override](chapter_15_Python_PyTest/ex_18_OOPS_Python/06_Polymorphism/Method_Overriding/155_MOverride.py) | `LoginTest.run()` overrides `BaseTest.run()` — child replaces parent behavior |
 | [Hierarchical override](chapter_15_Python_PyTest/ex_18_OOPS_Python/06_Polymorphism/Method_Overriding/156_MOverride2.py) | Same `run()` overridden in `LoginTest` + `APITest` — polymorphism in action |
 
+#### Abstraction
+
+| Example | Topic |
+|---|---|
+| [Complete Guide](chapter_15_Python_PyTest/ex_18_OOPS_Python/07_Abstraction/Abstraction_Complete_Guide.md) | Comprehensive guide — what it is, ABC/abstractmethod, abstraction vs encapsulation, real-world examples |
+| [Animal contract](chapter_15_Python_PyTest/ex_18_OOPS_Python/07_Abstraction/157_Abs.py) | `Animal(ABC)` with abstract `sound()` — child must implement, `Dog` barks |
+| [Loan contract](chapter_15_Python_PyTest/ex_18_OOPS_Python/07_Abstraction/158_Abs_Part1.py) | `Father(ABC)` with abstract `loan()` — child MUST return the loan |
+| [Browser manager](chapter_15_Python_PyTest/ex_18_OOPS_Python/07_Abstraction/159_REAL_Example.py) | `BrowserManager(ABC)` — abstract `start()` + shared `stop()` method |
+| [Car abstraction](chapter_15_Python_PyTest/ex_18_OOPS_Python/07_Abstraction/160_Hide_Abs.py) | `Car(Engine, GearBox)` — multiple abstract contracts, all must be implemented |
+| [Abstract chain](chapter_15_Python_PyTest/ex_18_OOPS_Python/07_Abstraction/161.py) | `Browser(ExcelReader)` — abstract class inheriting abstract class, adding more contracts |
+
 ## Overall Notes
 
 Comprehensive reference notes covering key concepts across the repository.
