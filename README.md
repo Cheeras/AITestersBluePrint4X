@@ -703,6 +703,32 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 | [Car abstraction](chapter_15_Python_PyTest/ex_18_OOPS_Python/07_Abstraction/160_Hide_Abs.py) | `Car(Engine, GearBox)` — multiple abstract contracts, all must be implemented |
 | [Abstract chain](chapter_15_Python_PyTest/ex_18_OOPS_Python/07_Abstraction/161.py) | `Browser(ExcelReader)` — abstract class inheriting abstract class, adding more contracts |
 
+#### Static Keyword
+
+| Example | Topic |
+|---|---|
+| [Static basics](chapter_15_Python_PyTest/ex_18_OOPS_Python/08_Static_Keyword/162_Static.py) | Class-level attributes (`statcourseName`, `mentor`) and `@staticmethod` — shared across all instances |
+| [Static utility methods](chapter_15_Python_PyTest/ex_18_OOPS_Python/08_Static_Keyword/163_s.py) | `ExcelReader.readExcelFile()` and `MYSQLDBConnction.readMySQLFile()` as static utility methods used by `TC1` |
+
+#### Exceptions
+
+| Example | Topic |
+|---|---|
+| [NameError](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/164_Exceptions.py) | `NameError` — accessing an undefined variable `a` |
+| [ZeroDivisionError](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/165_E1.py) | `ZeroDivisionError` — dividing by zero |
+| [TypeError / ValueError](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/166_Ex.py) | `TypeError` (int + str) and `ValueError` (int("a")) |
+| [IndexError](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/167_List.py) | `IndexError` — accessing list index out of range |
+| [Infinite loop](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/168.py) | `while True` infinite loop — press Ctrl+C to stop |
+| [User input division](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/169.py) | `ZeroDivisionError` from user-provided inputs |
+| [Try-except basic](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/170.py) | `try`/`except ZeroDivisionError` — handling division by zero gracefully |
+| [Multiple exceptions](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/171_Fix2.py) | Catching multiple exception types in a single `except` tuple |
+| [Multiple except blocks](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/172_Fix.py) | Separate `except` blocks for `ValueError` and `ZeroDivisionError` |
+| [Try-except-finally](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/173_Finally.py) | `finally` block — always executes regardless of exception |
+| [Real-world HTTP error handling](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/174_Real.py) | `requests.get()` with `ConnectionError`, `Timeout`, and generic `Exception` handling |
+| [Raise exception](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/175_Custom_Exception.py) | `raise Exception("not auth")` — guarding access with a custom error message |
+| [Custom exception class](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/176_Exceptions.py) | `class InvalidAgeException(Exception)` — user-defined exception with age validation |
+| [File I/O exception](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/177_FIO.py) | `FileNotFoundError` — handling missing file when reading `test.json` |
+
 ## Overall Notes
 
 Comprehensive reference notes covering key concepts across the repository.

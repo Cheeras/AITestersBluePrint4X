@@ -14,4 +14,23 @@ class Browser(ExcelReader):
     @abstractmethod
     def stopBrowser(self):
         pass
+
+class TC1(Browser):
+    def startBrowser(self):
+        print("Stating Browser")
+
+    def stopBrowser(self):
+        print("Stop Browser")
+
+    def readFromExcel(self):
+        print("Readfrom Excel is ready")
+
+    def runTC(self):
+        self.startBrowser()
+        self.readFromExcel()
+        self.stopBrowser()
+
+
+tc1 = TC1()
+tc1.runTC()
      
