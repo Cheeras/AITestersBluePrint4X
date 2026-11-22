@@ -729,6 +729,41 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 | [Custom exception class](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/176_Exceptions.py) | `class InvalidAgeException(Exception)` — user-defined exception with age validation |
 | [File I/O exception](chapter_15_Python_PyTest/ex_18_OOPS_Python/09_Exceptions/177_FIO.py) | `FileNotFoundError` — handling missing file when reading `test.json` |
 
+#### OS Module
+
+| Example | Topic |
+|---|---|
+| [OS basics](chapter_15_Python_PyTest/ex_18_OOPS_Python/10_OS_Module/178_OS.py) | `os.name`, `os.getcwd()`, `os.listdir()` — iterating and printing directory contents |
+| [Path & makedirs](chapter_15_Python_PyTest/ex_18_OOPS_Python/10_OS_Module/179.py) | `os.path.join()` and `os.makedirs(exist_ok=True)` — creating nested folders safely |
+| [Get env variable](chapter_15_Python_PyTest/ex_18_OOPS_Python/10_OS_Module/180_Env.py) | `os.getenv("TOKEN")` — reading environment variables (returns `None` if not set) |
+| [Read env with dotenv](chapter_15_Python_PyTest/ex_18_OOPS_Python/10_OS_Module/181_Read_Env.py) | `load_dotenv()` + `os.getenv("TOKEN")` — loading `.env` file before reading variables |
+
+#### Package & Module Imports
+
+| Example | Topic |
+|---|---|
+| [Package import](chapter_15_Python_PyTest/ex_18_OOPS_Python/11_Package/182_Util.py) | `from package import util_module, util_module2` — importing from a custom package |
+| [Package init](chapter_15_Python_PyTest/ex_18_OOPS_Python/11_Package/package/___init__.py) | `__init__.py` — marks a directory as a Python package |
+| [Package module](chapter_15_Python_PyTest/ex_18_OOPS_Python/11_Package/package/util_module.py) | Module inside a package — reusable utility functions |
+| [Package module 2](chapter_15_Python_PyTest/ex_18_OOPS_Python/11_Package/package/util_module2.py) | Second module inside the same package |
+| [Normal dir util](chapter_15_Python_PyTest/ex_18_OOPS_Python/11_Package/normal_dir/util_normal.py) | Plain directory (no `__init__.py`) — cannot be imported as a package |
+
+#### PyTest
+
+| Example | Topic |
+|---|---|
+| [Installation Guide](chapter_15_Python_PyTest/ex_18_OOPS_Python/12_PyTest/PyTest_Installation_Guide.md) | Step-by-step install guide — venv setup, global vs venv interpreter, common pitfalls |
+| [Usage Guide](chapter_15_Python_PyTest/ex_18_OOPS_Python/12_PyTest/PyTest_Usage_Guide.md) | Complete usage guide — naming conventions, fixtures, parametrization, best practices |
+| [Simple test](chapter_15_Python_PyTest/ex_18_OOPS_Python/12_PyTest/test_183.py) | Basic pytest file — `test_check()` with `assert 3 == 4` |
+| [Multiple tests](chapter_15_Python_PyTest/ex_18_OOPS_Python/12_PyTest/test_184.py) | Three test functions — `test_positive`, `test_positive2`, `test_negative` |
+
+#### PIP vs UV
+
+| File | Description |
+|---|---|
+| [PIP vs UV Complete Guide](chapter_15_Python_PyTest/ex_18_OOPS_Python/13_PIP/PIP_UV_CompleteGuide.md) | Detailed comparison — what PIP and UV are, where they are used, speed comparison, when to use each, side-by-side examples |
+| [PIP vs UV Diagram](chapter_15_Python_PyTest/ex_18_OOPS_Python/13_PIP/pip%20vs%20uv%20in%20python.png) | Visual comparison of PIP and UV |
+
 ## Overall Notes
 
 Comprehensive reference notes covering key concepts across the repository.
