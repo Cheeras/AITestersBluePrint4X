@@ -764,6 +764,57 @@ Beginner-friendly Python examples introduce programming fundamentals that are us
 | [PIP vs UV Complete Guide](chapter_15_Python_PyTest/ex_18_OOPS_Python/13_PIP/PIP_UV_CompleteGuide.md) | Detailed comparison — what PIP and UV are, where they are used, speed comparison, when to use each, side-by-side examples |
 | [PIP vs UV Diagram](chapter_15_Python_PyTest/ex_18_OOPS_Python/13_PIP/pip%20vs%20uv%20in%20python.png) | Visual comparison of PIP and UV |
 
+## Chapter 16: AI Agents with CrewAI
+
+Hands-on CrewAI examples that build multi-agent QA teams — from a single analyst agent to a full bug-triage crew with three specialist agents.
+
+| File | Description |
+|---|---|
+| [CrewAI Installation Guide](chapter_16_AI_Agent_Crew_AI/crewaiInstallationGuide.md) | Prerequisites, virtual environment setup, and installation verification |
+| [PIP vs UV Complete Guide](chapter_16_AI_Agent_Crew_AI/PIP_UV_CompleteGuide.md) | Detailed comparison of PIP and UV package managers |
+| [Running First CrewAgent — Issues & Fixes](chapter_16_AI_Agent_Crew_AI/running_first_CrewAgent.md) | Troubleshooting record of common CrewAI setup issues and their fixes |
+| [Test Analyst Agent](chapter_16_AI_Agent_Crew_AI/test_01_analyst_AIAgent.py) | Single analyst agent that creates 5–10 test cases from a feature |
+| [Test Analyst Agent (pytest)](chapter_16_AI_Agent_Crew_AI/test_02_analyst_AIAgent_pytest.py) | Same analyst agent wrapped as a pytest test |
+| [Research & Write Crew](chapter_16_AI_Agent_Crew_AI/test_03_Research_Write_AIAgent.py) | Two-agent crew — researcher finds bug categories, writer produces a prevention checklist |
+| [Bug Triage Crew (starter)](chapter_16_AI_Agent_Crew_AI/test_04_BugTraiging_Crew.py) | Starter template for the 3-agent bug triage crew |
+| [Bug Triage Crew (production)](chapter_16_AI_Agent_Crew_AI/test_05_BugTraiging_Crew.prod.py) | Production triage crew — fetches a Jira ticket by ID and runs triage, root-cause, and test-strategy agents |
+| [Environment Template](chapter_16_AI_Agent_Crew_AI/.env.example) | Sample `.env` with Groq, Jira, OpenAI, Anthropic, Cohere, and OpenRouter config |
+| [CrewAI Architecture](chapter_16_AI_Agent_Crew_AI/CrewAI_Architecuture/) | Architecture diagrams for CrewAI agent setups |
+
+### Run the Bug Triage Crew
+
+```powershell
+cd chapter_16_AI_Agent_Crew_AI
+python test_05_BugTraiging_Crew.prod.py --bug-id KAN-110
+```
+
+Requires `GROQ_API_KEY` (and `JIRA_EMAIL`, `JIRA_API_TOKEN`, `JIRA_BASE_URL` for the Jira-backed crew) in `.env` — copy from `.env.example`.
+
+## Chapter 17: AI Agents with LangChain (Todo)
+
+> 🚧 *Placeholder — coming soon.*  
+> This chapter will explore building AI agents with the LangChain framework.
+
+## Chapter 18: AI Agents with LangGraph (Todo)
+
+> 🚧 *Placeholder — coming soon.*  
+> This chapter will cover stateful, graph-based agent workflows with LangGraph.
+
+## Chapter 19: LLM Evaluation (Todo)
+
+> 🚧 *Placeholder — coming soon.*  
+> This chapter will cover evaluating LLM outputs — correctness, hallucination, and quality metrics.
+
+## Chapter 20: DeepEval Basics (Todo)
+
+> 🚧 *Placeholder — coming soon.*  
+> This chapter will introduce DeepEval — an open-source LLM evaluation framework.
+
+## Chapter 21: DeepEval Framework (Todo)
+
+> 🚧 *Placeholder — coming soon.*  
+> This chapter will build a complete evaluation pipeline with the DeepEval framework.
+
 ## Overall Notes
 
 Comprehensive reference notes covering key concepts across the repository.
